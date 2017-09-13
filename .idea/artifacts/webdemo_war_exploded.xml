@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="HouseInHouse:war exploded">
-    <output-path>$PROJECT_DIR$/target/HouseInHouse-1.0-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="webdemo:war exploded">
+    <output-path>$PROJECT_DIR$/target/webdemo-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="HouseInHouse" />
+          <element id="module-output" name="webdemo" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE" />
@@ -52,9 +52,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/HouseInHouse-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/webdemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="HouseInHouse/web/Web" />
+      <element id="javaee-facet-resources" facet="webdemo/web/Web" />
     </root>
   </artifact>
 </component>
