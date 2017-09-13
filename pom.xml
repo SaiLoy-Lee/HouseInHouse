@@ -28,6 +28,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -58,7 +59,6 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
     </dependency>
-
 
 
 
