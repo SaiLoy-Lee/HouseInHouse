@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="HouseInHouse" />
+        <module name="webdemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="HouseInHouse" target="1.7" />
+      <module name="webdemo" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

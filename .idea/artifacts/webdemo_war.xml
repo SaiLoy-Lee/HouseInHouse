@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webdemo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="webdemo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webdemo:war exploded" />
+    </root>
+  </artifact>
+</component>
