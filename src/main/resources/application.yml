@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   context-path: /
 spring:
   datasource:
@@ -9,8 +9,11 @@ spring:
     password: root
   mvc:
     view:
-      prefix: /WEB-INF/
+      prefix: /WEB-INF/pages
       suffix: .jsp
+  data:
+    solr:
+      host: http://localhost:8083/solr
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mybatis/mappers/*.xml
