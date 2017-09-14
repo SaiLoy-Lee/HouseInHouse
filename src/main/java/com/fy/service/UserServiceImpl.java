@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService{
         userMapper.saveUser(user);
     }
 
+    @Override
+    public User findUserById(String hhUserId) {
+        return userMapper.findUserById(hhUserId);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateUser(user);
+    }
+
 }
