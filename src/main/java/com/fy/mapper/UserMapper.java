@@ -15,4 +15,8 @@ public interface UserMapper {
     public void deleteUser(String hhUserIds);
 
     public void saveUser(User user);
+
+    public User findUserById(String hhUserId);
+
+    public void updateUser(User user);
 }

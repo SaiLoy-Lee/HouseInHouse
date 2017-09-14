@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -24,10 +23,10 @@ public class UserController {
     @Autowired
     private DeptService deptService;
     @RequestMapping("/list")
-    @ResponseBody
+
     public String findAll(Model model){
-//        List<User> userList = userService.findAll();
-//        model.addAttribute("userList",userList);
+        List<User> userList = userService.findAll();
+        model.addAttribute("userList",userList);
         return "/pages/sysadmin/user/jUserList";
     }
    @RequestMapping("/start")
@@ -51,8 +50,6 @@ public class UserController {
     public String toCreate(Model model){
         List<Dept> deptList = deptService.findAll();
         model.addAttribute("deptList",deptList);
-
-
         return "/pages/sysadmin/user/jUserCreate";
     }
     @RequestMapping("/save")
@@ -60,5 +57,32 @@ public class UserController {
         userService.saveUser(user);
         return "redirect:/pages/sysadmin/user/list";
     }
+    @RequestMapping("/toupdate")
+    public String toUpdate(String hhUserId,Model model){
 
+        //查询需要修改的数据  表示当前需要修改的数据
+        User user = userService.findUserById(hhUserId);
+        //准备部门列表信息
+        List<Dept> deptList = deptService.findAll();
+       // List<UserInfo> parentList = userService.findParentList();
+
+        model.addAttribute("user", user);
+        model.addAttribute("deptList", deptList);
+       // model.addAttribute("parentList", parentList);
+        return "/pages/sysadmin/user/jUserUpdate";
+    }
+
+    @RequestMapping("/update")
+    public String upateUser(User user){
+
+        userService.updateUser(user);
+        return "redirect:/pages/sysadmin/user/list";
+    }
+    @RequestMapping("/toview")
+    public String toView(String hhUserId,Model model){
+        User user = userService.findUserById(hhUserId);
+        model.addAttribute("user",user);
+        return "/pages/sysadmin/user/jUserView";
+
+    }
 }
