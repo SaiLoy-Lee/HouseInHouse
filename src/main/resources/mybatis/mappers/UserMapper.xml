@@ -6,7 +6,7 @@
 
     <select id="findAll" resultType="com.fy.pojo.User">
 
-        select * from user_p
+        select * from hh_user
 
     </select>
 
