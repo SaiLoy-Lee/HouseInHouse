@@ -5,7 +5,8 @@ import java.util.Date;
 /**
  * Created by Administrator on 2017/9/13.
  */
-public class Dept {
+public class Dept extends BaseEntity{
+
     private String hhDeptId;
     private String hhDeptParentId;
     private String hhDeptCourse;
@@ -78,4 +79,6 @@ public class Dept {
     public void setHhDeptStoptime(Date hhDeptStoptime) {
         this.hhDeptStoptime = hhDeptStoptime;
     }
+
+
 }
