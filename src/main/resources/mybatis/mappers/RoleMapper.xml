@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.UserMapper">
+
+    <select id="findAll" resultType="com.fy.pojo.Role">
+
+        select * from hh_role
+
+    </select>
+
+    <delete id="deletehhroleId">
+
+         DELETE FROM hh_role WHERE hh_role_Id IN (
+
+         <foreach collection="array" item="id" separator=",">
+             #{id}
+         </foreach>
+
+         )
+
+    </delete>
+
+    <update id="toStart">
+        UPDATE  hh_role SET hh_role_status=#{hhroleStatus} WHERE hh_role_id in(
+        <foreach collection="hhroleIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+
+    <update id="toStop">
+        UPDATE  hh_role SET hh_role_status=#{hhroleStatus} WHERE hh_role_id in(
+        <foreach collection="hhroleIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+
+
+    <insert id="SaveRole">
+        INSERT INTO hh_role (hh_role_Id,hh_role_name,hh_role_remarks,hh_role_order_no,hh_role_status,create_by,create_time,create_dept,update_by,update_time)
+       VALUES(
+       #{hhroleId},
+       #{hhroleName},
+       #{hhroleRemarks},
+       #{hhroleorderNo},
+       #{hhroleStatus},
+       #{createBy,jdbcType=VARCHAR},
+	   #{createDept,jdbcType=VARCHAR},
+	   #{createTime,jdbcType=DATE},
+	   #{updateBy,jdbcType=VARCHAR},
+	   #{updateTime,jdbcType=DATE}
+       )
+    </insert>
+
+</mapper>

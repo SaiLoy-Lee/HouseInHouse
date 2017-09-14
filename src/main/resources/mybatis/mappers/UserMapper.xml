@@ -9,5 +9,7 @@
         select * from hh_user
 
     </select>
-
+    
+    <delete id=""
+    
 </mapper>
