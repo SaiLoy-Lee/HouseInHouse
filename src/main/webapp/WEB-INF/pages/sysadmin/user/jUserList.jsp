@@ -42,12 +42,10 @@
 		<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('userId',this)"></td>
 		<td class="tableHeader">序号</td>
 		<td class="tableHeader">用户名</td>
-		<td class="tableHeader">所属部门</td>
-		<td class="tableHeader">真实姓名</td>
+		<td class="tableHeader">姓名</td>
+		<td class="tableHeader">性别</td>
+		<td class="tableHeader">年龄</td>
 		<td class="tableHeader">身份证号</td>
-		<td class="tableHeader">上级领导</td>
-		<td class="tableHeader">入职日期</td>
-		<td class="tableHeader">薪资</td>
 		<td class="tableHeader">电话</td>
 		<td class="tableHeader">状态</td>
 	</tr>
@@ -57,18 +55,17 @@
 	<c:forEach items="${userList}" var="u" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
 		<td><input type="checkbox" name="userId" value="${u.userId}"/></td>
-		<td>${u.userId}</td>
-		<td>${u.userName}</td>
-		<td>${u.dept.deptName}</td>
-		<td>${u.userInfo.name}</td>
-		<td>${u.userInfo.cardNo}</td>
-		<td>${u.userInfo.manager.name}</td>
-		<td><fmt:formatDate value="${u.userInfo.joinDate}" pattern="yyyy-MM-dd"/></td>
-		<td>${u.userInfo.salary}</td>
-		<td>${u.userInfo.telePhone}</td>
+		<td>${u.hhUserId}</td>
+		<td>${u.hhUserUsername}</td>
+		<td>${u.hhUserName}</td>
+		<td>${u.hhUserSex}</td>
+		<td>${u.hhUserAge}</td>
+		<td>${u.hhUserCardid}</td>
+		<td>${u.hhUserTel}</td>
+		<td><fmt:formatDate value="${u.hhCreateTime}" pattern="yyyy-MM-dd"/></td>
 		<td>
-			<c:if test="${u.state==1}"><a href="stop?userId=${u.userId}"><font color="green">启用</font></a></c:if>
-			<c:if test="${u.state==0}"><a href="start?userId=${u.userId}"><font color="red">停用</font></a></c:if>
+			<c:if test="${u.hhUserStatus==1}"><a href="stop?hhUserId=${u.hhUserId}"><font color="green">启用</font></a></c:if>
+			<c:if test="${u.hhUserStatus==0}"><a href="start?hhUserId=${u.hhUserId}"><font color="red">停用</font></a></c:if>
 		</td>
 	</tr>
 	</c:forEach>

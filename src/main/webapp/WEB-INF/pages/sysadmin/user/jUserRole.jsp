@@ -45,7 +45,8 @@
 				if (str != "") {
 					str += ",";
 				}
-				str += nodes[i].id;
+
+				str += nodes[i].id;   
 			}
 			
 			$('#roleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
