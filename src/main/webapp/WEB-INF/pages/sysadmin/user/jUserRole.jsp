@@ -45,6 +45,7 @@
 				if (str != "") {
 					str += ",";
 				}
+
 				str += nodes[i].id;   
 			}
 			

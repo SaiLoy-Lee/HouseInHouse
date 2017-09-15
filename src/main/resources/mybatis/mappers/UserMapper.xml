@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.UserMapper">
+
+    <select id="findAll" resultMap="userRM">
+        select * from hh_user
+    </select>
+
+    <resultMap type="User" id="userRM" autoMapping="true">
+
+        <id column="hh_user_id" property="hhUserId"/>
+        <association property="dept" javaType="Dept">
+            <id column="hh_dept_id" property="hhDeptId"/>
+        </association>
+    </resultMap>
+    <update id="updateStatus">
+        update hh_user set hh_user_status=#{hhUserStatus} where hh_user_id in(
+        <foreach collection="hhUserIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+
+    <delete id="deleteUser">
+        delete from hh_user where hh_user_id in(
+          <foreach collection="array" item="id" separator=",">
+              #{id}
+          </foreach>
+        )
+    </delete>
+
+    <insert id="saveUser">
+        insert into hh_user(hh_user_id,hh_user_dept_id,hh_user_username,hh_user_password,hh_user_name,hh_user_sex,hh_user_age,
+        hh_user_cardid,hh_user_tel,hh_user_status,create_by,
+ 		create_dept,create_time,update_by,update_time)  values(
+ 		#{hhUserId},
+ 		#{hhUserDeptId},
+ 		#{hhUserUsername},
+ 		#{hhUserPassword},
+ 		#{hhUserName},
+ 		#{hhUserSex},
+ 		#{hhUserAge},
+ 		#{hhUserCardid},
+ 		#{hhUserTel},
+ 		#{hhUserStatus},
+ 		#{createBy,jdbcType=VARCHAR},
+ 		#{createDept,jdbcType=VARCHAR},
+ 		#{createTime,jdbcType=DATE},
+ 		#{updateBy,jdbcType=VARCHAR},
+ 		#{updateTime,jdbcType=DATE}
+
+ 		)
+    </insert>
+    <select id="findUserById" resultMap="userRM">
+       select * from hh_user left join  (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
+    </select>
+
+    <update id="updateUser">
+        update hh_user
+        <set>
+            hh_dept_id = #{hh_dept.hhDeptId},
+            hh_user_username = #{hhUserUsername},
+            hh_user_password = #{hhUserPassword},
+            hh_user_name = #{hhUserName},
+            hh_user_sex = #{hhUserSex},
+            hh_user_age = #{hhUserAge},
+            hh_user_cardid = #{hhUserCardid},
+            hh_user_tel = #{hhUserTel},
+            hh_user_status = #{hhUserStatus},
+            <if test="createBy !=null">create_by = #{createBy},</if>
+            <if test="createDept !=null">create_dept = #{createDept},</if>
+            <if test="createTime !=null">create_time = #{createTime},</if>
+            <if test="updateBy !=null">update_by = #{updateBy},</if>
+            <if test="updateTime !=null">update_time = #{updateTime}</if>
+        </set>
+        where hh_user_id = #{hhUserId}
+    </update>
+
+
+
+</mapper>

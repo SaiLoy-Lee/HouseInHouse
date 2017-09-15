@@ -14,13 +14,13 @@
 	<div class="box">
 			<div class="inputstyle">
 				<div class="inputlable">用户名：
-					<input type="text"  name="userName" id="userName" onFocus="this.select();" title="请您输入用户名"/>
+
 					<div id="ts" style="z-index:1;">
 					</div>
 				</div>
 
 			    <div class="inputlable">密　码：
-					<input type="password"  name="password" id="password" onfocus="$('#ts').css('display','none');this.select();"
+
 						onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }" title="请您输入密码"/>
 				</div>
 			</div>

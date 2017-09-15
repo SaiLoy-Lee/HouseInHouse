@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 	<title>用户角色分配</title>
+
 	<link rel="stylesheet" href="${ctx}/staticfile/components/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="${ctx}/staticfile/components/zTree/js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="${ctx}/staticfile/components/zTree/js/jquery.ztree.core-3.5.min.js"></script>
@@ -45,10 +47,12 @@
 				if (str != "") {
 					str += ",";
 				}
+
 				str += nodes[i].id;   
 			}
 			
 			$('#moduleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
+
 		}
 	</SCRIPT>
 </head>
@@ -75,9 +79,10 @@
 		<div>
 			<div class="eXtremeTable" >
 				<table id="ec_table" class="tableRegion" width="98%" >
-					<!--隐藏域用来传递数据  -->
+
 					<input type="hidden" id="roleId" name="roleId" value="${roleId}"/>
 					<input type="hidden" id="moduleIds" name="moduleIds"/>
+
 					<ul id="htZtree" class="ztree"></ul>
 				</table>
 			</div>

@@ -48,7 +48,7 @@
 		<td class="tableHeader">上级领导</td>
 		<td class="tableHeader">入职日期</td>
 		<td class="tableHeader">薪资</td>
-		<td class="tableHeader">备注信息</td>
+		<td class="tableHeader">电话</td>
 		<td class="tableHeader">状态</td>
 	</tr>
 	</thead>
@@ -57,15 +57,17 @@
 	<c:forEach items="${userList}" var="u" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
 		<td><input type="checkbox" name="userId" value="${u.userId}"/></td>
-		<td>${status.index+1}</td>
-		<td>${u.username}</td>
+		<td>${u.userId}</td>
+		<td>${u.userName}</td>
+
 		<td>${u.dept.deptName}</td>
 		<td>${u.userInfo.name}</td>
 		<td>${u.userInfo.cardNo}</td>
 		<td>${u.userInfo.manager.name}</td>
 		<td><fmt:formatDate value="${u.userInfo.joinDate}" pattern="yyyy-MM-dd"/></td>
 		<td>${u.userInfo.salary}</td>
-		<td>${u.userInfo.remark}</td>
+		<td>${u.userInfo.telePhone}</td>
+
 		<td>
 			<c:if test="${u.state==1}"><a href="stop?userId=${u.userId}"><font color="green">启用</font></a></c:if>
 			<c:if test="${u.state==0}"><a href="start?userId=${u.userId}"><font color="red">停用</font></a></c:if>

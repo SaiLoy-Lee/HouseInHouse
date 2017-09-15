@@ -14,6 +14,7 @@
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
+	<!-- <li id="save"><a href="#" onclick="formSubmit('','_self');this.blur();">保存</a></li> -->
 	<li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
 	
 </ul>
@@ -34,6 +35,7 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>角色名称:</td>
+
 		<td>${role.name}</td>
 	</tr>
 	<tr class="odd">
