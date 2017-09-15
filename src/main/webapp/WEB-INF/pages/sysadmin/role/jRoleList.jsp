@@ -16,17 +16,17 @@
 						<ul>
 							<li id="view"><a href="#"
 								onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('tocreate','_self');this.blur();">新增</a></li>
 							<li id="update"><a href="#"
 								onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
 							<li id="delete"><a href="#"
 								onclick="formSubmit('delete','_self');this.blur();">删除</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('start','_self');this.blur();">启用</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('stop','_self');this.blur();">停用</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('roleModule','_self');this.blur();">模块</a></li>
 						</ul>
 					</div>
@@ -46,7 +46,7 @@
 				<table id="ec_table" class="tableRegion" width="98%">
 					<thead>
 						<tr>
-							<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('roleId',this)"></td>
+							<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('hhroleId',this)"></td>
 							<td class="tableHeader">序号</td>
 							<td class="tableHeader">角色名</td>
 							<td class="tableHeader">备注信息</td>
@@ -56,16 +56,16 @@
 					</thead>
 					<tbody class="tableBody">
 
-						<c:forEach items="${roleList}" var="r" varStatus="status">
+						<c:forEach items="${hhroleList}" var="h" varStatus="status">
 							<tr class="odd" onmouseover="this.className='highlight'"
 								onmouseout="this.className='odd'">
-								<td><input type="checkbox" name="roleId"
-									value="${r.roleId}" /></td>
+								<td><input type="checkbox" name="hhroleId"
+									value="${h.hhroleId}" /></td>
 								<td>${status.index+1}</td>
-								<td>${r.name}</td>
-								<td>${r.remarks}</td>
-								<td>${r.orderNo}</td>
-								<td><fmt:formatDate value="${r.updateTime}"
+								<td>${h.hhroleName}</td>
+								<td>${h.hhroleRemarks}</td>
+								<td>${h.hhroleorderNo}</td>
+								<td><fmt:formatDate value="${h.updateTime}"
 										pattern="yyyy-MM-dd" /></td>
 							</tr>
 						</c:forEach>

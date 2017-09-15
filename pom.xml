@@ -96,20 +96,18 @@
 			<version>1.2.3</version>
 	</dependency>
 
-		<!--引入quartz定时任务 -->
-		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz-jobs</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-
 	</dependencies>
+
+
+	<developers>
+		<developer>
+			<id>aliyunproducts</id>
+			<name>Aliyun SDK</name>
+			<email>aliyunsdk@aliyun.com</email>
+		</developer>
+	</developers>
+
+
 
 	<build>
 		<plugins>
