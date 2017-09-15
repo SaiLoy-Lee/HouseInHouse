@@ -9,4 +9,15 @@ import java.util.List;
  */
 public interface UserService {
     public List<User> findAll();
+
+    public void updateStatus(String[] hhUserIds, int hhUserStatus);
+
+    public void deleteUser(String hhUserIds);
+
+    public void saveUser(User user);
+
+
+    public User findUserById(String hhUserId);
+
+    public void updateUser(User user);
 }

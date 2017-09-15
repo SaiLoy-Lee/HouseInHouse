@@ -3,7 +3,7 @@ package com.fy.pojo;
 /**
  * Created by Administrator on 2017/9/13.
  */
-public class User {
+public class User extends BaseEntity{
     private Dept dept;
     private String hhUserUsername;
     private String hhUserPassword;
