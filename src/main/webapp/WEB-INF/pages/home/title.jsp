@@ -225,6 +225,9 @@
 		<shiro:hasPermission name="系统管理">
 			<span id="topmenu" onclick="toModule('sysadmin');">系统管理</span>
 		</shiro:hasPermission>
+		<shiro:hasPermission name="图表统计">
+			<span id="topmenu" onclick="toChart('sysadmin');">图表统计</span>
+		</shiro:hasPermission>
 </div>
 					<span id="rightKey" onmouseover="periodOffset(this, 'right')"><img src="${ctx}/staticfile/skin/default/images/title/right_arrow.png"/></span>
 				</div>
