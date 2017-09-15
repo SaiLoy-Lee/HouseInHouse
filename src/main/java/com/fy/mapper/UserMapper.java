@@ -19,4 +19,6 @@ public interface UserMapper {
     public User findUserById(String hhUserId);
 
     public void updateUser(User user);
+
+    public User findUserByUsername(String hhUserUsername);
 }
