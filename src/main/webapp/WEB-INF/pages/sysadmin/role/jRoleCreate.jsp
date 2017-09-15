@@ -29,11 +29,6 @@
   </div> 
   
 <div>
-	private Integer hhroleId;
-	private String hhroleName;
-	private String hhroleRemarks;
-	private Integer hhroleorderNo;
-	private Integer hhroleStatus;
 
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
@@ -59,7 +54,6 @@
 			<input type="radio" name="hhroleStatus" value="0"/>停用
 		</td>
 	</tr>
-
 </table>
 </div>
  
