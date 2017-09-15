@@ -4,9 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fy.mapper.UserMapper">
 
-    <select id="findAll" resultType="userRM">
+    <select id="findAll" resultMap="userRM">
         select * from hh_user
     </select>
+
     <resultMap type="User" id="userRM" autoMapping="true">
 
         <id column="hh_user_id" property="hhUserId"/>
@@ -46,15 +47,16 @@
  		#{hhUserStatus},
  		#{createBy,jdbcType=VARCHAR},
  		#{createDept,jdbcType=VARCHAR},
- 		#{createTime,jdbcType=Date},
+ 		#{createTime,jdbcType=DATE},
  		#{updateBy,jdbcType=VARCHAR},
- 		#{updateTime,jdbcType=Date}
+ 		#{updateTime,jdbcType=DATE}
 
  		)
     </insert>
     <select id="findUserById" resultMap="userRM">
        select * from hh_user left join  (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
     </select>
+
     <update id="updateUser">
         update hh_user
         <set>

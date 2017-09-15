@@ -6,14 +6,17 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://FY-Lee:3306/house
-    username: root
-    password: root
-
-mvc:
+    username: house
+    password: house
+  mvc:
     view:
-      prefix: /WEB-INF/
+      prefix: /WEB-INF/pages/
       suffix: .jsp
+
+
+
 
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mybatis/mappers/*.xml
+  type-aliases-package: com.fy.pojo
