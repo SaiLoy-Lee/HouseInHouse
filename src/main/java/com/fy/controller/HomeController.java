@@ -14,10 +14,10 @@ public class HomeController {
 	}
 	
 
-		return "/"+moduleName+"/left";
-	}
+
 	
 	@RequestMapping("/{moduleName}/Main")
 	public String moduleMain(@PathVariable String moduleName){
-
+		return "/"+moduleName+"/left";
+	}
 }
