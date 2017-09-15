@@ -81,20 +81,10 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
-			<version>4.10.1</version>
+			<version>4.10.3</version>
 		</dependency>
 
 
-		<dependency>
-			<groupId>us.codecraft</groupId>
-			<artifactId>webmagic-extension</artifactId>
-			<version>0.7.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
 		<dependency>
 			<groupId>commons-httpclient</groupId>
@@ -109,16 +99,22 @@
 			<version>1.6.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
+
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
+			<groupId>us.codecraft</groupId>
+			<artifactId>webmagic-extension</artifactId>
+			<version>0.7.3</version>
 		</dependency>
 
 
-	</dependencies>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+
+
+    </dependencies>
 
 
 	<developers>
@@ -127,8 +123,6 @@
 			<name>Aliyun SDK</name>
 			<email>aliyunsdk@aliyun.com</email>
 		</developer>
-		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
-
 	</developers>
 
 
