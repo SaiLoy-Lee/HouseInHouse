@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>角色新增</title>
+	<title>角色修改</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
-	<li id="save"><a href="#" onclick="formSubmit('save','_self');this.blur();">保存</a></li>
+	<li id="update"><a href="#" onclick="formSubmit('update','_self');this.blur();">修改</a></li>
 	<li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
 	
 </ul>
@@ -25,33 +25,31 @@
    
   <div class="textbox-title">
 	<img src="../../staticfile/skin/default/images/icon/currency_yen.png"/>
-    角色新增
+    角色修改
   </div> 
   
 <div>
 
+
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
+	<tr class="odd" hidden="hidden">
+		<td>角色Id:</td>
+		<td><input  type="text" name="roleId" value="${role.roleId}"/></td>
+	</tr>
+	
 	<tr class="odd">
 		<td>角色名称:</td>
-		<td><input  type="text" name="hhroleName"/></td>
+		<td><input  type="text" name="name" value="${role.name}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="hhroleorderNo"/></td>
+		<td><input  type="text" name="orderNo" value="${role.orderNo}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
-		<td colspan="3">
-			<textarea style="height:80px;width:90%" name="hhroleRemarks"></textarea>
-		</td>
-	</tr>
-
-	<tr class="odd">
-		<td>状态:</td>
 		<td>
-			<input type="radio" name="hhroleStatus" value="1"/>启用
-			<input type="radio" name="hhroleStatus" value="0"/>停用
+			<textarea style="height:130px;width:100%" name="remarks">${role.remarks}</textarea>
 		</td>
 	</tr>
 </table>
