@@ -193,11 +193,11 @@
 <div class="PositionFrame_black" id="PositionFrame"></div>
 	<div id="userInfo" style="z-index:999;" onclick="HideLoginDiv()" title="点击关闭">
 		<img src="${ctx}/staticfile/skin/default/images/title/avataronline.gif" border="0" style="margin-top:-1px;"/>
-		您好：<strong>${SessionUser.userInfo.name}</strong>&nbsp;&nbsp;|
+		您好：<strong><%--${SessionUser.userInfo.name}--%></strong>&nbsp;&nbsp;|
 		您所属单位：<strong>
-			<c:if test="${!empty SessionUser.dept}">
+			<%--<c:if test="${!empty SessionUser.dept}">
 			${SessionUser.dept.deptName}
-			</c:if>
+			</c:if>--%>
 		</strong>&nbsp;&nbsp;
 		<img src="${ctx}/staticfile/skin/default/images/title/close.gif" border="0" />
 	</div>
@@ -216,15 +216,15 @@
 			    	<div id="mask">
 <div id="menuContent">
 		<span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
-		<shiro:hasPermission name="货运管理">
+
 			<span id="topmenu" onclick="toModule('cargo');">货运管理</span><span id="tm_separator"></span>
-		</shiro:hasPermission>
-		<shiro:hasPermission name="基础信息">
+
+
 			<span id="topmenu" onclick="toModule('baseinfo');">基础信息</span><span id="tm_separator"></span>
-		</shiro:hasPermission>
-		<shiro:hasPermission name="系统管理">
+
+
 			<span id="topmenu" onclick="toModule('sysadmin');">系统管理</span>
-		</shiro:hasPermission>
+
 </div>
 					<span id="rightKey" onmouseover="periodOffset(this, 'right')"><img src="${ctx}/staticfile/skin/default/images/title/right_arrow.png"/></span>
 				</div>
