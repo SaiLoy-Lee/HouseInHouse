@@ -59,6 +59,7 @@
 		<td><input type="checkbox" name="userId" value="${u.userId}"/></td>
 		<td>${u.userId}</td>
 		<td>${u.userName}</td>
+
 		<td>${u.dept.deptName}</td>
 		<td>${u.userInfo.name}</td>
 		<td>${u.userInfo.cardNo}</td>
@@ -66,6 +67,7 @@
 		<td><fmt:formatDate value="${u.userInfo.joinDate}" pattern="yyyy-MM-dd"/></td>
 		<td>${u.userInfo.salary}</td>
 		<td>${u.userInfo.telePhone}</td>
+
 		<td>
 			<c:if test="${u.state==1}"><a href="stop?userId=${u.userId}"><font color="green">启用</font></a></c:if>
 			<c:if test="${u.state==0}"><a href="start?userId=${u.userId}"><font color="red">停用</font></a></c:if>
