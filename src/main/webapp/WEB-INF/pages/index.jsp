@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			<div class="btnstyle">
-				<input  class="loginImgOut" value="" type="button" onclick="formSubmit('${ctx}/login.action','_self');"
+
 				  onmouseover="this.className='loginImgOver'" 
 				  onmouseout="this.className='loginImgOut'"
 				/>
