@@ -17,3 +17,4 @@ mvc:
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mybatis/mappers/*.xml
+  type-aliases-package: com.fy.pojo
