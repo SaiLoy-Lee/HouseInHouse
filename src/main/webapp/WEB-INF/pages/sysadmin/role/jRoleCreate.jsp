@@ -29,22 +29,34 @@
   </div> 
   
 <div>
-
+	private Integer hhroleId;
+	private String hhroleName;
+	private String hhroleRemarks;
+	private Integer hhroleorderNo;
+	private Integer hhroleStatus;
 
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>角色名称:</td>
-		<td><input  type="text" name="name"/></td>
+		<td><input  type="text" name="hhroleName"/></td>
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="orderNo"/></td>
+		<td><input  type="text" name="hhroleorderNo"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
 		<td colspan="3">
-			<textarea style="height:80px;width:90%" name="remarks"></textarea>
+			<textarea style="height:80px;width:90%" name="hhroleRemarks"></textarea>
+		</td>
+	</tr>
+
+	<tr class="odd">
+		<td>状态:</td>
+		<td>
+			<input type="radio" name="hhroleStatus" value="1"/>启用
+			<input type="radio" name="hhroleStatus" value="0"/>停用
 		</td>
 	</tr>
 
