@@ -35,27 +35,27 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>角色名称:</td>
-		<td><input  type="text" name="name" value="${role.name}"/></td>
+
+		<td>${role.name}</td>
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="orderNo" value="${role.orderNo}"/></td>
+		<td>${role.orderNo}</td>
 	</tr>
 	<tr class="odd">
 		<td>创建日期:</td>
-		<td><input  type="text" name="createTime" value="${role.createTime}"/></td>
+		<td><fmt:formatDate value="${role.createTime}" pattern="yyyy-MM-dd"/></td>
 	</tr>
 	<tr class="odd">
 		<td>修改日期:</td>
-		<td><input  type="text" name="updateTime" value="${role.updateTime}"/></td>
+		<td><fmt:formatDate value="${role.updateTime}" pattern="yyyy-MM-dd"/> </td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
-		<td colspan="3">
-			<textarea style="height:80px;width:90%" name="remarks">${role.remarks}</textarea>
+		<td>
+			<textarea style="height:130px;width:100%" name="remarks">${role.remarks}</textarea>
 		</td>
 	</tr>
-
 </table>
 </div>
  
