@@ -15,6 +15,8 @@ import java.util.List;
 
 
 public class AuthRealm extends AuthorizingRealm{
+	@Autowired
+	private UserService userService;
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -33,9 +35,8 @@ public class AuthRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordToken uPToken=(UsernamePasswordToken) token;
 		String username = uPToken.getUsername();
-		User user=new User();
-		user.setHhUserName("大司马");
-		AuthenticationInfo info=new SimpleAuthenticationInfo(user, "admin", this.getName());
+		User user=userService.findUserByUsername(username);
+		AuthenticationInfo info=new SimpleAuthenticationInfo(user, user.getHhUserPassword(), this.getName());
 		return info;
 
 	}

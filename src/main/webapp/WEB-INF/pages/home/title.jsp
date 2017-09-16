@@ -193,11 +193,11 @@
 <div class="PositionFrame_black" id="PositionFrame"></div>
 	<div id="userInfo" style="z-index:999;" onclick="HideLoginDiv()" title="点击关闭">
 		<img src="${ctx}/staticfile/skin/default/images/title/avataronline.gif" border="0" style="margin-top:-1px;"/>
-		您好：<strong><%--${SessionUser.userInfo.name}--%></strong>&nbsp;&nbsp;|
+		您好：<strong>${SessionUser.hhUserName}</strong>&nbsp;&nbsp;|
 		您所属单位：<strong>
-			<%--<c:if test="${!empty SessionUser.dept}">
+			<c:if test="${!empty SessionUser.dept}">
 			${SessionUser.dept.deptName}
-			</c:if>--%>
+			</c:if>
 		</strong>&nbsp;&nbsp;
 		<img src="${ctx}/staticfile/skin/default/images/title/close.gif" border="0" />
 	</div>
