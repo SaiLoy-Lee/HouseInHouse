@@ -1,4 +1,4 @@
-package com.fy.pojo;
+package com.fy.mapper;
 
 import java.util.Date;
 

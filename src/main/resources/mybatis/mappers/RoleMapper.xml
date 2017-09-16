@@ -47,11 +47,11 @@
        #{hhroleremarks},
        #{hhroleorderno},
        #{hhrolestatus},
-       #{createby,jdbctype=varchar},
-	   #{createdept,jdbctype=varchar},
-	   #{createtime,jdbctype=date},
-	   #{updateby,jdbctype=varchar},
-	   #{updatetime,jdbctype=date}
+        #{createBy,jdbcType=VARCHAR},
+ 		  #{createDept,jdbcType=VARCHAR},
+ 		  #{createTime,jdbcType=DATE},
+ 		  #{updateBy,jdbcType=VARCHAR},
+ 		  #{updateTime,jdbcType=DATE}
        )
     </insert>
 
