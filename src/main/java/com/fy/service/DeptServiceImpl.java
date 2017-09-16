@@ -24,13 +24,13 @@ public class DeptServiceImpl implements DeptService{
 
 
     @Override
-    public void deleteDept(String[] deptIds) {
-        deptMapper.deleteDept(deptIds);
+    public void deleteDept(String[] hhDeptIds) {
+        deptMapper.deleteDept(hhDeptIds);
     }
 
     @Override
-    public void updateState(String[] deptIds, int state) {
-        deptMapper.updateState(deptIds, state);
+    public void updateStatus(String[] hhDeptIds, int hhDeptStatus) {
+        deptMapper.updateStatus(hhDeptIds, hhDeptStatus);
     }
     @Override
     public void saveDept(Dept dept) {
@@ -41,8 +41,8 @@ public class DeptServiceImpl implements DeptService{
 
 
     @Override
-    public Dept findDeptById(String deptId) {
-        return deptMapper.findDeptById(deptId);
+    public Dept findDeptById(String hhDeptId) {
+        return deptMapper.findDeptById(hhDeptId);
     }
 
 
