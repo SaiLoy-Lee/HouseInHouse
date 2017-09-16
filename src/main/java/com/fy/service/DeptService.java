@@ -12,7 +12,7 @@ public interface DeptService {
 
     public void deleteDept(String[] hhDeptIds);
 
-    public void updateState(String[] hhDeptIds,int hhDeptStatus);
+    public void updateStatus(String[] hhDeptIds,int hhDeptStatus);
 
     public void saveDept(Dept dept);
 

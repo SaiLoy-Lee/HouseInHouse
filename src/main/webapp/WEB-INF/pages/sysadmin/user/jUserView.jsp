@@ -111,15 +111,15 @@
 						<td>开班时间:</td>
 						<td>
 							<!-- <input readonly="readonly" type="text" name="userInfo.joinDate" /> --> 
-							<input readonly="readonly" type="text" style="width: 110px;" name="hhUserStarttime"
-							 value=' <fmt:formatDate value="${user.hhUserStarttime}"  pattern="yyyy-MM-dd" />'
+							<input readonly="readonly" type="text" style="width: 110px;" name="hhDeptStarttime"
+							 value=' <fmt:formatDate value="${user.dept.hhDeptStarttime}"  pattern="yyyy-MM-dd" />'
 							 />
 						</td>
 						<td>结课时间:</td>
 						<td>
 							<!-- <input readonly="readonly" type="text" name="userInfo.joinDate" /> -->
-							<input readonly="readonly" type="text" style="width: 110px;" name="hhUserStoptime"
-								   value=' <fmt:formatDate value="${user.hhUserStoptime}"  pattern="yyyy-MM-dd" />'
+							<input readonly="readonly" type="text" style="width: 110px;" name="hhDeptStoptime"
+								   value=' <fmt:formatDate value="${user.dept.hhDeptStoptime}"  pattern="yyyy-MM-dd" />'
 							/>
 						</td>
 					</tr>

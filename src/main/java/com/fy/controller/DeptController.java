@@ -14,8 +14,8 @@ import java.util.List;
  * Created by Administrator on 2017/9/14.
  */
 @Controller
-@RequestMapping("/pages/sysadmin/dept")
-public class DeptController {
+@RequestMapping("/sysadmin/dept")
+public class DeptController extends BaseController{
     @Autowired
     private DeptService deptService;
 
@@ -23,47 +23,48 @@ public class DeptController {
     public String findAll(Model model){
         List<Dept> deptList = deptService.findAll();
         model.addAttribute("deptList",deptList);
-        return "/pages/sysadmin/dept/jDeptList";
+        return "/sysadmin/dept/jDeptList";
 
     }
 
     @RequestMapping("/delete")
     public String toDelete(@RequestParam(value="hhDeptId",required=true)String[] hhDeptIds){
         deptService.deleteDept(hhDeptIds);
-        return "redirect:/pages/sysadmin/dept/list";
+        return "redirect:/sysadmin/dept/list";
 
     }
     @RequestMapping("/start")
     public String toStart(@RequestParam(value="hhDeptId",required=true)String[] hhDeptIds){
         int hhDeptStatus = 1;
-        deptService.updateState(hhDeptIds, hhDeptStatus);
-        return "redirect:/pages/sysadmin/dept/list";
+        deptService.updateStatus(hhDeptIds, hhDeptStatus);
+        return "redirect:/sysadmin/dept/list";
     }
 
     @RequestMapping("/stop")
-    public String toStop(@RequestParam(value="hhDeptIds",required=true)String[] hhDeptIds){
+    public String toStop(@RequestParam(value="hhDeptId",required=true)String[] hhDeptIds){
         int hhDeptStatus = 0;
-        deptService.updateState(hhDeptIds, hhDeptStatus);
-        return "redirect:/pages/sysadmin/dept/list";
+        deptService.updateStatus(hhDeptIds, hhDeptStatus);
+        return "redirect:/sysadmin/dept/list";
     }
 
     @RequestMapping("/tocreate")
     public String toCreate(Model model){
-        List<Dept> deptList = deptService.findAll();
-        model.addAttribute("deptList",deptList);
-        return "/pages/sysadmin/dept/jDeptCreate";
+       /* List<Dept> deptList = deptService.findAll();
+        model.addAttribute("deptList",deptList);*/
+        return "/sysadmin/dept/jDeptCreate";
     }
     @RequestMapping("/save")
     public String saveDept(Dept dept){
-        deptService.saveDept(dept);
-        return "redirect:/pages/sysadmin/dept/list";
+
+       deptService.saveDept(dept);
+        return "redirect:/sysadmin/dept/list";
     }
 
     @RequestMapping("toview")
-    public String toView(String hhDeptId,Model model){
+    public String toView(@RequestParam(required = true)String hhDeptId,Model model){
         Dept dept = deptService.findDeptById(hhDeptId);
         model.addAttribute("dept",dept);
-        return "/pages/sysadmin/dept/jDeptView";
+        return "/sysadmin/dept/jDeptView";
 
     }
 
@@ -75,13 +76,13 @@ public class DeptController {
         model.addAttribute("dept",dept);
         //model.addAttribute("parentList",parentList);
 
-        return "/pages/sysadmin/dept/jDeptUpdate";
+        return "/sysadmin/dept/jDeptUpdate";
 
     }
     @RequestMapping("/update")
     public String updateDept(Dept dept){
         deptService.updateDept(dept);
-        return "redirect:/pages/sysadmin/dept/list";
+        return "redirect:/sysadmin/dept/list";
 
     }
 }

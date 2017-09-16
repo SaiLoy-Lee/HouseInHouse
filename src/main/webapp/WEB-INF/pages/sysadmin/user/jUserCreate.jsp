@@ -1,15 +1,27 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="../../baselist.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%--<%--%>
+	<%--String path = request.getContextPath();--%>
+	<%--String basePath = request.getScheme() + "://" + request.getServerName() + ":"--%>
+			<%--+ request.getServerPort() + path + "/";--%>
+<%--%>--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>用户新增</title>
-<%--<script type="text/javascript" src="../../staticfile/js/jquery-1.6.2.js"></script>
-<script type="text/javascript" src="../../staticfile/js/jquery.validate.js"></script>
-<script type="text/javascript" src="../../staticfile/js/jquery.validate.min.js"></script>
-<script type="text/javascript">
+	<%--<base href="<%=basePath%>">--%>
+	<title>用户新增</title>
+	<%--<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript" src="../../staticfile/js/jquery-validation-1.14.0/lib/jquery.js"></script>
+	<script type="text/javascript" src="../../staticfile/js/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../staticfile/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+	<script type="text/javascript">
+
 	$(function()){
-		$("icform").validate({
+		$("#myform").validate({
 			rules:{
 				hhUserUsername:{
 					required:true,
@@ -67,7 +79,7 @@
 				hhUserPassWord:{
 					requierd:"请输入密码",
 					rangelength:$validate.format("密码长度必须在6~12")
-				},
+				}
 
 			}
 		}
@@ -78,7 +90,7 @@
 </head>
 
 <body>
-	<form name="icform" method="post">
+	<form  id="myform" name="icform" method="post">
 
 		<div id="menubar">
 			<div id="middleMenubar">
@@ -157,12 +169,12 @@
 					<tr class="odd">
 						<td>开班时间:</td>
 						<td>
-							<input type="text" style="width: 110px;" name="hhDeptStarttime"
+							<input type="text" style="width: 110px;" name="dept.hhDeptStarttime"
 								   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});" />
 						</td>
 						<td>结课时间:</td>
 						<td>
-							<input type="text" style="width: 110px;" name="hhDeptStoptime"
+							<input type="text" style="width: 110px;" name="dept.hhDeptStoptime"
 								   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});" />
 						</td>
 
