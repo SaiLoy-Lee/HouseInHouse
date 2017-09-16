@@ -315,15 +315,26 @@ public class DownloadController {
 
             Date in=order.getHhOrdersIntime();
             Date out=order.getHhOrdersOuttime();
-            Long ms=out.getTime()-in.getTime();
-            int day=(int) (ms/(1000*60*60*24));
+
+            int day=0;
+
+            if(out==null){
+                long ms=new Date().getTime()-in.getTime();
+                day=(int) (ms/(1000*60*60*24));
+            }else {
+                Long ms=out.getTime()-in.getTime();
+                day=(int) (ms/(1000*60*60*24));
+            }
+
+
+
 
             strArr[i][0]=i+"";
             strArr[i][1]="sad44sa";
             strArr[i][2]="as54d4s5ad";
             strArr[i][3]=day+"";
-            strArr[i][4]=sdf.format(order.getHhOrdersIntime());
-            strArr[i][5]=sdf.format(order.getHhOrdersOuttime());
+            strArr[i][4]=sdf.format(in);
+            strArr[i][5]=sdf.format(out);
             strArr[i][6]=order.getHhOrdersPrice()+"";
 
 
@@ -344,6 +355,7 @@ public class DownloadController {
             //System.out.println(order.toString());
             list.add(order);
         }
+        list.get(2).setHhOrdersOuttime(null);
 
         return list;
     }
