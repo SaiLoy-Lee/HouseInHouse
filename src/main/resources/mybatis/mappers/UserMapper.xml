@@ -65,7 +65,9 @@
     </select>
 
     <select id="findUserByUsername" resultMap="userRM">
-        select * from hh_user where hh_user_username = #{hhUserUsername}
+        select * from hh_user left join
+       (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
+       where hh_user_username = #{hhUserUsername}
     </select>
 
     <update id="updateUser">

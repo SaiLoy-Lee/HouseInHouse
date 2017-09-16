@@ -38,26 +38,32 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 	<thead>
 	<tr>
-		<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('deptId',this)"></td>
-		<td class="tableHeader">序号</td>
-		<td class="tableHeader">编号</td>
-		<td class="tableHeader">上级</td>
-		<td class="tableHeader">名称</td>
-		<td class="tableHeader">状态</td>
+		<td class="tableHeader" style="text-align: center" width="80px"><input type="checkbox" name="selid" onclick="checkAll('hhDeptId',this)">全选</td>
+		<td class="tableHeader" style="text-align: center" >序号</td>
+		<td class="tableHeader" style="text-align: center" >课程</td>
+		<td class="tableHeader" style="text-align: center" >班级</td>
+		<td class="tableHeader" style="text-align: center" >教室</td>
+		<td class="tableHeader" style="text-align: center" >开班时间</td>
+		<td class="tableHeader" style="text-align: center" >结课时间</td>
+		<td class="tableHeader" style="text-align: center" >状态</td>
 	</tr>
 	</thead>
 	<tbody class="tableBody" >
 	
 	<c:forEach items="${deptList}" var="d" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
-		<td><input type="checkbox" name="deptId" value="${d.deptId}"/></td>
-		<td>${status.index+1}</td>
-		<td>${d.deptId}</td>
-		<td>${d.parentDept.deptName}</td>
-		<td><a href="dept/toview?id=${d.deptId}">${d.deptName}</a></td>
-		<td>
-			<c:if test="${d.state==1}"><a href="stop?deptId=${d.deptId}"><font color="green">启用</font></a></c:if>
-			<c:if test="${d.state==0}"><a href="start?deptId=${d.deptId}"><font color="red">停用</font></a></c:if>
+		<td style="text-align: center" ><input type="checkbox" name="hhDeptId" value="${d.hhDeptId}"/></td>
+		<td style="text-align: center" >${status.index+1}</td>
+		<%--<td>${d.deptId}</td>--%>
+		<td style="text-align: center" >${d.hhDeptCourse}</td>
+		<td style="text-align: center" >${d.hhDeptNum}</td>
+		<td style="text-align: center" >${d.hhDeptRoomnum}</td>
+		<%--<td><a href="dept/toview?id=${d.deptId}">${d.deptName}</a></td>--%>
+		<td style="text-align: center" ><fmt:formatDate value="${d.hhDeptStarttime}" pattern="yyyy-MM-dd"/></td>
+		<td style="text-align: center" ><fmt:formatDate value="${d.hhDeptStoptime}" pattern="yyyy-MM-dd"/></td>
+		<td style="text-align: center" >
+			<c:if test="${d.hhDeptStatus==1}"><a href="stop?hhDeptId=${d.hhDeptId}"><font color="green">启用</font></a></c:if>
+			<c:if test="${d.hhDeptStatus==0}"><a href="start?hhDeptId=${d.hhDeptId}"><font color="red">停用</font></a></c:if>
 		</td>
 	</tr>
 	</c:forEach>
