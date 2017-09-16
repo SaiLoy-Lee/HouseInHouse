@@ -36,39 +36,37 @@
 
 
 <div class="eXtremeTable" >
-<table id="ec_table" class="tableRegion" width="98%" >
-	<thead>
-	<tr>
-		<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('userId',this)"></td>
-		<td class="tableHeader">序号</td>
-		<td class="tableHeader">用户名</td>
-		<td class="tableHeader">所属部门</td>
-		<td class="tableHeader">真实姓名</td>
-		<td class="tableHeader">身份证号</td>
-		<td class="tableHeader">上级领导</td>
-		<td class="tableHeader">入职日期</td>
-		<td class="tableHeader">薪资</td>
-		<td class="tableHeader">电话</td>
-		<td class="tableHeader">状态</td>
+<table id="ec_table" class="tableRegion" width="98%" text-align="center">
+
+	<tr >
+		<td class="tableHeader" width="60px"><input type="checkbox" name="selid" onclick="checkAll('hhUserId',this)">全选</td>
+		<%--<td class="tableHeader">序号</td>--%>
+		<td class="tableHeader" style="text-align: center" >用户名</td>
+		<td class="tableHeader" style="text-align: center" >姓名</td>
+		<td class="tableHeader" style="text-align: center" >性别</td>
+		<td class="tableHeader" style="text-align: center" >年龄</td>
+		<td class="tableHeader" style="text-align: center" >身份证号</td>
+		<td class="tableHeader" style="text-align: center" >电话</td>
+		<td class="tableHeader" style="text-align: center" >创建时间</td>
+		<td class="tableHeader" style="text-align: center" >状态</td>
 	</tr>
-	</thead>
+
 	<tbody class="tableBody" >
 	
 	<c:forEach items="${userList}" var="u" varStatus="status">
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
-		<td><input type="checkbox" name="userId" value="${u.userId}"/></td>
-		<td>${u.userId}</td>
-		<td>${u.userName}</td>
-		<td>${u.dept.deptName}</td>
-		<td>${u.userInfo.name}</td>
-		<td>${u.userInfo.cardNo}</td>
-		<td>${u.userInfo.manager.name}</td>
-		<td><fmt:formatDate value="${u.userInfo.joinDate}" pattern="yyyy-MM-dd"/></td>
-		<td>${u.userInfo.salary}</td>
-		<td>${u.userInfo.telePhone}</td>
-		<td>
-			<c:if test="${u.state==1}"><a href="stop?userId=${u.userId}"><font color="green">启用</font></a></c:if>
-			<c:if test="${u.state==0}"><a href="start?userId=${u.userId}"><font color="red">停用</font></a></c:if>
+		<td><input type="checkbox" name="hhUserId" value="${u.hhUserId}"/></td>
+		<%--<td>${u.hhUserId}</td>--%>
+		<td style="text-align: center" >${u.hhUserUsername}</td>
+		<td style="text-align: center" >${u.hhUserName}</td>
+		<td style="text-align: center" >${u.hhUserSex}</td>
+		<td style="text-align: center" >${u.hhUserAge}</td>
+		<td style="text-align: center" >${u.hhUserCardid}</td>
+		<td style="text-align: center" >${u.hhUserTel}</td>
+		<td style="text-align: center" ><fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd"/></td>
+		<td style="text-align: center" >
+			<c:if test="${u.hhUserStatus==1}"><a href="stop?hhUserId=${u.hhUserId}"><font color="green">启用</font></a></c:if>
+			<c:if test="${u.hhUserStatus==0}"><a href="start?hhUserId=${u.hhUserId}"><font color="red">停用</font></a></c:if>
 		</td>
 	</tr>
 	</c:forEach>

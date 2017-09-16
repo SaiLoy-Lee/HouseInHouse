@@ -31,6 +31,8 @@
 <div>
 
 
+
+
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
@@ -55,7 +57,6 @@
 			<input type="radio" name="hhRoleStatus" value="0"/>停用
 		</td>
 	</tr>
-
 </table>
 </div>
  

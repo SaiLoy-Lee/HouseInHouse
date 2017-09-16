@@ -35,9 +35,9 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>部门ID:</td>
-		<td><input  type="text" name="deptId"/></td>
+		<td><input  type="text" name="hhDeptId"/></td>
 	</tr>
-	<tr class="odd">
+	<%--<tr class="odd">
 		<td>上级部门:</td>
 		<td>
 			<select name="parentDept.deptId" style="width:122px">
@@ -48,16 +48,32 @@
 				</c:forEach>
 			</select>
 		</td>
+	</tr>--%>
+	<tr class="odd">
+		<td>课程:</td>
+		<td><input  type="text" name="hhDeptCourse"/></td>
 	</tr>
 	<tr class="odd">
-		<td>部门名称:</td>
-		<td><input  type="text" name="deptName"/></td>
+		<td>班级号:</td>
+		<td><input  type="text" name="hhDeptNum"/></td>
+	</tr>
+	<tr class="odd">
+		<td>教室号:</td>
+		<td><input  type="text" name="hhDeptRoomnum"/></td>
+	</tr>
+	<tr class="odd">
+		<td>开班时间:</td>
+		<td><input  type="text" name="hhDeptStarttime"/></td>
+	</tr>
+	<tr class="odd">
+		<td>结课时间:</td>
+		<td><input  type="text" name="hhDeptStoptime"/></td>
 	</tr>
 	<tr class="odd">
 		<td>状态:</td>
 		<td>
-			<input type="radio" name="state" value="1"/>启用
-			<input type="radio" name="state" value="0"/>停用
+			<input type="radio" name="hhDeptStatus" value="1"/>启用
+			<input type="radio" name="hhDeptStatus" value="0"/>停用
 		</td>
 	</tr>
 </table>

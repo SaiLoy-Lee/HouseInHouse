@@ -12,7 +12,7 @@ public interface UserService {
 
     public void updateStatus(String[] hhUserIds, int hhUserStatus);
 
-    public void deleteUser(String hhUserIds);
+    public void deleteUser(String[] hhUserIds);
 
     public void saveUser(User user);
 
@@ -20,4 +20,6 @@ public interface UserService {
     public User findUserById(String hhUserId);
 
     public void updateUser(User user);
+
+    public User findUserByUsername(String hhUserUsername);
 }

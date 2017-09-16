@@ -4,16 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fy.mapper.UserMapper">
 
-    <select id="findAll" resultType="userRM">
-        select * from hh_user
+    <select id="findAll" resultMap="userRM">
+        select * from hh_user left join
+        (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
     </select>
+
     <resultMap type="User" id="userRM" autoMapping="true">
 
         <id column="hh_user_id" property="hhUserId"/>
-        <association property="dept" javaType="Dept">
-            <id column="hh_dept_id" property="hhDeptId"/>
+        <association property="dept" javaType="Dept" resultMap="deptRM">
+
         </association>
     </resultMap>
+    <resultMap id="deptRM" type="Dept" autoMapping="true">
+        <id column="hh_dept_id" property="hhDeptId"/>
+    </resultMap>
+
     <update id="updateStatus">
         update hh_user set hh_user_status=#{hhUserStatus} where hh_user_id in(
         <foreach collection="hhUserIds" item="id" separator=",">
@@ -35,7 +41,7 @@
         hh_user_cardid,hh_user_tel,hh_user_status,create_by,
  		create_dept,create_time,update_by,update_time)  values(
  		#{hhUserId},
- 		#{hhUserDeptId},
+ 		#{dept.hhDeptId},
  		#{hhUserUsername},
  		#{hhUserPassword},
  		#{hhUserName},
@@ -46,20 +52,26 @@
  		#{hhUserStatus},
  		#{createBy,jdbcType=VARCHAR},
  		#{createDept,jdbcType=VARCHAR},
- 		#{createTime,jdbcType=Date},
+ 		#{createTime,jdbcType=DATE},
  		#{updateBy,jdbcType=VARCHAR},
- 		#{updateTime,jdbcType=Date}
+ 		#{updateTime,jdbcType=DATE}
 
  		)
     </insert>
     <select id="findUserById" resultMap="userRM">
-       select * from hh_user left join  (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
+       select * from hh_user left join
+       (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
+       where hh_user_id = #{hhUserId}
+    </select>
+
+    <select id="findUserByUsername" resultMap="userRM">
+        select * from hh_user where hh_user_username = #{hhUserUsername}
     </select>
 
     <update id="updateUser">
         update hh_user
         <set>
-            hh_dept_id = #{hh_dept.hhDeptId},
+            hh_user_dept_id = #{dept.hhDeptId},
             hh_user_username = #{hhUserUsername},
             hh_user_password = #{hhUserPassword},
             hh_user_name = #{hhUserName},
