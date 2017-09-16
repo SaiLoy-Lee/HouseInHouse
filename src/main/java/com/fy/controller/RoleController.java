@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/9/14.
- */
 @Controller
 @RequestMapping("/sysadmin/role")
 public class RoleController {
@@ -21,31 +18,31 @@ public class RoleController {
 
     @RequestMapping("/list")
     public String findAll(Model model){
-       List<Role> hhroleList=roleService.findAll();
-        model.addAttribute("hhroleList",hhroleList);
+       List<Role> hhRoleList=roleService.findAll();
+        model.addAttribute("hhRoleList",hhRoleList);
         return "/sysadmin/role/jRoleList";
     }
 
     @RequestMapping("/delete")
-    public String deleteRole(@RequestParam(value = "hhroleId",required = true) String[]hhroleIds){
+    public String deleteRole(@RequestParam(value = "hhRoleId",required = true) String[]hhRoleIds){
 
-        roleService.deletehhroleId(hhroleIds);
+        roleService.deletehhRoleId(hhRoleIds);
 
         return "redirect:/sysadmin/role/list";
 
     }
 
     @RequestMapping("/start")
-    public String Start(@RequestParam(value ="hhroleId" ,required=true) String[]hhroleIds,int hhroleStatus){
-         hhroleStatus =1;
-        roleService.toStart(hhroleIds,hhroleStatus);
+    public String Start(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds,int hhRoleStatus){
+         hhRoleStatus =1;
+        roleService.toStart(hhRoleIds,hhRoleStatus);
          return "redirect:/sysadmin/role/list";
     }
 
     @RequestMapping("/stop")
-    public String Stop(@RequestParam(value ="hhroleId" ,required=true) String[]hhroleIds,int hhroleStatus){
-        hhroleStatus =0;
-        roleService.toStop(hhroleIds,hhroleStatus);
+    public String Stop(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds,int hhRoleStatus){
+        hhRoleStatus =0;
+        roleService.toStop(hhRoleIds,hhRoleStatus);
         return "redirect:/sysadmin/role/list";
     }
 
@@ -63,5 +60,35 @@ public class RoleController {
 
         return "redirect:/sysadmin/role/list";
     }
+
+    @RequestMapping("/toupdate")
+    public String updateRole(String hhRoleId,Model model){
+
+       Role role=roleService.updateRole(hhRoleId);
+        model.addAttribute("role",role);
+
+        return "/sysadmin/role/jRoleUpdate";
+    }
+
+
+    @RequestMapping("/update")
+    public  String update(Role role){
+
+           roleService.update(role);
+        return "redirect:/sysadmin/role/list";
+    }
+
+    @RequestMapping("/toview")
+    public  String toView(String hhRoleId,Model model){
+         Role role=roleService.toview(hhRoleId);
+          model.addAttribute("role",role);
+        return "/sysadmin/role/jRoleView";
+    }
+
+
+
+
+
+
 
 }

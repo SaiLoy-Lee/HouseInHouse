@@ -34,23 +34,40 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>部门ID:</td>
-		<td>${dept.deptId}</td>
+		<td>${dept.hhDeptId}</td>
 	</tr>
-	<tr class="odd">
+	<%--<tr class="odd">
 		<td>上级部门:</td>
 		<td>
 			${dept.parentDept.deptName}
 		</td>
+	</tr>--%>
+	<tr class="odd">
+	<td>课程:</td>
+	<td>${dept.hhDeptCourse}</td>
+</tr>
+	<tr class="odd">
+		<td>班级:</td>
+		<td>${dept.hhDeptNum}</td>
 	</tr>
 	<tr class="odd">
-		<td>部门名称:</td>
-		<td>${dept.deptName}</td>
+		<td>教室:</td>
+		<td>${dept.hhDeptRoomnum}</td>
 	</tr>
+	<tr class="odd">
+		<td>开班时间：</td>
+		<td>${d.hhDeptStarttime}</td>
+	</tr>
+	<tr class="odd">
+		<td>结课时间：</td>
+		<td>${d.hhDeptStoptime}</td>
+	</tr>
+
 	<tr class="odd">
 		<td>状态:</td>
 		<td>
-			<c:if test="${dept.state ==1}">启用</c:if>  
-			<c:if test="${dept.state ==0}">停用</c:if>  
+			<c:if test="${dept.hhDeptStatus==1}">启用</c:if>
+			<c:if test="${dept.hhDeptStatus ==0}">停用</c:if>
 		</td>
 	</tr>
 </table>
