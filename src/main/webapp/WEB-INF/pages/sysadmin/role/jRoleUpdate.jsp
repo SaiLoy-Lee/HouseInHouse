@@ -32,7 +32,6 @@
   
 <div>
 
-
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 
@@ -43,18 +42,36 @@
 	
 	<tr class="odd">
 		<td>角色名称:</td>
+
+		<td>
+			<input  type="text" name="name" value="${role.hhRoleName}"/>
+			<input type="hidden" name="hhRoleId" value="${role.hhRoleId}"/>
+		</td>
+
 		<td><input  type="text" name="name" value="${role.name}"/></td>
 
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="orderNo" value="${role.orderNo}"/></td>
+		<td><input  type="text" name="hhRoleorderNo" value="${role.hhRoleorderNo}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
 
+		<td colspan="3">
+			<textarea style="height:80px;width:90%" name="hhRoleRemarks">${role.hhRoleRemarks}</textarea>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>状态:</td>
+		<td>
+			<input type="radio" name="hhRoleStatus" value="1" <c:if test="${role.hhRoleStatus ==1}">checked="checked"</c:if>/>启用
+			<input type="radio" name="hhRoleStatus" value="0" <c:if test="${role.hhRoleStatus ==0}">checked="checked"</c:if>/>停用
+
+
 		<td>
 			<textarea style="height:130px;width:100%" name="remarks">${role.remarks}</textarea>
+
 		</td>
 	</tr>
 </table>
