@@ -1,6 +1,7 @@
 package com.fy.mapper;
 
 import com.fy.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ import java.util.List;
 public interface UserMapper {
     public List<User> findAll();
 
-    public void updateStatus(String[] hhUserIds, int hhUserStatus);
+    public void updateStatus(@Param("hhUserIds") String[] hhUserIds, @Param("hhUserStatus") int hhUserStatus);
 
-    public void deleteUser(String hhUserIds);
+    public void deleteUser(String[] hhUserIds);
 
     public void saveUser(User user);
 
