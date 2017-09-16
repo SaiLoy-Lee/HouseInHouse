@@ -16,15 +16,15 @@
 						<ul>
 							<li id="view"><a href="#"
 								onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('tocreate','_self');this.blur();">新增</a></li>
 							<li id="update"><a href="#"
 								onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
 							<li id="delete"><a href="#"
 								onclick="formSubmit('delete','_self');this.blur();">删除</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('start','_self');this.blur();">启用</a></li>
-							<li id="new"><a href="#"
+							<li class="new"><a href="#"
 								onclick="formSubmit('stop','_self');this.blur();">停用</a></li>
 						</ul>
 					</div>
@@ -56,22 +56,22 @@
 					</thead>
 					<tbody class="tableBody">
 
-						<c:forEach items="${moduleList}" var="m" varStatus="status">
+						<c:forEach items="${hhModuleList}" var="h" varStatus="status">
 							<tr class="odd" onmouseover="this.className='highlight'"
 								onmouseout="this.className='odd'">
-								<td><input type="checkbox" name="moduleId"
-									value="${m.moduleId}" /></td>
+								<td><input type="checkbox" name="hhModuleId"
+									value="${h.hhModuleId}" /></td>
 								<td>${status.index+1}</td>
-								<td>${m.name}</td>
-								<td><c:if test="${m.ctype==1}">主菜单</c:if> <c:if
-										test="${m.ctype==2}">左侧菜单</c:if> <c:if test="${m.ctype==3}">按钮</c:if>
+								<td>${h.hhModuleName}</td>
+								<td><c:if test="${h.hhModuleCtype==1}">主菜单</c:if> <c:if
+										test="${h.hhModuleCtype==2}">左侧菜单</c:if> <c:if test="${h.hhModuleCtype==3}">按钮</c:if>
 								</td>
-								<td>${m.remark}</td>
-								<td>${m.orderNo}</td>
-								<td><c:if test="${m.state==1}">
-										<a href="stop?userId=${m.moduleId}"><font color="green">启用</font></a>
-									</c:if> <c:if test="${m.state==0}">
-										<a href="start?userId=${m.moduleId}"><font color="red">停用</font></a>
+								<td>${h.hhModuleRemarks}</td>
+								<td>${h.hhModuleorderNo}</td>
+								<td><c:if test="${h.hhModuleState==1}">
+										<a href="stop?hhModuleId=${h.hhModuleId}"><font color="green">启用</font></a>
+									</c:if> <c:if test="${h.hhModuleState==0}">
+										<a href="start?hhModuleId=${h.hhModuleId}"><font color="red">停用</font></a>
 									</c:if></td>
 							</tr>
 						</c:forEach>

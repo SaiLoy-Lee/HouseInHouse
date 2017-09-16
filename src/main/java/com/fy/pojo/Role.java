@@ -4,49 +4,49 @@ package com.fy.pojo;
  * Created by Administrator on 17-9-14.
  */
 public class Role extends BaseEntity {
-    private String hhroleId;
-    private String hhroleName;
-    private String hhroleRemarks;
-    private Integer hhroleorderNo;
-    private Integer hhroleStatus;
+    private String hhRoleId;
+    private String hhRoleName;
+    private String hhRoleRemarks;
+    private Integer hhRoleOrderNo;
+    private Integer hhRoleStatus;
 
-    public String getHhroleId() {
-        return hhroleId;
+    public String gethhRoleId() {
+        return hhRoleId;
     }
 
-    public void setHhroleId(String hhroleId) {
-        this.hhroleId = hhroleId;
+    public void sethhRoleId(String hhRoleId) {
+        this.hhRoleId = hhRoleId;
     }
 
-    public String getHhroleName() {
-        return hhroleName;
+    public String gethhRoleName() {
+        return hhRoleName;
     }
 
-    public void setHhroleName(String hhroleName) {
-        this.hhroleName = hhroleName;
+    public void sethhRoleName(String hhRoleName) {
+        this.hhRoleName = hhRoleName;
     }
 
-    public String getHhroleRemarks() {
-        return hhroleRemarks;
+    public String gethhRoleRemarks() {
+        return hhRoleRemarks;
     }
 
-    public void setHhroleRemarks(String hhroleRemarks) {
-        this.hhroleRemarks = hhroleRemarks;
+    public void sethhRoleRemarks(String hhRoleRemarks) {
+        this.hhRoleRemarks = hhRoleRemarks;
     }
 
-    public Integer getHhroleorderNo() {
-        return hhroleorderNo;
+    public Integer gethhRoleOrderNo() {
+        return hhRoleOrderNo;
     }
 
-    public void setHhroleorderNo(Integer hhroleorderNo) {
-        this.hhroleorderNo = hhroleorderNo;
+    public void sethhRoleOrderNo(Integer hhRoleOrderNo) {
+        this.hhRoleOrderNo = hhRoleOrderNo;
     }
 
-    public Integer getHhroleStatus() {
-        return hhroleStatus;
+    public Integer gethhRoleStatus() {
+        return hhRoleStatus;
     }
 
-    public void setHhroleStatus(Integer hhroleStatus) {
-        this.hhroleStatus = hhroleStatus;
+    public void sethhRoleStatus(Integer hhRoleStatus) {
+        this.hhRoleStatus = hhRoleStatus;
     }
 }

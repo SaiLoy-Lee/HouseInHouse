@@ -46,7 +46,7 @@
 				<table id="ec_table" class="tableRegion" width="98%">
 					<thead>
 						<tr>
-							<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('hhroleId',this)"></td>
+							<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('hhRoleId',this)"></td>
 							<td class="tableHeader">序号</td>
 							<td class="tableHeader">角色名</td>
 							<td class="tableHeader">备注信息</td>
@@ -56,15 +56,15 @@
 					</thead>
 					<tbody class="tableBody">
 
-						<c:forEach items="${hhroleList}" var="h" varStatus="status">
+						<c:forEach items="${hhRoleList}" var="h" varStatus="status">
 							<tr class="odd" onmouseover="this.className='highlight'"
 								onmouseout="this.className='odd'">
-								<td><input type="checkbox" name="hhroleId"
-									value="${h.hhroleId}" /></td>
+								<td><input type="checkbox" name="hhRoleId"
+									value="${h.hhRoleId}" /></td>
 								<td>${status.index+1}</td>
-								<td>${h.hhroleName}</td>
-								<td>${h.hhroleRemarks}</td>
-								<td>${h.hhroleorderNo}</td>
+								<td>${h.hhRoleName}</td>
+								<td>${h.hhRoleRemarks}</td>
+								<td>${h.hhRoleorderNo}</td>
 								<td><fmt:formatDate value="${h.updateTime}"
 										pattern="yyyy-MM-dd" /></td>
 							</tr>
