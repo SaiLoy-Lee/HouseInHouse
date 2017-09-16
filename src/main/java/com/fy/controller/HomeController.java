@@ -12,6 +12,7 @@ public class HomeController {
 		return "/home/fmain";
 	}
 
+
 	//转向tilte标题栏页面
 	@RequestMapping("/title")
 	public String title() {
