@@ -37,6 +37,7 @@
 		<td>部门ID:</td>
 		<td><input  type="text" name="hhDeptId"/></td>
 	</tr>
+
 	<%--<tr class="odd">
 		<td>上级部门:</td>
 		<td>
@@ -63,11 +64,17 @@
 	</tr>
 	<tr class="odd">
 		<td>开班时间:</td>
-		<td><input  type="text" name="hhDeptStarttime"/></td>
+		<td>
+			<input type="text" style="width: 110px;" name="hhDeptStarttime"
+				   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});" />
+		</td>
 	</tr>
 	<tr class="odd">
 		<td>结课时间:</td>
-		<td><input  type="text" name="hhDeptStoptime"/></td>
+		<td>
+			<input type="text" style="width: 110px;" name="hhDeptStoptime"
+				   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});" />
+		</td>
 	</tr>
 	<tr class="odd">
 		<td>状态:</td>
