@@ -88,6 +88,7 @@
     </script>
 </head>
 <body>
+	<div id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="picture" style="width: 800px;height:400px;"></div>
     

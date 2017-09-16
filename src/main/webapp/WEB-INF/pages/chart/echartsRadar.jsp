@@ -34,12 +34,12 @@
 			           }
 			        },
 			        indicator: [
-			           { name: '0-500', max: 500},
-			           { name: '500-1000', max: 500},
-			           { name: '1000-1500', max: 500},
-			           { name: '1500-2000', max: 500},
-			           { name: '2000-2500', max: 500},
-			           { name: '2500-3000', max: 500}
+			           { name: '0-100', max: 500},
+			           { name: '1000-2000', max: 500},
+			           { name: '2000-300', max: 500},
+			           { name: '3000-4000', max: 500},
+			           { name: '4000-500', max: 500},
+			           { name: '5000以上', max: 500}
 			        ]
 			    },
 			    series: [{
@@ -68,6 +68,7 @@
     </script>
 </head>
 <body>
+	<div id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="picture" style="width: 700px;height:500px;"></div>
     
