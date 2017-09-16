@@ -16,49 +16,49 @@ import java.util.List;
  * Created by Administrator on 2017/9/13.
  */
 @Controller
-@RequestMapping("/pages/sysadmin/user")
-public class UserController {
+@RequestMapping("/sysadmin/user")
+public class UserController extends BaseController{
     @Autowired
     private UserService userService;
     @Autowired
     private DeptService deptService;
-    @RequestMapping("/list")
 
+    @RequestMapping("/list")
     public String findAll(Model model){
         List<User> userList = userService.findAll();
         model.addAttribute("userList",userList);
-        return "/pages/sysadmin/user/jUserList";
+        return "/sysadmin/user/jUserList";
     }
    @RequestMapping("/start")
     public String toStart(@RequestParam(value = "hhUserId",required = true)String[] hhUserIds ){
         int hhUserStatus = 1;
         userService.updateStatus(hhUserIds,hhUserStatus);
-        return "redirect:/pages/sysadmin/user/list";
+        return "redirect:/sysadmin/user/list";
     }
     @RequestMapping("/stop")
     public String toStop(@RequestParam(value = "hhUserId",required = true)String[] hhUserIds ){
         int hhUserStatus = 0;
         userService.updateStatus(hhUserIds,hhUserStatus);
-        return "redirect:/pages/sysadmin/user/list";
+        return "redirect:/sysadmin/user/list";
     }
     @RequestMapping("/delete")
-    public String toDelete(@RequestParam(value = "hhUserId",required=true)String hhUserIds){
+    public String toDelete(@RequestParam(value = "hhUserId",required=true)String[] hhUserIds){
         userService.deleteUser(hhUserIds);
-        return "redirect:/pages/sysadmin/user/list";
+        return "redirect:/sysadmin/user/list";
     }
     @RequestMapping("/tocreate")
     public String toCreate(Model model){
         List<Dept> deptList = deptService.findAll();
         model.addAttribute("deptList",deptList);
-        return "/pages/sysadmin/user/jUserCreate";
+        return "/sysadmin/user/jUserCreate";
     }
     @RequestMapping("/save")
     public String saveUser(User user){
         userService.saveUser(user);
-        return "redirect:/pages/sysadmin/user/list";
+        return "redirect:/sysadmin/user/list";
     }
     @RequestMapping("/toupdate")
-    public String toUpdate(String hhUserId,Model model){
+    public String toUpdate(@RequestParam(required = true) String hhUserId,Model model){
 
         //查询需要修改的数据  表示当前需要修改的数据
         User user = userService.findUserById(hhUserId);
@@ -69,20 +69,20 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("deptList", deptList);
        // model.addAttribute("parentList", parentList);
-        return "/pages/sysadmin/user/jUserUpdate";
+        return "/sysadmin/user/jUserUpdate";
     }
 
     @RequestMapping("/update")
-    public String upateUser(User user){
+    public String updateUser(User user){
 
         userService.updateUser(user);
-        return "redirect:/pages/sysadmin/user/list";
+        return "redirect:/sysadmin/user/list";
     }
     @RequestMapping("/toview")
-    public String toView(String hhUserId,Model model){
+    public String toView(@RequestParam(required = true)String hhUserId,Model model){
         User user = userService.findUserById(hhUserId);
         model.addAttribute("user",user);
-        return "/pages/sysadmin/user/jUserView";
+        return "/sysadmin/user/jUserView";
 
     }
 }

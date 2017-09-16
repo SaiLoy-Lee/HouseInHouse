@@ -16,7 +16,6 @@
 <ul>
 	<li id="update"><a href="#" onclick="formSubmit('update','_self');this.blur();">更新</a></li>
 	<li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
-	
 </ul>
   </div>
 </div>
@@ -33,15 +32,14 @@
 
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
-	<tr class="odd">
-		<td>部门ID:</td>
-		<td><input  type="text" name="deptId" value="${dept.deptId}" readonly="readonly"/></td>
+	<tr class="odd" hidden="hidden">
+		<td><input  type="text" name="hhDeptId" value="${dept.hhDeptId}"/></td>
 	</tr>
-	<tr class="odd">
+	<%--<tr class="odd">
 		<td>上级部门:</td>
 		<td>
 			<select name="parentDept.deptId" style="width:122px">
-				<option value="0">请选择/一级部门</option>
+				<option value="0">请选择/一级部门</option>--%>
 				<!--准备上级部门列表信息 
 					问题:数据如何回显?
 					如何解决:
@@ -50,22 +48,29 @@
 					
 					 -->
 				
-				<c:forEach items="${parentList}" var="p">
-					<option value="${p.deptId}" <c:if test="${p.deptId ==dept.parentDept.deptId}">selected="selected"</c:if> >${p.deptName}</option>
-				</c:forEach>
-			</select>
-		</td>
+				<%--<c:forEach items="${parentList}" var="p">--%>
+					<%--<option value="${p.deptId}" <c:if test="${p.deptId ==dept.parentDept.deptId}">selected="selected"</c:if> >${p.deptName}</option>--%>
+				<%--</c:forEach>--%>
+			<%--</select>--%>
+		<%--</td>--%>
+	<%--</tr>--%>
+	<tr class="odd">
+		<td>课程:</td>
+		<td><input  type="text" name="hhDeptCourse" value="${dept.hhDeptCourse}"/></td>
 	</tr>
 	<tr class="odd">
-		<td>部门名称:</td>
-		<td><input  type="text" name="deptName" value="${dept.deptName}"/></td>
+		<td>班级:</td>
+		<td><input  type="text" name="hhDeptNum" value="${dept.hhDeptNum}"/></td>
+	</tr>
+	<tr class="odd">
+		<td>教室:</td>
+		<td><input  type="text" name="hhDeptRoomnum" value="${dept.hhDeptRoomnum}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>状态:</td>
 		<td>
-			
-			<input type="radio" name="state" value="1" <c:if test="${dept.state ==1}">checked="checked"</c:if>  />启用
-			<input type="radio" name="state" value="0" <c:if test="${dept.state ==0}">checked="checked"</c:if>/>停用
+			<input type="radio" name="hhDeptStatus" value="1" <c:if test="${dept.hhDeptStatus ==1}">checked="checked"</c:if>  />启用
+			<input type="radio" name="hhDeptStatus" value="0" <c:if test="${dept.hhDeptStatus ==0}">checked="checked"</c:if>/>停用
 		</td>
 	</tr>
 </table>

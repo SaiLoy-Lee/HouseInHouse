@@ -11,13 +11,20 @@ public interface RoleService {
 
      public List<Role> findAll();
 
-     public void deletehhroleId(String[] hhroleIds);
+     public void deletehhRoleId(String[] hhRoleIds);
 
-     public void toStart(String[] hhroleIds, int hhroleStatus);
+     public void toStart(String[] hhRoleIds, int hhRoleStatus);
 
-      public void toStop(String[] hhroleIds, int hhroleStatus);
+      public void toStop(String[] hhRoleIds, int hhRoleStatus);
 
      public void SaveRole(Role role);
+
+     public Role updateRole(String hhRoleId);
+
+     public void update(Role role);
+
+    public Role toview(String hhRoleId);
+
 }
 
 

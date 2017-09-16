@@ -13,7 +13,7 @@ public interface DeptMapper {
 
     public void deleteDept(String [] hhDeptIds);
 
-    public void updateState(@Param("hhDeptIds")String[] hhDeptIds, @Param("hhDeptStatus")int hhDeptStatus);
+    public void updateStatus(@Param("hhDeptIds")String[] hhDeptIds, @Param("hhDeptStatus")int hhDeptStatus);
 
     public void saveDept(Dept dept);
 

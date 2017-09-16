@@ -50,7 +50,7 @@
  		  #{updateBy,jdbcType=VARCHAR},
  		  #{updateTime,jdbcType=DATE}
  		  )
-)
+
     </insert>
 
     <select id="findDeptById" resultMap="deptRM">
