@@ -51,7 +51,7 @@ public class HouseInfoController {
             houseInfo1.setHhHouseMaxnum(doc.get("hh_house_maxnum")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_maxnum").toString()));// 可住人数
             houseInfo1.setHhHouseResidenum(doc.get("hh_house_residenum")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_residenum").toString()));//已住人数
             houseInfo1.setHhHouseOrient(doc.get("hh_house_orient")==null?"":doc.get("hh_house_orient").toString());// 朝向
-            houseInfo1.setHhHouseFloor(doc.get("hh_house_floor")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_floor").toString()));//楼层
+            houseInfo1.setHhHouseFloor(doc.get("hh_house_floor")==null?"":doc.get("hh_house_floor").toString());//楼层
             houseInfo1.setHhHouseArea(doc.get("hh_house_area")==null?"":doc.get("hh_house_area").toString());//面积
             houseInfo1.setHhHouseSupport(doc.get("hh_house_support")==null?"":doc.get("hh_house_support").toString());//配套信息
             houseInfo1.setHhHousePublisher(doc.get("hh_house_publisher")==null?"":doc.get("hh_house_publisher").toString());//发布人
