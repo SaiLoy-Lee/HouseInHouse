@@ -265,7 +265,6 @@
                             <span id="topmenu" onclick="toModule('personal');">订单管理</span><span
                                 id="tm_separator"></span>
                         </shiro:hasPermission>
-
                         <span id="topmenu" onclick="toModule('baseinfo');">基础信息</span><span id="tm_separator"></span>
 
 

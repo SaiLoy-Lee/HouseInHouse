@@ -16,6 +16,8 @@ public class Order extends BaseEntity{
     private double hhOrdersPrice;
 
 
+
+
     public String getHhOrdersId() {
         return hhOrdersId;
     }

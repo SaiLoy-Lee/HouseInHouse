@@ -42,6 +42,7 @@
                         <li><a href="${ctx}/personal/order/findList?status=0" onclick="linkHighlighted(this)" target="main"
                                id="aa_d">全部订单</a></li>
                     </shiro:hasPermission>
+
                     <shiro:hasPermission name="用户">
                         <li><a href="${ctx}/personal/order/list" onclick="linkHighlighted(this)" target="main"
                                id="aa_3">我的订单</a></li>

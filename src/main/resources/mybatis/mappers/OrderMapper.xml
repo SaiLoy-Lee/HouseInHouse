@@ -52,6 +52,7 @@
 
     </resultMap>
 
+
     <select id="findAll" resultMap="orderRM">
        <include refid="orderAll"  />
     </select>

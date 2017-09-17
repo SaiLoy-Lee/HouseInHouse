@@ -39,9 +39,6 @@ public class OrderController extends BaseController {
     HouseInfoService houseInfoService;
 
 
-
-
-
     //转向订单确认页面
     @RequestMapping("/toCreateOrder")
     public String toCreateOrder(@RequestParam(required = true) String hhUserId, @RequestParam(required = true) String HouseInfoId, Model model, HttpSession session) {
