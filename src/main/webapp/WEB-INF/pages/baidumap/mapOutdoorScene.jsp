@@ -26,7 +26,7 @@
 <script type="text/javascript">
     //全景图展示
     var panorama = new BMap.Panorama('panorama');
-    panorama.setPosition(new BMap.Point(120.320032, 31.589666)); //根据经纬度坐标展示全景图
+    panorama.setPosition(new BMap.Point(116.331398, 39.897445)); //根据经纬度坐标展示全景图
     panorama.setPov({heading: -40, pitch: 6});
 
     panorama.addEventListener('position_changed', function(e){ //全景图位置改变后，普通地图中心点也随之改变
@@ -43,7 +43,7 @@
         enableHighResolution:true
     }
     var map = new BMap.Map("normal_map", mapOption);
-    var testpoint = new BMap.Point(120.320032, 31.589666);
+    var testpoint = new BMap.Point(116.331398, 39.897445);
     map.centerAndZoom(testpoint, 18);
     var marker=new BMap.Marker(testpoint);
     marker.enableDragging();
