@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
 
     public int SendVerfyCode(Order order) throws ClientException, InterruptedException{
-        String type="1";//短信类型
+        String type="1";//发送验证吗
         return SendVerfyCodeReal(order,type);
     }
 
@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
        }else{;
            throw new MegException("对不起!您所选订的房源不足，请您重新选择");
        }
-        String type="2";//短信类型
+        String type="5";//表示用户的订单已经成功生成
         SendVerfyCodeReal(order,type);
         Order orderM=new Order();
 
@@ -66,13 +66,13 @@ public class OrderServiceImpl implements OrderService {
     private int SendVerfyCodeReal(Order order,String type) {
 
         SMessage sMessage = new SMessage();
-        sMessage.setHhSmessageCell(order.getUser().getHhUserTel());//手件人手机号
+        sMessage.setsMessageCell(order.getUser().getHhUserTel());//手件人手机号
         //-------------------------------------------------------
-        sMessage.setHhSmessageUserID(order.getUser().getHhUserId());//收件人Id
-        sMessage.setHhSmessageRecipients(order.getUser().getHhUserName());//收件人
-        sMessage.setHhSmessageOrdersId(order.getHhOrdersId());//订单id
+        sMessage.setsMessageUserID(order.getUser().getHhUserId());//收件人Id
+        sMessage.setsMessageRecipients(order.getUser().getHhUserName());//收件人
+        sMessage.setsMessageOrdersId(order.getHhOrdersId());//订单id
         sMessage.setCreateBy("Order");
-        sMessage.setHhSmessageType(type);//设置短信类型  1 代表订单
+        sMessage.setsMessageType(type);//设置短信类型  1 代表订单
         try{
             return sendCode.sendSms(sMessage);
         }catch (Exception e){
@@ -81,13 +81,13 @@ public class OrderServiceImpl implements OrderService {
         }
         if(type=="2"){
             SMessage sMessageM = new SMessage();
-            sMessage.setHhSmessageCell(order.getHouseInfo().getHhHouseTelephone());//手件人手机号
+            sMessage.setsMessageCell(order.getHouseInfo().getHhHouseTelephone());//手件人手机号
             //-------------------------------------------------------
-            sMessageM.setHhSmessageUserID("");//收件人Id
-            sMessageM.setHhSmessageRecipients(order.getHouseInfo().getHhHousePublisher());//收件人
-            sMessageM.setHhSmessageOrdersId(order.getHhOrdersId());//订单id
+            sMessageM.setsMessageUserID("");//收件人Id
+            sMessageM.setsMessageRecipients(order.getHouseInfo().getHhHousePublisher());//收件人
+            sMessageM.setsMessageOrdersId(order.getHhOrdersId());//订单id
             sMessageM.setCreateBy("Order");
-            sMessageM.setHhSmessageType("10");//设置短信类型  1 代表订单
+            sMessageM.setsMessageType("10");//设置短信类型  1 代表订单
             try{
                 return sendCode.sendSms(sMessage);
             }catch (Exception e){
@@ -102,19 +102,69 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
-    @Override
-    public List<Order> findAll(User user) {
-        String hhUserId=user.getHhUserId();
-        List<Role> roleList=orderMapper.findRolesByUserId(hhUserId);
-        for (Role role:roleList) {
-        //    if("admin".equals(role.getHhroleName())){
-                return orderMapper.findAll();
-         //   }
-        }
-        return orderMapper.findOrdersById(hhUserId);
+
+
+    public List<Order> findAll() {
+
+        return orderMapper.findAll();
+
+
     }
     public List<Order> findOrdersById(User user){
         String hhUserId=user.getHhUserId();
-        return orderMapper.findOrdersById(hhUserId);
+        return orderMapper.findOrdersByUserId(hhUserId);
     }
+
+    @Override
+    public Order findOrderByOrderId(String hhOrdersId) {
+        return orderMapper.findOrderByOrderId(hhOrdersId);
+    }
+
+    @Override
+    public void updateOrderStatus(String[] hhOrderIds,String status) {
+        for (String hhOrderId:hhOrderIds){
+
+            orderMapper.updateOrderStatus(hhOrderId,status);
+
+        }
+
+    }
+
+    @Override
+    public void cancelOrder(String hhOrdersId) throws MegException{
+       Order order= orderMapper.findOrderByOrderId(hhOrdersId);
+        if(order.getHhOrdersStatus()==1){
+            String status="5";
+            orderMapper.updateOrderStatus(hhOrdersId, status);
+            SendVerfyCodeReal(order,"6");
+
+        }else{
+            throw new MegException("取消失败，你的订单状态不正确，请确认！！！");
+        }
+
+    }
+
+    @Override
+    public void checkOutOrder(String hhOrdersId) throws MegException{
+        Order order= orderMapper.findOrderByOrderId(hhOrdersId);
+        if(order.getHhOrdersStatus()==3){
+            String status="4";
+            orderMapper.updateOrderStatus(hhOrdersId, status);
+            SendVerfyCodeReal(order,"6");
+
+        }else{
+            throw new MegException("取消失败，你的订单状态不正确，请确认！！！");
+        }
+
+    }
+
+    public List<Order> findExcel(){
+        return orderMapper.findAll();
+    }
+
+    @Override
+    public List<Order> findOrdersByStatus(int status) {
+        return orderMapper.findOrdersByStatus(status);
+    }
+
 }

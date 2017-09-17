@@ -15,6 +15,7 @@ public class Order extends BaseEntity{
     private String hhOrdersRemarks;//备注
     private double hhOrdersPrice;
 
+
     public String getHhOrdersId() {
         return hhOrdersId;
     }

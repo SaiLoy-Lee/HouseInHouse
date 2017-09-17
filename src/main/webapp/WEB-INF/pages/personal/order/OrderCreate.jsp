@@ -181,7 +181,7 @@
                 </div>
                 <div style="text-align: center ; margin: 20px ; padding:0 50px; font-size: 16px;height: 60px;word-wrap: break-word">
 
-                    <p>${house.hHouseName}12313434343434343434343434</p>
+                    <p>${house.hHouseName}</p>
 
                 </div>
                 <div id="left_bottom">
@@ -203,6 +203,7 @@
                                 <input type="hidden" name="hhOrdersId" value="${order.hhOrdersId}"/>
                             </td>
                         <tr class="odd">
+
                         <tr class="odd">
                             <td class="tda" colspan="2"
                                 style="font-size: 14px; text-align: center; color: red">

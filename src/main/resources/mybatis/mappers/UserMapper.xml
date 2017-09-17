@@ -9,6 +9,7 @@
         (select hh_dept_id,hh_dept_course,hh_dept_num,hh_dept_roomnum from hh_dept)d on hh_user_dept_id = hh_dept_id
     </select>
 
+
     <resultMap type="User" id="userRM" autoMapping="true">
 
         <id column="hh_user_id" property="hhUserId"/>
