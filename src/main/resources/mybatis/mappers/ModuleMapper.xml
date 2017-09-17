@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.ModuleMapper">
+
+    <select id="findAll" resultMap="moduleRM">
+    select * from
+		hh_module h
+		         left join
+		(select hh_module_id p_id,hh_module_name p_name from hh_module) p
+		         on h.hh_module_parent_id = p.p_id
+		order by hh_module_order_no
+    </select>
+
+    <resultMap type="Module" id="moduleRM" autoMapping="true">
+        <id column="hh_module_id" property="hhModuleId"/>
+
+        <!--封装上级模块信息  -->
+        <association property="parentModule" javaType="Module">
+            <id column="hh_module_parent_id" property="hhModuleId"/>
+            <result column="p_name" property="hhModuleName"/>
+        </association>
+    </resultMap>
+
+    <update id="UpdateState">
+        update module_p set hhModuleState = #{hhModuleState} where hh_module_id in (
+        <foreach collection="hhModuleIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+
+    <insert id="saveModule">
+insert into hh_module (hh_module_id,hh_module_parent_id,hh_module_name,hh_module_ctype,hh_module_state,hh_module_order_no,hh_module_remarks,create_by,create_dept,create_time,update_by,update_time)
+values(
+	        #{hhmoduleid},
+			#{parentmodule.hhmoduleid},
+			#{hhmodulename},
+			#{hhmodulectype},
+			#{hhmodulestate},
+			#{hhmoduleorderno},
+			#{hhmoduleremarks},
+			 #{createBy,jdbcType=VARCHAR},
+              #{createDept,jdbcType=VARCHAR},
+              #{createTime,jdbcType=DATE},
+              #{updateBy,jdbcType=VARCHAR},
+              #{updateTime,jdbcType=DATE}
+)
+
+
+    </insert>
+
+    <delete id="deleteModule">
+        delete from hh_module where hh_module_id in (
+        <foreach collection="array" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
+
+
+
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.MessageMapper">
+
+    <insert id="saveMessage" >
+        insert into hh_smessage(hh_smessage_id,hh_smessage_orders_id,hh_smessage_user_id,hh_smessage_recipients,
+        hh_smessage_cell,hh_smessage_content,hh_smessage_isok,create_by,create_dept,create_time,update_by,
+        update_time,hh_smessage_type)
+        values(
+        #{hhSmessageId},
+        #{hhSmessageOrdersId},
+        #{hhSmessageUserID},
+        #{hhSmessageRecipients},
+        #{hhSmessageCell},
+        #{hhSmessageContent},
+        #{hhSmessageIsOk},
+        #{createBy,jdbcType=VARCHAR},
+        #{createDept,jdbcType=VARCHAR},
+        #{createTime,jdbcType=DATE},
+        #{updateBy,jdbcType=VARCHAR},
+        #{updateTime,jdbcType=DATE},
+        #{hhSmessageType}
+        )
+    </insert>
+
+</mapper>

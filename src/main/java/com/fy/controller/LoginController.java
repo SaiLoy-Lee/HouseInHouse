@@ -1,11 +1,13 @@
 package com.fy.controller;
 
 import com.fy.pojo.User;
+import com.fy.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -21,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class LoginController {
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/tologin")
     //@ResponseBody
     public  String toLogin(){
@@ -36,7 +41,6 @@ public class LoginController {
         if(StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)){
             model.addAttribute("errorInfo","用户名或密码不能为空");
             return "/sysadmin/login/login";
-
         }
 
         Subject subject = SecurityUtils.getSubject();
@@ -45,7 +49,6 @@ public class LoginController {
 
         try{
             subject.login(token);
-
             User user = (User) subject.getPrincipal();
             Session session = subject.getSession();
             session.setAttribute("SessionUser",user);

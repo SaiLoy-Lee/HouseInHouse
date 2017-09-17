@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.OrderMapper">
+
+    <insert id="createOrder">
+        insert into hh_orders(
+            hh_orders_id,
+            hh_orders_user_id,
+            hh_orders_house_id,
+            hh_orders_status,
+            hh_orders_intime,
+            hh_orders_outtime,
+            hh_orders_remarks,
+            hh_orders_price,
+            create_by,
+            create_dept,
+            create_time,
+            update_by,
+            update_time
+        ) values (
+            #{hhOrdersId},
+            #{user.hhUserId},
+            #{houseInfo.id},
+            #{hhOrdersStatus},
+            #{hhOrdersIntime},
+            #{hhOrdersOuttime},
+            #{hhOrdersRemarks},
+            #{hhOrdersPrice},
+            #{createBy,jdbcType=VARCHAR},
+		    #{createDept,jdbcType=VARCHAR},
+		    #{createTime,jdbcType=DATE},
+		    #{updateBy,jdbcType=VARCHAR},
+		    #{updateTime,jdbcType=DATE}
+        )
+    </insert>
+
+    <resultMap id="orderRM" type="Order" autoMapping="true">
+        <association property="user" javaType="User" resultMap="userRM">
+
+        </association>
+        <association property="houseInfo" javaType="HouseInfo" resultMap="houseInfoRM">
+
+        </association>
+
+    </resultMap>
+    <resultMap id="userRM" type="User" autoMapping="true">
+
+    </resultMap>
+    <resultMap id="houseInfoRM" type="HouseInfo" autoMapping="true">
+
+    </resultMap>
+
+    <select id="findAll" resultMap="orderRM">
+       <include refid="orderAll"  />
+    </select>
+    <select id="findOrdersById" resultMap="orderRM">
+        <include refid="orderAll"  />AND o.hh_orders_id=#{hhUserId}
+    </select>
+    <select id="findRolesByUserId" resultType="Role">
+        select r.* from hh_role_user ru, hh_role r where ru.hh_role_id=r.hh_role_id and ru.hh_user_id=#{hhUserId}
+    </select>
+    <sql id="orderAll">
+        SELECT
+        hh_house_id,
+        hh_house_name,
+        hh_house_address,
+        hh_house_latlng,
+        hh_house_village,
+        hh_house_type,
+        hh_house_maxnum,
+        hh_house_residenum ,
+        hh_house_orient,
+        hh_house_floor,
+        hh_house_area,
+        hh_house_support,
+        hh_house_publisher,
+        hh_house_status,
+        hh_house_img,
+        hh_house_publishtime,
+        hh_house_description,
+        hh_house_price,
+
+        hh_user_id,
+        hh_user_dept_id,
+        hh_user_username,
+        hh_user_password,
+        hh_user_name,
+        hh_user_sex,
+        hh_user_age,
+        hh_user_cardid,
+        hh_user_tel,
+        hh_user_status,
+
+        hh_orders_id,
+        hh_orders_status ,
+        hh_orders_house_id,
+        hh_orders_user_id ,
+        hh_orders_intime,
+        hh_orders_outtime,
+        hh_orders_remarks,
+        h.create_by ,
+        h.create_dept,
+        h.create_time,
+        h.update_by,
+        h.update_time,
+        hh_orders_price
+
+        FROM hh_user u,
+          hh_orders o,
+          hh_house h
+        WHERE   u.hh_user_id=o.hh_orders_user_id AND h.hh_house_id=o.hh_orders_house_id
+    </sql>
+
+</mapper>

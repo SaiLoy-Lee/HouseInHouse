@@ -41,23 +41,23 @@ public class HouseInfoController {
         for(SolrDocument doc :solrdocument){
             HouseInfo houseInfo1=new HouseInfo();
 
-            houseInfo1.setId(doc.get("id")==null?"":doc.get("id").toString());//主键
-            houseInfo1.setvHouseName(doc.get("v_house_name")==null?"":doc.get("v_house_name").toString());//房屋名称
-            houseInfo1.setvAddress(doc.get("v_address")==null?"":doc.get("v_address").toString());//房屋地址
-            houseInfo1.setvLatlngJ(doc.get("v_latlng_j")==null?"":doc.get("v_latlng_j").toString());//经度
-            houseInfo1.setvLatlngV(doc.get("v_latlng_v")==null?"":doc.get("v_latlng_v").toString());//维度
-            houseInfo1.setvVillage(doc.get("v_village")==null?"":doc.get("v_village").toString());//小区名称
-            houseInfo1.setvType(doc.get("v_type")==null?"":doc.get("v_type").toString());//户型
-            houseInfo1.setiMaxnum(doc.get("i_maxnum")==null?0:(Integer)Integer.parseInt(doc.get("i_maxnum").toString()));// 可住人数
-            houseInfo1.setiResidenu(doc.get("i_residenu")==null?0:(Integer)Integer.parseInt(doc.get("i_residenu").toString()));//已住人数
-            houseInfo1.setvOrient(doc.get("v_orient")==null?"":doc.get("v_orient").toString());// 朝向
-            houseInfo1.setiFloor(doc.get("i_floor")==null?0:(Integer)Integer.parseInt(doc.get("i_floor").toString()));//楼层
-            houseInfo1.setvArea(doc.get("v_area")==null?"":doc.get("v_area").toString());//面积
-            houseInfo1.setvVarchar(doc.get("v_varchar")==null?"":doc.get("v_varchar").toString());//配套信息
-            houseInfo1.setvPublisher(doc.get("v_publisher")==null?"":doc.get("v_publisher").toString());//发布人
-            houseInfo1.setvStatus(doc.get("v_status")==null?"":doc.get("v_status").toString());//状态
-            houseInfo1.setvImg(doc.get("v_img")==null?"":doc.get("v_img").toString());//图片路径
-            houseInfo1.setvMonmay(doc.get("v_monmay")==null?"":doc.get("v_monmay").toString());//租金
+            houseInfo1.setHhHouseId(doc.get("hh_house_id")==null?"":doc.get("hh_house_id").toString());//主键
+            houseInfo1.setHhHouseName(doc.get("hh_house_name")==null?"":doc.get("hh_house_name").toString());//房屋名称
+            houseInfo1.setHhHouseAddress(doc.get("hh_house_address")==null?"":doc.get("hh_house_address").toString());//房屋地址
+            houseInfo1.setHhHouseLatlng(doc.get("hh_house_latlng")==null?"":doc.get("hh_house_latlng").toString());//经维度
+            //houseInfo1.setvLatlngV(doc.get("v_latlng_v")==null?"":doc.get("v_latlng_v").toString());//维度
+            houseInfo1.setHhHouseVillage(doc.get("hh_house_village")==null?"":doc.get("hh_house_village").toString());//小区名称
+            houseInfo1.setHhHouseType(doc.get("hh_house_type")==null?"":doc.get("hh_house_type").toString());//户型
+            houseInfo1.setHhHouseMaxnum(doc.get("hh_house_maxnum")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_maxnum").toString()));// 可住人数
+            houseInfo1.setHhHouseResidenum(doc.get("hh_house_residenum")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_residenum").toString()));//已住人数
+            houseInfo1.setHhHouseOrient(doc.get("hh_house_orient")==null?"":doc.get("hh_house_orient").toString());// 朝向
+            houseInfo1.setHhHouseFloor(doc.get("hh_house_floor")==null?0:(Integer)Integer.parseInt(doc.get("hh_house_floor").toString()));//楼层
+            houseInfo1.setHhHouseArea(doc.get("hh_house_area")==null?"":doc.get("hh_house_area").toString());//面积
+            houseInfo1.setHhHouseSupport(doc.get("hh_house_support")==null?"":doc.get("hh_house_support").toString());//配套信息
+            houseInfo1.setHhHousePublisher(doc.get("hh_house_publisher")==null?"":doc.get("hh_house_publisher").toString());//发布人
+            houseInfo1.setHhHouseStatus(doc.get("hh_house_status")==null?"":doc.get("hh_house_status").toString());//状态
+            houseInfo1.setHhHouseImg(doc.get("hh_house_img")==null?"":doc.get("hh_house_img").toString());//图片路径
+            houseInfo1.setHhHousePrice(doc.get("hh_house_price")==null?"":doc.get("hh_house_price").toString());//租金
           /*  if(doc.get("d_publishtime")!=null){
                 houseInfo1.setdPublishtime(Date(doc.get("d_publishtime").toString()));
             }
