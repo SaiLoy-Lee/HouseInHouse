@@ -52,11 +52,12 @@
 
     </resultMap>
 
+
     <select id="findAll" resultMap="orderRM">
        <include refid="orderAll"  />
     </select>
-    <select id="findOrdersById" resultMap="orderRM">
-        <include refid="orderAll"  />AND o.hh_orders_id=#{hhUserId}
+    <select id="findOrdersByUserId" resultMap="orderRM">
+        <include refid="orderAll"  />AND u.hh_user_id=#{hhUserId}
     </select>
     <select id="findRolesByUserId" resultType="Role">
         select r.* from hh_role_user ru, hh_role r where ru.hh_role_id=r.hh_role_id and ru.hh_user_id=#{hhUserId}
@@ -112,5 +113,14 @@
           hh_house h
         WHERE   u.hh_user_id=o.hh_orders_user_id AND h.hh_house_id=o.hh_orders_house_id
     </sql>
+    <select id="findOrderByOrderId" resultMap="orderRM">
+        <include refid="orderAll"></include> AND o.hh_orders_id=#{hhOrdersId}
+    </select>
+    <update id="updateOrderStatus" parameterType="map">
+       update hh_orders set hh_orders_status=#{status} where hh_Orders_id=#{hhOrdersId}
+    </update>
+    <select id="findOrdersByStatus" resultMap="orderRM">
+        <include refid="orderAll"  />AND o.hh_orders_Status=#{hhOrdersStatus}
+    </select>
 
 </mapper>
