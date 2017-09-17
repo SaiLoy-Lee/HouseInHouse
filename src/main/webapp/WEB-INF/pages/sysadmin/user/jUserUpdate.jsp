@@ -38,33 +38,66 @@
 <table id="ec_table" class="tableRegion" width="98%" >
 
 	<tr class="odd" hidden="hidden">
-		<td><input  type="text" name="userId" value="${user.userId}"/></td>
+		<td><input  type="text" name="hhUserId" value="${user.hhUserId}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>用户名:</td>
-		<td><input  type="text" name="username" value="${user.username}"/></td>
+		<td><input  type="text" name="hhUserUsername" value="${user.hhUserUsername}"/></td>
 		<td>密码:</td>
-		<td><input  type="password" name="password" value="${user.password}"/></td>
+		<td><input  type="password" name="hhUserPassword" value="${user.hhUserPassword}"/></td>
 	</tr>
-
 	<tr class="odd">
-		<td>所属部门:</td>
-		<td>
-			<select name="dept.deptId" style="width:121px">
-				
-				<c:forEach items="${deptList}" var="d">
-					<option value="${d.deptId}" <c:if test="${d.deptId == user.dept.deptId}">selected="selected"</c:if>>${d.deptName}</option>
-				</c:forEach>
-			</select>
-		</td>
 		<td>真实姓名:</td>
-		<td><input  type="text" name="userInfo.name" value="${user.userInfo.name}"/></td>
+		<td><input  type="text" name="hhUserName" value="${user.hhUserName}"/></td>
+		<td>性别:</td>
+		<td>
+			<input type="radio" name="hhUserSex" value="男" <c:if test="${user.hhUserSex =='男'}">checked="checked"</c:if>/>男
+			<input type="radio" name="hhUserSex" value="女" <c:if test="${user.hhUserSex =='女'}">checked="checked"</c:if>/>女
+		</td>
+		<td>年龄:</td>
+		<td><input  type="text" name="hhUserAge" value="${user.hhUserAge}"/></td>
+
 	</tr>
 	<tr class="odd">
 		<td>身份证号:</td>
-
-		<td><input type="text" name="userInfo.cardNo" value="${user.userInfo.cardNo}"/>
+		<td><input type="text" name="hhUserCardid" value="${user.hhUserCardid}"/>
 		</td>
+		<td>电话:</td>
+		<td><input type="text" name="hhUserTel" value="${user.hhUserTel}"/>
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>课程:</td>
+		<td>
+			<select name="dept.hhDeptId" style="width:121px">
+				
+				<c:forEach items="${deptList}" var="d">
+					<option value="${d.hhDeptId}" <c:if test="${d.hhDeptId == user.dept.hhDeptId}">selected="selected"</c:if>>${d.hhDeptCourse}</option>
+				</c:forEach>
+			</select>
+		</td>
+		<td>班级:</td>
+		<td>
+			<select name="dept.hhDeptId" style="width:121px">
+
+				<c:forEach items="${deptList}" var="d">
+					<option value="${d.hhDeptId}" <c:if test="${d.hhDeptId == user.dept.hhDeptId}">selected="selected"</c:if>>${d.hhDeptNum}</option>
+				</c:forEach>
+			</select>
+		</td>
+		<td>教室:</td>
+		<td>
+			<select name="dept.hhDeptId" style="width:121px">
+
+				<c:forEach items="${deptList}" var="d">
+					<option value="${d.hhDeptId}" <c:if test="${d.hhDeptId == user.dept.hhDeptId}">selected="selected"</c:if>>${d.hhDeptRoomnum}</option>
+				</c:forEach>
+			</select>
+		</td>
+
+	</tr>
+	<%--<tr class="odd">
+
 		<td>上级领导:</td>
 		<td>
 			<select name="userInfo.manager.userInfoId" style="width:121px">
@@ -79,8 +112,8 @@
 				</c:forEach>
 			</select>
 		</td>
-	</tr>
-	<tr class="odd">
+	</tr>--%>
+	<%--<tr class="odd">
 		<td>入职日期:</td>
 		<td>
 
@@ -91,23 +124,16 @@
 		</td>
 		<td>薪资:</td>
 		<td><input  type="text" name="userInfo.salary" value="${user.userInfo.salary}"/></td>
-	</tr>
+	</tr>--%>
 	
-	<tr class="odd">
+	<%--<tr class="odd">
 		<td>生日:</td>
 		<td>
 			<input type="text" style="width:121px;" name="userInfo.birthday"
 	   		onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});"
 	   		value="<fmt:formatDate value="${user.userInfo.birthday}" pattern="yyyy-MM-dd"/>"/>
 		</td>
-		<td>性别:</td>
-		<td>
-			
-			<input type="radio" name="userInfo.gender" value="男" <c:if test="${user.userInfo.gender =='男'}">checked="checked"</c:if>/>男
-			<input type="radio" name="userInfo.gender" value="女" <c:if test="${user.userInfo.gender =='女'}">checked="checked"</c:if>/>女
-			<input type="radio" name="userInfo.gender" value="其他" <c:if test="${user.userInfo.gender =='其他'}">checked="checked"</c:if>/>其他
 
-		</td>
 	</tr>
 	<tr class="odd">
 		<td>岗位描述:</td>
@@ -136,24 +162,25 @@
 		<td>排序号:</td>
 		<td><input  type="text" name="userInfo.orderNo" value="${user.userInfo.orderNo}"/></td>
 
-	</tr>
+	</tr>--%>
 	<tr class="odd">
 		<td>状态:</td>
 		<td>
 
 		
-			<input type="radio" name="state" value="1" <c:if test="${user.state ==1}">checked="checked"</c:if> />启用
-			<input type="radio" name="state" value="0" <c:if test="${user.state ==0}">checked="checked"</c:if>/>停用
+			<input type="radio" name="hhUserStatus" value="1" <c:if test="${user.hhUserStatus ==1}">checked="checked"</c:if> />启用
+			<input type="radio" name="hhUserStatus" value="0" <c:if test="${user.hhUserStatus ==0}">checked="checked"</c:if>/>停用
 
 		</td>
 	</tr>
-	<tr class="odd">
+	<%--<tr class="odd">
 		<td>备注信息:</td>
 		<td colspan="3">
 
 			<textarea style="height:80px;width:100%" name="userInfo.remark">${user.userInfo.remark}</textarea>
 		</td>
-	</tr>	
+	</tr>	--%>
+
 
 </table>
 </div>

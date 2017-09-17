@@ -12,7 +12,7 @@ public interface UserService {
 
     public void updateStatus(String[] hhUserIds, int hhUserStatus);
 
-    public void deleteUser(String hhUserIds);
+    public void deleteUser(String[] hhUserIds);
 
     public void saveUser(User user);
 

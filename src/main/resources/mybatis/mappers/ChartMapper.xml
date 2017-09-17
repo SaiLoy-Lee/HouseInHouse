@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fy.mapper.ChartMapper">
+
+    <!--查询每天的房源发布数目-->
+    <select id="findDayHouseNum"  resultType="java.lang.Integer">
+        select count(hh_house_id) from hh_house where hh_house_publishtime between #{date1} and #{date2} group by hh_house_publishtime order by hh_house_publishtime
+    </select>
+
+    <!--查询每天的订单入住数目-->
+    <select id="findDayOrderNum" resultType="java.lang.Integer">
+        select count(hh_orders_id) from hh_orders where hh_orders_intime between #{date1} and #{date2} group by hh_orders_intime order by hh_orders_intime
+    </select>
+
+    <!--查询每个的房源发布的租金-->
+    <!--select hh_house_price from hh_house where hh_house_publishtime between '2017-6-1' and '2017-9-1' order by hh_house_price-->
+    <select id="findHouseRents" resultType="int">
+        select hh_house_price from hh_house where hh_house_publishtime between #{date1} and #{date2} order by hh_house_price
+    </select>
+
+    <!--查询每个的订单的租金-->
+    <select id="findOrderRents" resultType="int">
+        select hh_orders_price from hh_orders where hh_orders_intime between #{date1} and #{date2} order by hh_orders_price
+    </select>
+
+    <!--查询每天来自管理员的房源数量-->
+    <select id="findAdminDayNum" resultType="int">
+        select count(hh_house_id) from hh_house where hh_house_publisher = 'admin'and hh_house_publishtime between #{date1} and #{date2} group by hh_house_publishtime order by hh_house_publishtime
+    </select>
+
+    <!--查询每天来自用户的房源数量-->
+    <select id="findUserDayNum" resultType="int">
+        select count(hh_house_id) from hh_house where hh_house_publisher != 'admin'and hh_house_publishtime between #{date1} and #{date2} group by hh_house_publishtime order by hh_house_publishtime
+    </select>
+
+
+
+
+
+
+
+
+
+</mapper>

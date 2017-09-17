@@ -217,7 +217,7 @@
 <div id="menuContent">
 		<span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
 
-			<span id="topmenu" onclick="toModule('cargo');">货运管理</span><span id="tm_separator"></span>
+			<span id="topmenu" onclick="toModule('personal');">个人中心</span><span id="tm_separator"></span>
 
 
 			<span id="topmenu" onclick="toModule('baseinfo');">基础信息</span><span id="tm_separator"></span>
