@@ -3,11 +3,16 @@ package com.fy.shiro;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
+import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -38,12 +43,30 @@ public class ShiroConfiguration {
         return daap;
     }
 
+
+
+    @Bean
+    public FilterRegistrationBean delegatingFilterProxy(){
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        DelegatingFilterProxy proxy = new DelegatingFilterProxy();
+        proxy.setTargetFilterLifecycle(true);
+        proxy.setTargetBeanName("shiroFilter");
+        filterRegistrationBean.setFilter(proxy);
+        return filterRegistrationBean;
+    }
+
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager getDefaultWebSecurityManager() {
         DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
         dwsm.setRealm(getShiroRealm());
         return dwsm;
     }
+    /*@Bean(name = "logoutFilter")
+    public LogoutFilter getLogoutFilter(){
+       SystemLogoutFilter logoutFilter=new SystemLogoutFilter();
+        logoutFilter.setRedirectUrl("/index");
+        return logoutFilter;
+    }*/
 
     @Bean
     public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
@@ -59,10 +82,17 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
         shiroFilterFactoryBean.setLoginUrl("/index.jsp");
 
-        filterChainDefinitionMap.put("/staticfile/**", "anon");
-        filterChainDefinitionMap.put("/tologin*","anon");
+        Map<String, Filter> filterChains = new LinkedHashMap<String, Filter>();
+        SystemLogoutFilter logoutFilter = new SystemLogoutFilter();
+        logoutFilter.setRedirectUrl("/index");
+        filterChains.put("logout",logoutFilter);
+        shiroFilterFactoryBean.setFilters(filterChains);
 
-        filterChainDefinitionMap.put("/login*", "anon");
+        filterChainDefinitionMap.put("/staticfile/**", "anon");
+        filterChainDefinitionMap.put("/tologin.action","anon");
+
+        filterChainDefinitionMap.put("/login.action", "anon");
+        filterChainDefinitionMap.put("/logout*","logout");
 
         filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

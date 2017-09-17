@@ -24,7 +24,8 @@
         <div class="panel-title">图表统计</div>
         <div class="panel-content">
 			<ul>
-					<li><a href="${ctx}/chart/chartMultiX" onclick="linkHighlighted(this)" target="main" id="aa_1">房源概况</a></li>
+					<li><a href="${ctx}/chart/chartList" onclick="linkHighlighted(this)" target="main" id="aa_1">图表列表</a></li>
+					<li><a href="${ctx}/chart/chartMultiX" onclick="linkHighlighted(this)" target="main" id="aa_1">房源概况图</a></li>
 					<li><a href="${ctx}/chart/chartRadar" onclick="linkHighlighted(this)" target="main" id="aa_1">租金占比图</a></li>
 					<li><a href="${ctx}/chart/chartBars" onclick="linkHighlighted(this)" target="main" id="aa_1">房屋来源占比图</a></li>
 			</ul>
