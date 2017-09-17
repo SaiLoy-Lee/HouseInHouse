@@ -1,8 +1,13 @@
 package com.fy.controller;
 
 import com.fy.pojo.Order;
+import com.fy.pojo.User;
+import com.fy.service.OrderService;
+import com.fy.tools.POIUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +29,13 @@ import java.util.*;
  */
 @Controller
 public class DownloadController {
+   @Autowired
+   private OrderService orderService;
+
     @RequestMapping("download")
     //@ResponseBody
     public ResponseEntity<byte[]> download(HttpServletResponse response) throws Exception {
-       // ServletOutputStream stream = response.getOutputStream();
+        // ServletOutputStream stream = response.getOutputStream();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmssSSS");
         String fname = sdf.format(new Date())+".xls";
 
@@ -50,17 +58,28 @@ public class DownloadController {
 
     private Workbook getWorkbook() throws Exception {
         Workbook wb=new HSSFWorkbook();
+        List<Order> list=orderService.findExcel();
+        List<Order>[] lists=POIUtils.split(list);
+
+        createSheet(wb, lists[0], "审核中订单", "cell_yellow");
+        createSheet(wb, lists[1], "审核未通过订单", "cell_red");
+        createSheet(wb, lists[2], "已入住订单", "cell_green");
+        createSheet(wb, lists[3], "已退房订单", "cell_g");
+        createSheet(wb, lists[4], "已取消订单", "cell_g");
 
         String[] titles = {
                 "序号", "房屋ID", "用户ID", "Days", "入住时间", "退房时间","金额"};
 
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
-        String[][] data=toArray(getList());
+
+
+
+        String[][] data=POIUtils.toArray(list);
 
         Map<String, CellStyle> styles = createStyles(wb);
 
-        Sheet sheet = wb.createSheet("订单报表");
+        Sheet sheet = wb.createSheet("总订单报表");
 
         //turn off gridlines
         sheet.setDisplayGridlines(false);
@@ -170,11 +189,12 @@ public class DownloadController {
         sheet.setColumnWidth(4, 256*13);
         sheet.setColumnWidth(5, 256*13);
 
-        sheet.setZoom(75); //75% scale
+        //sheet.setZoom(75); //75% scale
         return  wb;
     }
 
     private static Map<String, CellStyle> createStyles(Workbook wb){
+
         Map<String, CellStyle> styles = new HashMap<String, CellStyle>();
         DataFormat df = wb.createDataFormat();
 
@@ -222,6 +242,34 @@ public class DownloadController {
         style.setDataFormat(df.getFormat("yyyy-MM-dd"));
         styles.put("cell_g", style);
 
+        style = createBorderedStyle(wb);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setFont(font1);
+        style.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setDataFormat(df.getFormat("yyyy-MM-dd"));
+        styles.put("cell_green", style);
+
+        style = createBorderedStyle(wb);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setFont(font1);
+        style.setFillForegroundColor(IndexedColors.ROSE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setDataFormat(df.getFormat("yyyy-MM-dd"));
+        styles.put("cell_red", style);
+
+        style = createBorderedStyle(wb);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setFont(font1);
+        style.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setDataFormat(df.getFormat("yyyy-MM-dd"));
+        styles.put("cell_yellow", style);
+
+
+
+
+
         Font font2 = wb.createFont();
         font2.setColor(IndexedColors.BLUE.getIndex());
         font2.setBold(true);
@@ -243,7 +291,7 @@ public class DownloadController {
         font3.setColor(IndexedColors.DARK_BLUE.getIndex());
         font3.setBold(true);
         style = createBorderedStyle(wb);
-        style.setAlignment(HorizontalAlignment.LEFT);
+        style.setAlignment(HorizontalAlignment.CENTER);
         style.setFont(font3);
         style.setWrapText(true);
         styles.put("cell_h", style);
@@ -294,53 +342,7 @@ public class DownloadController {
         return style;
     }
 
-    public static String[][]  toArray(List<Order> data){
-        String[][] strArr=new String[data.size()+1][8];
 
-        strArr[0][0]="0";
-        strArr[0][1]="房中房订单报表";
-        strArr[0][2]="Tarena";
-        strArr[0][3]="5";
-        strArr[0][4]="2017-9-12";
-        strArr[0][5]="2017-9-17";
-        strArr[0][6]="   ";
-
-
-
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 1; i < data.size()+1; i++) {
-
-
-            Order order=data.get(i-1);
-
-            Date in=order.getHhOrdersIntime();
-            Date out=order.getHhOrdersOuttime();
-
-            int day=0;
-
-            if(out==null){
-                long ms=new Date().getTime()-in.getTime();
-                day=(int) (ms/(1000*60*60*24));
-            }else {
-                Long ms=out.getTime()-in.getTime();
-                day=(int) (ms/(1000*60*60*24));
-            }
-
-
-
-
-            strArr[i][0]=i+"";
-            strArr[i][1]="sad44sa";
-            strArr[i][2]="as54d4s5ad";
-            strArr[i][3]=day+"";
-            strArr[i][4]=sdf.format(in);
-            strArr[i][5]=sdf.format(out);
-            strArr[i][6]=order.getHhOrdersPrice()+"";
-
-
-        }
-        return strArr;
-    }
 
     public  static List<Order> getList(){
         List<Order> list=new ArrayList<Order>();
@@ -355,9 +357,100 @@ public class DownloadController {
             //System.out.println(order.toString());
             list.add(order);
         }
-        list.get(2).setHhOrdersOuttime(null);
+
 
         return list;
     }
 
+    private static Sheet createSheet(Workbook wb,List<Order> list,String sheetName,String instylename) throws ParseException{
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+
+        String[] titles = {
+                "序号", "房屋地址", "住户姓名", "入住天数", "入住时间", "退房时间","金额"};
+
+
+
+        String[][] data= POIUtils.toArray(list);
+
+        Map<String, CellStyle> styles = createStyles(wb);
+
+        Sheet sheet = wb.createSheet(sheetName);
+
+        //turn off gridlines
+        sheet.setDisplayGridlines(false);
+        sheet.setPrintGridlines(false);
+        sheet.setFitToPage(true);
+        sheet.setHorizontallyCenter(true);
+        PrintSetup printSetup = sheet.getPrintSetup();
+        printSetup.setLandscape(true);
+
+        //the following three statements are required only for HSSF
+        sheet.setAutobreaks(true);
+        printSetup.setFitHeight((short)1);
+        printSetup.setFitWidth((short)1);
+
+        CellRangeAddress cra=new CellRangeAddress(0, 0, 0, 6);
+        sheet.addMergedRegion(cra);
+
+        Row headerRow = sheet.createRow(0);
+        Cell cell=headerRow.createCell(0);
+        cell.setCellValue("House in house"+sheetName);
+        cell.setCellStyle(styles.get("cell_h"));
+
+        headerRow = sheet.createRow(1);
+        headerRow.setHeightInPoints(12.75f);
+        for (int i = 0; i < titles.length; i++) {
+            cell = headerRow.createCell(i);
+            cell.setCellValue(titles[i]);
+            cell.setCellStyle(styles.get("header"));
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+
+        calendar.setTime(fmt.parse("2017-6-9"));
+        calendar.set(Calendar.YEAR, year);
+        Row row;
+        int rownum=2;
+        for (int i = 0; i < data.length; i++, rownum++) {
+            row = sheet.createRow(rownum);
+            if(data[i] == null) continue;
+
+            for (int j = 0; j < data[i].length; j++) {
+                cell = row.createCell(j);
+                String styleName;
+                switch(j){
+                    case 5:
+                        calendar.setTime(fmt.parse(data[i][j]));
+                        calendar.set(Calendar.YEAR, year);
+                        cell.setCellValue(calendar);
+                        styleName = "cell_g";
+                        break;
+                    case 4:
+                        calendar.setTime(fmt.parse(data[i][j]));
+                        calendar.set(Calendar.YEAR, year);
+                        cell.setCellValue(calendar);
+                        styleName =  instylename;
+                        break;
+
+                    default:
+                        cell.setCellValue(data[i][j]);
+                        styleName=instylename;
+                        break;
+
+                }
+                cell.setCellStyle(styles.get(styleName));
+            }
+
+        }
+
+        sheet.setColumnWidth(0, 256*6);
+        sheet.setColumnWidth(1, 256*33);
+        sheet.setColumnWidth(2, 256*20);
+        sheet.setColumnWidth(4, 256*13);
+        sheet.setColumnWidth(5, 256*13);
+
+        return sheet;
+
+    }
 }
