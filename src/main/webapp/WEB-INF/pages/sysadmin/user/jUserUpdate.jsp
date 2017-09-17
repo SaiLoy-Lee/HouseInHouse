@@ -43,8 +43,8 @@
 	<tr class="odd">
 		<td>用户名:</td>
 		<td><input  type="text" name="hhUserUsername" value="${user.hhUserUsername}"/></td>
-		<td>密码:</td>
-		<td><input  type="password" name="hhUserPassword" value="${user.hhUserPassword}"/></td>
+		<%--<td>密码:</td>
+		<td><input  type="password" name="hhUserPassword" value="${user.hhUserPassword}"/></td>--%>
 	</tr>
 	<tr class="odd">
 		<td>真实姓名:</td>

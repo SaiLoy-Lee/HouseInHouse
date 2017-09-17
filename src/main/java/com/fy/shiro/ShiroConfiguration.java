@@ -21,13 +21,15 @@ import java.util.Map;
  * Created by Administrator on 2017/9/14.
  */
 
-//@Configuration
+@Configuration
 public class ShiroConfiguration {
 
 
     @Bean(name = "AuthRealm")
     public AuthRealm getShiroRealm() {
-        return new AuthRealm();
+        AuthRealm authRealm=new AuthRealm();
+        authRealm.setCredentialsMatcher(authCredential());
+        return authRealm;
     }
 
 
@@ -67,6 +69,12 @@ public class ShiroConfiguration {
         logoutFilter.setRedirectUrl("/index");
         return logoutFilter;
     }*/
+
+    @Bean
+    public AuthCredential authCredential(){
+        AuthCredential authCredential=new AuthCredential();
+        return authCredential;
+    }
 
     @Bean
     public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {

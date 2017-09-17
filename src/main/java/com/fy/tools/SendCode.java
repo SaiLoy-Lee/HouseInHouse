@@ -41,8 +41,8 @@ public class SendCode {
     private MessageService messageService;
 
 
-    public  int sendSms(SMessage sMessage) throws ClientException, InterruptedException {
-        String type = sMessage.getHhSmessageType();
+    public  int sendSms(SMessage sMessage) throws ClientException, InterruptedException{
+        String type = sMessage.getsMessageType();
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
@@ -51,14 +51,14 @@ public class SendCode {
         String uuid = UUID.randomUUID().toString();
 
 
-        if (type.equals("1") || type == "1") {
-            int mobile_code = (int) ((Math.random() * 9 + 1) * 100000);
-            SendSmsResponse response = sendSmsVerificationCode(sMessage, mobile_code);
+        if(type.equals("1")||type=="1"){
+            int mobile_code = (int) ((Math.random()*9+1)*100000);
+            SendSmsResponse response = sendSmsVerificationCode(sMessage,mobile_code);
 
-            String name = sMessage.getHhSmessageRecipients();
-            sMessage.setHhSmessageId(uuid);
-            sMessage.setHhSmessageContent("您好，您的验证码为：" + mobile_code + "，请牢记，千万不要告诉别人哦。");
-            sMessage.setHhSmessageIsOk("true");
+            String name =sMessage.getsMessageRecipients();
+            sMessage.setsMessageId(uuid);
+            sMessage.setsMessageContent("您好，您的验证码为："+mobile_code+"，请牢记，千万不要告诉别人哦。");
+            sMessage.setsMessageIsOk("true");
             sMessage.setCreateBy(name);
             sMessage.setCreateTime(date);
 
@@ -67,13 +67,13 @@ public class SendCode {
             messageService.saveMessage(sMessage);
 
             return mobile_code;
-        } else if (type.equals("2") || type == "2") {
+        }else if(type.equals("2")||type=="2"){
             SendSmsResponse response = sendSmsCancel(sMessage);
 
-            String name = sMessage.getHhSmessageRecipients();
-            sMessage.setHhSmessageId(uuid);
-            sMessage.setHhSmessageContent("尊敬的" + name + "您好，您的账号已被停用，请您确认，如有疑问请联系管理员。");
-            sMessage.setHhSmessageIsOk("true");
+            String name =sMessage.getsMessageRecipients();
+            sMessage.setsMessageId(uuid);
+            sMessage.setsMessageContent("尊敬的"+name+"您好，您的账号已被停用，请您确认，如有疑问请联系管理员。");
+            sMessage.setsMessageIsOk("true");
             sMessage.setCreateBy(name);
             sMessage.setCreateTime(date);
 
@@ -82,13 +82,13 @@ public class SendCode {
             messageService.saveMessage(sMessage);
 
             return 0;//0表示成功
-        } else if (type.equals("3") || type == "3") {
-            SendSmsResponse response = sendSmsPayment(sMessage);
+        }else if (type.equals("3")||type=="3"){
+            SendSmsResponse response= sendSmsPayment(sMessage);
 
-            String name = sMessage.getHhSmessageRecipients();
-            sMessage.setHhSmessageId(uuid);
-            sMessage.setHhSmessageContent(name + "您好，您租住的房屋租住时间即将到期，请提前5天续租房屋，逾期将收取滞纳金，房中房不接受转账，谨防诈骗。");
-            sMessage.setHhSmessageIsOk("true");
+            String name =sMessage.getsMessageRecipients();
+            sMessage.setsMessageId(uuid);
+            sMessage.setsMessageContent(name+"您好，您租住的房屋租住时间即将到期，请提前5天续租房屋，逾期将收取滞纳金，房中房不接受转账，谨防诈骗。");
+            sMessage.setsMessageIsOk("true");
             sMessage.setCreateBy(name);
             sMessage.setCreateTime(date);
 
@@ -96,15 +96,15 @@ public class SendCode {
 
             messageService.saveMessage(sMessage);
 
-            return 0;
+            return  0;
 
-        } else if (type.equals("4") || type == "4") {
+        }else if(type.equals("4")||type=="4"){
             SendSmsResponse response = sendSmsWillCancel(sMessage);
 
-            String name = sMessage.getHhSmessageRecipients();
-            sMessage.setHhSmessageId(uuid);
-            sMessage.setHhSmessageContent("尊敬的" + name + "您好，您的账号即将停用，如有疑问请联系管理员。");
-            sMessage.setHhSmessageIsOk("true");
+            String name =sMessage.getsMessageRecipients();
+            sMessage.setsMessageId(uuid);
+            sMessage.setsMessageContent("尊敬的"+name+"您好，您的账号即将停用，如有疑问请联系管理员。");
+            sMessage.setsMessageIsOk("true");
             sMessage.setCreateBy(name);
             sMessage.setCreateTime(date);
 
@@ -112,22 +112,21 @@ public class SendCode {
 
             messageService.saveMessage(sMessage);
 
-            return 0;
-        } else if (type.equals("5") || type == "5") {
+            return  0;
+        }else if(type.equals("5")||type=="5"){
             SendSmsResponse response = sendSmsOrdersGenerate(sMessage);
 
-            String name = sMessage.getHhSmessageRecipients();
-            String order = sMessage.getHhSmessageOrdersId();
-            sMessage.setHhSmessageId(uuid);
-            sMessage.setHhSmessageContent("尊敬的" + name + "您好，您的订单已成功生成，订单号为" + order + "，请您确认，如有疑问请联系管理员。");
-            sMessage.setHhSmessageIsOk("true");
+            String name =sMessage.getsMessageRecipients();
+            String order=sMessage.getsMessageOrdersId();
+            sMessage.setsMessageId(uuid);
+            sMessage.setsMessageContent("尊敬的"+name+"您好，您的订单已成功生成，订单号为"+order+"，请您确认，如有疑问请联系管理员。");
+            sMessage.setsMessageIsOk("true");
             sMessage.setCreateBy(name);
             sMessage.setCreateTime(date);
 
             System.out.print(sMessage.toString());
 
             messageService.saveMessage(sMessage);
-
             return 0;
         } else if(type.equals("6") || type == "6"){
             SendSmsResponse response =sendSmsOrdersCancel(sMessage);
@@ -193,7 +192,6 @@ public class SendCode {
         }
 
 
-
     }
 
 
@@ -212,8 +210,8 @@ public class SendCode {
     public static SendSmsResponse sendSmsVerificationCode (SMessage sMessage,int code) throws ClientException {
 
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name =sMessage.getHhSmessageRecipients();
+        String phoneNumber=sMessage.getsMessageCell();
+        String name =sMessage.getsMessageRecipients();
 
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
@@ -243,8 +241,8 @@ public class SendCode {
     //账号停用通知
     public static SendSmsResponse sendSmsCancel(SMessage sMessage) throws ClientException {
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name=sMessage.getHhSmessageRecipients();
+        String phoneNumber=sMessage.getsMessageCell();
+        String name=sMessage.getsMessageRecipients();
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
 
@@ -272,8 +270,8 @@ public class SendCode {
     //账号即将停用通知
     public static SendSmsResponse sendSmsWillCancel(SMessage sMessage) throws ClientException {
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name=sMessage.getHhSmessageRecipients();
+        String phoneNumber=sMessage.getsMessageCell();
+        String name=sMessage.getsMessageRecipients();
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
 
@@ -302,8 +300,8 @@ public class SendCode {
     //缴费通知
     public static SendSmsResponse sendSmsPayment(SMessage sMessage) throws ClientException {
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name=sMessage.getHhSmessageRecipients();
+        String phoneNumber=sMessage.getsMessageCell();
+        String name=sMessage.getsMessageRecipients();
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
 
@@ -331,9 +329,9 @@ public class SendCode {
     //订单成功生成通知
     public static SendSmsResponse sendSmsOrdersGenerate(SMessage sMessage) throws ClientException {
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name =sMessage.getHhSmessageRecipients();
-        String order=sMessage.getHhSmessageOrdersId();
+        String phoneNumber=sMessage.getsMessageCell();
+        String name =sMessage.getsMessageRecipients();
+        String order=sMessage.getsMessageOrdersId();
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
 
@@ -358,35 +356,7 @@ public class SendCode {
         return sendSmsResponse;
     }
 
-    //通知管理员审核订单
-    public static SendSmsResponse sendSmsAuditingOrders(SMessage sMessage) throws ClientException {
 
-        String phoneNumber=sMessage.getHhSmessageCell();
-        String name =sMessage.getHhSmessageRecipients();
-        String order=sMessage.getHhSmessageOrdersId();
-        System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
-        System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
-
-        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);//"***"分别填写自己的AccessKey ID和Secret
-
-        DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);//不必修改
-
-        IAcsClient acsClient = new DefaultAcsClient(profile);//不必修改
-
-        SendSmsRequest request = new SendSmsRequest();//不必修改
-
-        request.setPhoneNumbers(phoneNumber);//****处填写接收方的手机号码
-
-        request.setSignName("房中房");//此处填写已申请的短信签名
-
-        request.setTemplateCode("SMS_96735006");//此处填写获得的短信模版CODE
-
-        request.setTemplateParam("{\"name\":\""+name+"\", \"order\":\""+order+"\"}");//笔者的短信模版中有${code}, 因此此处对应填写验证码
-
-        SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);//不必修改
-
-        return sendSmsResponse;
-    }
 
     //通知用户订单取消成功
     public static SendSmsResponse sendSmsOrdersCancel(SMessage sMessage) throws ClientException {
