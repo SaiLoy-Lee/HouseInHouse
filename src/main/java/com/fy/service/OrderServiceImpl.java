@@ -27,6 +27,8 @@ public class OrderServiceImpl implements OrderService {
     UserMapper userMppaer;
     @Autowired
     MessageMapper messageMapper;
+    @Autowired
+    SendCode sendCode;
 
     @Override
 
@@ -64,30 +66,30 @@ public class OrderServiceImpl implements OrderService {
     private int SendVerfyCodeReal(Order order,String type) {
 
         SMessage sMessage = new SMessage();
-        sMessage.setsMessageCell(order.getUser().getHhUserTel());//手件人手机号
+        sMessage.setHhSmessageCell(order.getUser().getHhUserTel());//手件人手机号
         //-------------------------------------------------------
-        sMessage.setsMessageUserID(order.getUser().getHhUserId());//收件人Id
-        sMessage.setsMessageRecipients(order.getUser().getHhUserName());//收件人
-        sMessage.setsMessageOrdersId(order.getHhOrdersId());//订单id
+        sMessage.setHhSmessageUserID(order.getUser().getHhUserId());//收件人Id
+        sMessage.setHhSmessageRecipients(order.getUser().getHhUserName());//收件人
+        sMessage.setHhSmessageOrdersId(order.getHhOrdersId());//订单id
         sMessage.setCreateBy("Order");
-        sMessage.setsMessageType(type);//设置短信类型  1 代表订单
+        sMessage.setHhSmessageType(type);//设置短信类型  1 代表订单
         try{
-            return SendCode.sendSms(sMessage);
+            return sendCode.sendSms(sMessage);
         }catch (Exception e){
             e.printStackTrace();
 
         }
         if(type=="2"){
             SMessage sMessageM = new SMessage();
-            sMessage.setsMessageCell(order.getHouseInfo().getHhHouseTelephone());//手件人手机号
+            sMessage.setHhSmessageCell(order.getHouseInfo().getHhHouseTelephone());//手件人手机号
             //-------------------------------------------------------
-            sMessageM.setsMessageUserID("");//收件人Id
-            sMessageM.setsMessageRecipients(order.getHouseInfo().getHhHousePublisher());//收件人
-            sMessageM.setsMessageOrdersId(order.getHhOrdersId());//订单id
+            sMessageM.setHhSmessageUserID("");//收件人Id
+            sMessageM.setHhSmessageRecipients(order.getHouseInfo().getHhHousePublisher());//收件人
+            sMessageM.setHhSmessageOrdersId(order.getHhOrdersId());//订单id
             sMessageM.setCreateBy("Order");
-            sMessageM.setsMessageType("10");//设置短信类型  1 代表订单
+            sMessageM.setHhSmessageType("10");//设置短信类型  1 代表订单
             try{
-                return SendCode.sendSms(sMessage);
+                return sendCode.sendSms(sMessage);
             }catch (Exception e){
                 e.printStackTrace();
 
