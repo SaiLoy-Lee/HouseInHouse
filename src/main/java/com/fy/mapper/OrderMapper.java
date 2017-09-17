@@ -14,7 +14,6 @@ import java.util.List;
 public interface OrderMapper {
     public void createOrder(Order order);
 
-
     List<Order> findAll();
 
     List<Order> findOrdersByUserId(String hhUserId);

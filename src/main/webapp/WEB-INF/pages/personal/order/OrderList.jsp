@@ -59,6 +59,7 @@
 
                 </tr>
                 </thead>
+
                 <tbody class="tableBody">
                 <c:forEach items="${orderList}" var="o" varStatus="status">
 

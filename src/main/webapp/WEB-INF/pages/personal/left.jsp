@@ -26,6 +26,7 @@
             <div class="panel-content">
                 <ul>
                     <shiro:hasPermission name="管理员">
+
                         <li><a href="${ctx}/personal/order/findList?status=1" onclick="linkHighlighted(this)" target="main"
                                id="aa_8">待签订单</a></li>
                         <li><a href="${ctx}/personal/order/findList?status=6" onclick="linkHighlighted(this)" target="main"

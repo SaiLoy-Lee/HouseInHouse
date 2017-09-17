@@ -260,6 +260,7 @@
                             <span id="topmenu" onclick="toModule('personal');">个人中心</span><span
                                 id="tm_separator"></span>
                         </shiro:hasPermission>
+
                         <shiro:hasPermission name="管理员">
                             <span id="topmenu" onclick="toModule('personal');">订单管理</span><span
                                 id="tm_separator"></span>
