@@ -129,7 +129,39 @@ public class SendCode {
             messageService.saveMessage(sMessage);
 
             return 0;
-        } else if (type.equals("10") || type == "10") {
+        } else if(type.equals("6") || type == "6"){
+            SendSmsResponse response =sendSmsOrdersCancel(sMessage);
+
+            String name = sMessage.getHhSmessageRecipients();
+            String order = sMessage.getHhSmessageOrdersId();
+            sMessage.setHhSmessageId(uuid);
+            sMessage.setHhSmessageContent("尊敬的"+name+"，您好，您的订单号"+order+"已成功取消。");
+            sMessage.setHhSmessageIsOk("true");
+            sMessage.setCreateBy(name);
+            sMessage.setCreateTime(date);
+
+            System.out.print(sMessage.toString());
+
+            messageService.saveMessage(sMessage);
+
+            return 0;
+        } else if(type.equals("7") || type == "7"){
+            SendSmsResponse response =sendSmsUserQuit(sMessage);
+
+            String name = sMessage.getHhSmessageRecipients();
+            String userId = sMessage.getHhSmessageUserID();
+            sMessage.setHhSmessageId(uuid);
+            sMessage.setHhSmessageContent(name+"管理员您好，"+userId+"用户申请退房，请审核。");
+            sMessage.setHhSmessageIsOk("true");
+            sMessage.setCreateBy(name);
+            sMessage.setCreateTime(date);
+
+            System.out.print(sMessage.toString());
+
+            messageService.saveMessage(sMessage);
+
+            return 0;
+        }else if (type.equals("10") || type == "10") {
             SendSmsResponse response = sendSmsAuditingOrders(sMessage);
 
             String name = sMessage.getHhSmessageRecipients();
@@ -356,5 +388,64 @@ public class SendCode {
         return sendSmsResponse;
     }
 
+    //通知用户订单取消成功
+    public static SendSmsResponse sendSmsOrdersCancel(SMessage sMessage) throws ClientException {
+
+        String phoneNumber=sMessage.getHhSmessageCell();
+        String name =sMessage.getHhSmessageRecipients();
+        String order=sMessage.getHhSmessageOrdersId();
+        System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
+        System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
+
+        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);//"***"分别填写自己的AccessKey ID和Secret
+
+        DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);//不必修改
+
+        IAcsClient acsClient = new DefaultAcsClient(profile);//不必修改
+
+        SendSmsRequest request = new SendSmsRequest();//不必修改
+
+        request.setPhoneNumbers(phoneNumber);//****处填写接收方的手机号码
+
+        request.setSignName("房中房");//此处填写已申请的短信签名
+
+        request.setTemplateCode("SMS_96840015");//此处填写获得的短信模版CODE
+
+        request.setTemplateParam("{\"name\":\""+name+"\", \"order\":\""+order+"\"}");//笔者的短信模版中有${code}, 因此此处对应填写验证码
+
+        SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);//不必修改
+
+        return sendSmsResponse;
+    }
+
+    //通知管理员用户需要退房
+    public static SendSmsResponse sendSmsUserQuit(SMessage sMessage) throws ClientException {
+
+        String phoneNumber=sMessage.getHhSmessageCell();
+        String name =sMessage.getHhSmessageRecipients();
+        String userId=sMessage.getHhSmessageUserID();
+        System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
+        System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
+
+        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);//"***"分别填写自己的AccessKey ID和Secret
+
+        DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);//不必修改
+
+        IAcsClient acsClient = new DefaultAcsClient(profile);//不必修改
+
+        SendSmsRequest request = new SendSmsRequest();//不必修改
+
+        request.setPhoneNumbers(phoneNumber);//****处填写接收方的手机号码
+
+        request.setSignName("房中房");//此处填写已申请的短信签名
+
+        request.setTemplateCode("SMS_96720017");//此处填写获得的短信模版CODE
+
+        request.setTemplateParam("{\"name\":\""+name+"\", \"userId\":\""+userId+"\"}");//笔者的短信模版中有${code}, 因此此处对应填写验证码
+
+        SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);//不必修改
+
+        return sendSmsResponse;
+    }
 
 }
