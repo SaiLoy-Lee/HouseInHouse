@@ -16,9 +16,7 @@ public class HouseInfo {
   private  Integer hhHouseMaxnum;         //  可住人数
   private  Integer hhHouseResidenum;         //  已住人数
   private  String hhHouseOrient;         //  朝向
-
-
-  private  String hhHouseFloor;        //  楼层
+  private  String hhHouseFloor;     //  楼层
   private  String hhHouseArea;         //  面积
   private  String hhHouseSupport;         //  配套信息
   private  String hhHousePublisher;         //  发布人
@@ -33,14 +31,6 @@ public class HouseInfo {
   private  Date UpdateTime;        //  修改时间
   private  String hhHouseTelephone;         //  联系方式
   private String hhHousePrice;              //月租金
-
-    public String getHhHouseFloor() {
-        return hhHouseFloor;
-    }
-
-    public void setHhHouseFloor(String hhHouseFloor) {
-        this.hhHouseFloor = hhHouseFloor;
-    }
 
     public String getHhHouseId() {
         return hhHouseId;
@@ -114,6 +104,13 @@ public class HouseInfo {
         this.hhHouseOrient = hhHouseOrient;
     }
 
+    public String getHhHouseFloor() {
+        return hhHouseFloor;
+    }
+
+    public void setHhHouseFloor(String hhHouseFloor) {
+        this.hhHouseFloor = hhHouseFloor;
+    }
 
     public String getHhHouseArea() {
         return hhHouseArea;

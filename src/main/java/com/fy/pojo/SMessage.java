@@ -9,20 +9,22 @@ import java.util.Date;
 
 public class SMessage {
 
+
+
     //ID
-    private String hhSmessageId;
+    private String sMessageId;
     //订单ID
-    private String hhSmessageOrdersId;
+    private String sMessageOrdersId;
     //用户ID
-    private String hhSmessageUserID;
+    private String sMessageUserID;
     //收件人
-    private String hhSmessageRecipients;
+    private String sMessageRecipients;
     //手机号
-    private String hhSmessageCell;
+    private String sMessageCell;
     //发送内容
-    private String hhSmessageContent;
+    private String sMessageContent;
     //是否成功
-    private String hhSmessageIsOk;
+    private String sMessageIsOk;
     //创建人
     private String createBy;
     //创建班级
@@ -34,63 +36,84 @@ public class SMessage {
     //修改时间
     private Date updateTime;
     //短信类型
-    private String hhSmessageType;
+    private String sMessageType;
 
 
-    public String getHhSmessageId() {
-        return hhSmessageId;
+
+
+    public String getsMessageOrdersId() {
+        return sMessageOrdersId;
     }
 
-    public void setHhSmessageId(String hhSmessageId) {
-        this.hhSmessageId = hhSmessageId;
+    public void setsMessageOrdersId(String sMessageOrdersId) {
+        this.sMessageOrdersId = sMessageOrdersId;
     }
 
-    public String getHhSmessageOrdersId() {
-        return hhSmessageOrdersId;
+    public String getsMessageType() {
+        return sMessageType;
     }
 
-    public void setHhSmessageOrdersId(String hhSmessageOrdersId) {
-        this.hhSmessageOrdersId = hhSmessageOrdersId;
+    public void setsMessageType(String sMessageType) {
+        this.sMessageType = sMessageType;
     }
 
-    public String getHhSmessageUserID() {
-        return hhSmessageUserID;
+
+
+
+    public String getUpdateBy() {
+        return updateBy;
     }
 
-    public void setHhSmessageUserID(String hhSmessageUserID) {
-        this.hhSmessageUserID = hhSmessageUserID;
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
-    public String getHhSmessageRecipients() {
-        return hhSmessageRecipients;
+    public String getsMessageUserID() {
+        return sMessageUserID;
     }
 
-    public void setHhSmessageRecipients(String hhSmessageRecipients) {
-        this.hhSmessageRecipients = hhSmessageRecipients;
+    public void setsMessageUserID(String sMessageUserID) {
+        this.sMessageUserID = sMessageUserID;
     }
 
-    public String getHhSmessageCell() {
-        return hhSmessageCell;
+    public String getsMessageId() {
+        return sMessageId;
     }
 
-    public void setHhSmessageCell(String hhSmessageCell) {
-        this.hhSmessageCell = hhSmessageCell;
+    public void setsMessageId(String sMessageId) {
+        this.sMessageId = sMessageId;
     }
 
-    public String getHhSmessageContent() {
-        return hhSmessageContent;
+    public String getsMessageRecipients() {
+        return sMessageRecipients;
     }
 
-    public void setHhSmessageContent(String hhSmessageContent) {
-        this.hhSmessageContent = hhSmessageContent;
+    public void setsMessageRecipients(String sMessageRecipients) {
+        this.sMessageRecipients = sMessageRecipients;
     }
 
-    public String getHhSmessageIsOk() {
-        return hhSmessageIsOk;
+    public String getsMessageCell() {
+        return sMessageCell;
     }
 
-    public void setHhSmessageIsOk(String hhSmessageIsOk) {
-        this.hhSmessageIsOk = hhSmessageIsOk;
+    public void setsMessageCell(String sMessageCell) {
+        this.sMessageCell = sMessageCell;
+    }
+
+    public String getsMessageContent() {
+        return sMessageContent;
+    }
+
+    public void setsMessageContent(String sMessageContent) {
+        this.sMessageContent = sMessageContent;
+    }
+
+    public String getsMessageIsOk() {
+        return sMessageIsOk;
+    }
+
+    public void setsMessageIsOk(String sMessageIsOk) {
+        this.sMessageIsOk = sMessageIsOk;
     }
 
     public String getCreateBy() {
@@ -117,14 +140,6 @@ public class SMessage {
         this.createTime = createTime;
     }
 
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -133,30 +148,8 @@ public class SMessage {
         this.updateTime = updateTime;
     }
 
-    public String getHhSmessageType() {
-        return hhSmessageType;
-    }
 
-    public void setHhSmessageType(String hhSmessageType) {
-        this.hhSmessageType = hhSmessageType;
-    }
 
-    @Override
-    public String toString() {
-        return "SMessage{" +
-                "hhSmessageId='" + hhSmessageId + '\'' +
-                ", hhSmessageOrdersId='" + hhSmessageOrdersId + '\'' +
-                ", hhSmessageUserID='" + hhSmessageUserID + '\'' +
-                ", hhSmessageRecipients='" + hhSmessageRecipients + '\'' +
-                ", hhSmessageCell='" + hhSmessageCell + '\'' +
-                ", hhSmessageContent='" + hhSmessageContent + '\'' +
-                ", hhSmessageIsOk='" + hhSmessageIsOk + '\'' +
-                ", createBy='" + createBy + '\'' +
-                ", createDept='" + createDept + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", updateBy='" + updateBy + '\'' +
-                ", updateTime='" + updateTime + '\'' +
-                ", hhSmessageType='" + hhSmessageType + '\'' +
-                '}';
-    }
+
+
 }

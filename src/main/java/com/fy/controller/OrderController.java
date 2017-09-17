@@ -75,6 +75,7 @@ public class OrderController extends BaseController {
 ////       OutputStream os= response.getOutputStream();
 ////        os.close();
 //    }
+    //获取手机验证
     @RequestMapping("/getVerfiy/{mobile}")
     @ResponseBody
     public String getVerfy(@PathVariable String mobile, HttpSession session) throws ClientException, InterruptedException {
@@ -96,7 +97,7 @@ public class OrderController extends BaseController {
         session.setAttribute("code", code);
         return "0"; //发送失败
     }
-
+    //创建订单
     @RequestMapping("/createOrder")
     public String createOrder(String hhOrdersId, String verfyCode, Order order, HttpSession session, Model model) {
         if (verfyCode.equals(session.getAttribute("code"))) {//检查验证码是否匹配
@@ -127,19 +128,83 @@ public class OrderController extends BaseController {
         session.removeAttribute("code");
         return "/personal/order/orderList";
     }
+    //全部订单
+    @RequestMapping("/list")
+    public String getOrderList(HttpSession session,Model model) {
+        User a=new User();
+        a.setHhUserId("12");
+        session.setAttribute("user",a);
+        Object obj = session.getAttribute("user");
 
-    @RequestMapping("/orderList")
-    public String getOrderList(HttpSession session) {
-        Object obj = session.getAttribute("User");
         if (obj == null) {//如果用户未登入就登入
             return "redirect:login";
         }
         User user=(User)obj;
-        List<Order> orderList=orderService.findAll(user);
+        List<Order> orderList=orderService.findOrdersById(user);
+        model.addAttribute("orderList",orderList);
 
 
-        return "";
+        return "/personal/order/OrderList";
 
+    }
+
+    @RequestMapping("/findList")
+    public String findOrderList(int status,Model model) {
+        List<Order> orderList=null;
+        if(status!=0){
+            orderList=orderService.findOrdersByStatus(status);
+        }else {
+            orderList=orderService.findAll();
+        }
+        model.addAttribute("orderList",orderList);
+        return "/personal/order/OrderList";
+    }
+
+
+
+
+
+    // /订单详情
+    @RequestMapping("/toview")
+    public String toView(@RequestParam(required = true) String hhOrdersId ,Model model){
+        //        if (session.getAttribute("User") == null) {
+//            return "redirect:login";
+//        }
+        Order order=orderService.findOrderByOrderId(hhOrdersId);
+        model.addAttribute("order",order);
+        return "/personal/order/OrderView";
+
+    }
+    //删除订单
+    @RequestMapping("delete")
+    public String deleteOrders(@RequestParam(required = true,value="hhOrdersId") String[] hhOrdersIds){
+        String status="11" ;//用户删除订单;  12//管理员删除订单
+        orderService.updateOrderStatus( hhOrdersIds, status);
+        return "redirect:/personal/order/list";
+    }
+    //取消订单
+    @RequestMapping("/cancel")
+    public String cancelOrder(String hhOrdersId, Model model){
+        try {
+            orderService.cancelOrder(hhOrdersId);
+        } catch (MegException e) {
+            model.addAttribute("message" ,e.getMessage());
+            return "/personal/order/toview";
+        }
+        return "redirect:/personal/order/list";
+
+    }
+
+    //退租
+    @RequestMapping("/checkOut")
+    public String checkOutOrder(String hhOrdersId, Model model){
+        try {
+            orderService.checkOutOrder(hhOrdersId);
+        } catch (MegException e) {
+            model.addAttribute("message" ,e.getMessage());
+            return "/personal/order/toview";
+        }
+        return "redirect:/personal/order/list";
     }
 
 
