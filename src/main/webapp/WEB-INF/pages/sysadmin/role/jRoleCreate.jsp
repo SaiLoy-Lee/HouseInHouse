@@ -30,28 +30,31 @@
   
 <div>
 
+
+
+
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
 		<td>角色名称:</td>
-		<td><input  type="text" name="hhroleName"/></td>
+		<td><input  type="text" name="hhRoleName"/></td>
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="hhroleorderNo"/></td>
+		<td><input  type="text" name="hhRoleorderNo"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
 		<td colspan="3">
-			<textarea style="height:80px;width:90%" name="hhroleRemarks"></textarea>
+			<textarea style="height:80px;width:90%" name="hhRoleRemarks"></textarea>
 		</td>
 	</tr>
 
 	<tr class="odd">
 		<td>状态:</td>
 		<td>
-			<input type="radio" name="hhroleStatus" value="1"/>启用
-			<input type="radio" name="hhroleStatus" value="0"/>停用
+			<input type="radio" name="hhRoleStatus" value="1"/>启用
+			<input type="radio" name="hhRoleStatus" value="0"/>停用
 		</td>
 	</tr>
 </table>

@@ -10,9 +10,9 @@
 
     </select>
 
-    <delete id="deletehhroleId">
+    <delete id="deletehhRoleId">
 
-         DELETE FROM hh_role WHERE hh_role_Id IN (
+         delete from hh_role where hh_role_id in (
 
          <foreach collection="array" item="id" separator=",">
              #{id}
@@ -23,16 +23,16 @@
     </delete>
 
     <update id="toStart">
-        UPDATE  hh_role SET hh_role_status=#{hhroleStatus} WHERE hh_role_id in(
-        <foreach collection="hhroleIds" item="id" separator=",">
+        update  hh_role set hh_role_status=#{hhrolestatus} where hh_role_id in(
+        <foreach collection="hhroleids" item="id" separator=",">
             #{id}
         </foreach>
         )
     </update>
 
     <update id="toStop">
-        UPDATE  hh_role SET hh_role_status=#{hhroleStatus} WHERE hh_role_id in(
-        <foreach collection="hhroleIds" item="id" separator=",">
+        update  hh_role set hh_role_status=#{hhrolestatus} where hh_role_id in(
+        <foreach collection="hhroleids" item="id" separator=",">
             #{id}
         </foreach>
         )
@@ -40,19 +40,39 @@
 
 
     <insert id="SaveRole">
-        INSERT INTO hh_role (hh_role_Id,hh_role_name,hh_role_remarks,hh_role_order_no,hh_role_status,create_by,create_time,create_dept,update_by,update_time)
-       VALUES(
-       #{hhroleId},
-       #{hhroleName},
-       #{hhroleRemarks},
-       #{hhroleorderNo},
-       #{hhroleStatus},
-       #{createBy,jdbcType=VARCHAR},
-	   #{createDept,jdbcType=VARCHAR},
-	   #{createTime,jdbcType=DATE},
-	   #{updateBy,jdbcType=VARCHAR},
-	   #{updateTime,jdbcType=DATE}
+        insert into hh_role (hh_role_id,hh_role_name,hh_role_remarks,hh_role_order_no,hh_role_status,create_by,create_time,create_dept,update_by,update_time)
+       values(
+       #{hhroleid},
+       #{hhrolename},
+       #{hhroleremarks},
+       #{hhroleorderno},
+       #{hhrolestatus},
+        #{createBy,jdbcType=VARCHAR},
+ 		  #{createDept,jdbcType=VARCHAR},
+ 		  #{createTime,jdbcType=DATE},
+ 		  #{updateBy,jdbcType=VARCHAR},
+ 		  #{updateTime,jdbcType=DATE}
        )
     </insert>
+
+
+    <update id="update">
+       update hh_role
+         <set>
+             hh_role_name=#{hhrolename},
+             hh_role_remarks=#{hhroleremarks},
+             hh_role_orderno=#{hhroleorderno},
+             hh_role_status=#{hhrolestatus},
+             <if test="createby !=null">create_by = #{createby},</if>
+             <if test="createdept !=null">create_dept = #{createdept},</if>
+             <if test="createtime !=null">create_time = #{createtime},</if>
+             <if test="updateby !=null">update_by = #{updateby},</if>
+             <if test="updatetime !=null">update_time = #{updatetime}</if>
+         </set>
+
+         where hh_role_id=#{hhroleid}
+    </update>
+
+
 
 </mapper>

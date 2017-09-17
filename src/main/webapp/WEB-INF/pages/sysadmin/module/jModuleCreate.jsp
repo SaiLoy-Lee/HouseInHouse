@@ -31,6 +31,64 @@
 <div>
 
 
+
+		<div class="textbox-title">
+			<img src="../../staticfile/skin/default/images/icon/currency_yen.png" />
+			新增模块
+		</div>
+
+		<div>
+
+
+			<div class="eXtremeTable">
+				<table id="ec_table" class="tableRegion" width="98%">
+					<tr class="odd">
+						<td>模块名称:</td>
+						<td><input type="text" name="hhModuleName" /></td>
+					</tr>
+					<tr class="odd">
+						<td>上级模块:</td>
+						<td><select name="moduleId"
+							style="width: 120px;">
+								<option value="0">请选择/无上级</option>
+								<c:forEach items="${parentList}" var="p">
+									<option value="${p.hhModuleId}">${p.hhModuleName}</option>
+								</c:forEach>
+						</select></td>
+					</tr>
+					<tr class="odd">
+						<td>展现类型:</td>
+						<td>
+							<select name="ctype" style="width: 120px;">
+									<option value="">---请选择---</option>
+									<option value="1">主菜单</option>
+									<option value="2">左侧菜单</option>
+									<option value="3">按钮</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="odd">
+						<td>排序号:</td>
+						<td><input type="text" name="hhModuleorderNo" /></td>
+					</tr>
+					<tr class="odd">
+						<td>状态:</td>
+						<td><input type="radio" name="hhModuleState" value="1" />启用 <input
+							type="radio" name="hhModuleState" value="0" />停用</td>
+					</tr>
+					<tr class="odd">
+						<td>备注信息:</td>
+						<td colspan="3"><textarea style="height: 80px; width: 90%"
+								name="hhModuleRemarks"></textarea></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+
+	</form>
+
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 	<tr class="odd">
@@ -82,6 +140,7 @@
  
  
 </form>
+
 </body>
 </html>
 

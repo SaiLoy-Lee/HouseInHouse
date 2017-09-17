@@ -120,13 +120,6 @@
 			<version>3.16</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.0</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -134,7 +127,21 @@
 			<version>1.6.1</version>
 		</dependency>
 
-    </dependencies>
+		<!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+
+
+
+
+
+
+
+	</dependencies>
 
 
 	<developers>
