@@ -39,8 +39,8 @@
 							<input readonly="readonly" type="hidden" name="hhUserId"
 							value="${user.hhUserId }" /></td>
 						<!-- spring自动映射传参依赖name属性，与pojo对象要严格一致 -->
-						<td>密&nbsp;&nbsp;&nbsp;&nbsp;码:</td>
-						<td><input readonly="readonly" type="password" name="passWord" /></td>
+						<%--<td>密&nbsp;&nbsp;&nbsp;&nbsp;码:</td>
+						<td><input readonly="readonly" type="password" name="passWord" /></td>--%>
 					</tr>
 					<tr class="odd">
 						<td>真实姓名:</td>
