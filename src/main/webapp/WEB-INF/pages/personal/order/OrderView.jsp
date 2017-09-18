@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../baselist.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%--<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>--%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -12,6 +12,16 @@
     <script src="${ctx}/staticfile/js/jquery-1.6.2.js"></script>
     <script type="text/javascript">
         function alt(meg, task, target) {
+            <c:if test="${order.hhOrdersStatus==1}">
+            var text = $("#hhOrdersRemarks").val().trim();
+            if (text == "") {
+                alert("拒签原因不能为空！！！")
+                return
+            }else{
+               var remark=$("input[name='hhOrdersRemarks']").val().trim()+"<br />"+text;
+                $("input[name='hhOrdersRemarks']").val(remark);
+            }
+            </c:if>
             if (confirm("你确定要" + meg)) {
                 formSubmit(task, target)
             }
@@ -289,16 +299,24 @@
 
                         <tr class="odd">
                             <td class="tda">用户ID:</td>
-                            <td>${order.user.hhUserId}<input value="${order.user.hhUserId}" name="hhUserId"
-                                                             type="hidden"></td>
-                            <td class="tda">用户名:</td>
-                            <td>${order.user.hhUserName}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td class="tda">手机号:</td>
-                            <td colspan="3">${order.user.hhUserTel}</td>
+                            <td colspan="3">${order.user.hhUserId}<input value="${order.user.hhUserId}" name="hhUserId"
+                                                                         type="hidden"></td>
 
                         </tr>
+                        <tr class="odd">
+                            <td class="tda">用户名:</td>
+                            <td>${order.user.hhUserName}</td>
+                            <td class="tda">手机号:</td>
+                            <td> ${order.user.hhUserTel}</td>
+                        </tr>
+                        <c:if test="${order.hhOrdersStatus==1}">
+                            <tr class="odd">
+                                <td class="tda">拒签原因:</td>
+                                <td colspan="3" placeholder="请务必填写"><textarea cols="90%" rows="3"
+                                                                              id="hhOrdersRemarks"></textarea></td>
+                                <input type="hidden" value="${order.hhOrdersRemarks}" name="hhOrdersRemarks">
+                            </tr>
+                        </c:if>
                         <tr class="odd">
                             <td class="tda"></td>
                             <td class="tda" colspan="3"
@@ -308,16 +326,33 @@
                                         <li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
                                         <c:if test="${order.hhOrdersStatus==1}">
                                             <li id="delete"><a href="#"
-                                                               onclick="alt('取消订单','cancel','_self');this.blur();">取消</a>
+                                                               onclick="alt('取消订单','cancel','_self');this.blur();">取消订单</a>
                                             </li>
                                         </c:if>
-                                        <c:if test="${order.hhOrdersStatus==3}">
-                                            <li id="new"><a href="#"
-                                                            onclick="alt('退房','checkOut','_self');this.blur();">退房</a>
-                                            </li>
-
-
-                                        </c:if>
+                                        <shiro:hasPermission name="用户">
+                                            <c:if test="${order.hhOrdersStatus==3}">
+                                                <li id="new"><a href="#"
+                                                                onclick="alt('退房','checkOut','_self');this.blur();">退房</a>
+                                                </li>
+                                            </c:if>
+                                        </shiro:hasPermission>
+                                        <shiro:hasPermission name="管理员">
+                                            <c:if test="${order.hhOrdersStatus==1}">
+                                                <li id="new"><a href="#"
+                                                                onclick="alt('签约订单','updateStatus/3','_self');this.blur();">签约订单</a>
+                                                </li>
+                                            </c:if>
+                                            <c:if test="${order.hhOrdersStatus==1}">
+                                                <li id="new"><a href="#"
+                                                                onclick="alt('拒签订单','updateStatus/2','_self');this.blur();">拒签订单</a>
+                                                </li>
+                                            </c:if>
+                                            <c:if test="${order.hhOrdersStatus==3}">
+                                                <li id="new"><a href="#"
+                                                                onclick="alt('同意退房','updateStatus/4','_self');this.blur();">同意退房</a>
+                                                </li>
+                                            </c:if>
+                                        </shiro:hasPermission>
                                     </ul>
 
                                 </div>

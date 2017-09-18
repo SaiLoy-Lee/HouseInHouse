@@ -48,11 +48,12 @@
     map.centerAndZoom(new BMap.Point(116.561437,39.783354),16);              // 初始化地图,设置城市和地图级别。
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
-
+    var longitude;
+    var latitude;
 
     map.addEventListener("click", function(e){
-        longitude = e.point.lng;
-        latitude  = e.point.lat;
+         longitude = e.point.lng;
+         latitude  = e.point.lat;
         alert(longitude+","+latitude);
 
 

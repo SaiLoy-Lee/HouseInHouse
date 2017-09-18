@@ -17,7 +17,7 @@
 
 			option = {
 				title: {
-			        text: '${year}年第${season}季度房屋来源占比图'
+			        text: '${year1}年第${month1}月到${year2}年${month2}月房屋来源占比图'
 			    },
 			    tooltip : {
 			        trigger: 'axis',
@@ -90,7 +90,7 @@
 <body>
 	<div id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="picture" style="width: 800px;height:400px;"></div>
+    <div id="picture" style="width: 900px;height:400px;"></div>
     
 </body>
 </html>
