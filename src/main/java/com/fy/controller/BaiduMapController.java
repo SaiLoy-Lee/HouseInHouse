@@ -31,5 +31,10 @@ public class BaiduMapController {
         return "/baidumap/mapFindLongitudeAndLatitude";
     }
 
+    @RequestMapping("/mapAAAA")
+    public String mapAAAA(Model model){
+        return "/baidumap/MapAAAA";
+    }
+
 
 }

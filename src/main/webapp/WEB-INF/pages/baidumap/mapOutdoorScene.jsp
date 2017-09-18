@@ -43,7 +43,7 @@
         enableHighResolution:true
     }
     var map = new BMap.Map("normal_map", mapOption);
-    var testpoint = new BMap.Point(116.331398, 39.897445);
+    var testpoint = new BMap.Point(116.561437,39.783354);
     map.centerAndZoom(testpoint, 18);
     var marker=new BMap.Marker(testpoint);
     marker.enableDragging();
