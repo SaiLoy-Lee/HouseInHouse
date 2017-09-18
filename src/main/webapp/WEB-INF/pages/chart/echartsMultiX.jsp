@@ -26,7 +26,7 @@
 	        var option = {
 
 		        title: {
-	                text: "${year}年第${season}季度房源概况"
+	                text: "${year1}年第${month1}月到${year2}年${month2}月房源概况"
 	            },
 		        
 	            color: colors,
@@ -64,7 +64,7 @@
 			                    }
 			                }
 			            },
-			            data: ["${season}季度-1", "${season}季度-2", "${season}季度-3", "${season}季度-4", "${season}季度-5", "${season}季度-6", "${season}季度-7", "${season}季度-8", "${season}季度-9", "${season}季度-10", "${season}季度-11", "${season}季度-12"]
+			            data: ["第一周", "第二周", "第三周", "第四周", "第五周", "第六周", "第七周", "第八周", "第九周", "第十周", "第十一周", "第十二周"]
 			        },
 			        {
 			            type: 'category',
@@ -85,7 +85,7 @@
 			                    }
 			                }
 			            },
-			            data: ["${season}季度-1", "${season}季度-2", "${season}季度-3", "${season}季度-4", "${season}季度-5", "${season}季度-6", "${season}季度-7", "${season}季度-8", "${season}季度-9", "${season}季度-10", "${season}季度-11", "${season}季度-12"]
+			            data: ["第一周", "第二周", "第三周", "第四周", "第五周", "第六周", "第七周", "第八周", "第九周", "第十周", "第十一周", "第十二周"]
 			        }		        
 			    ],
 			    yAxis: [
@@ -119,7 +119,7 @@
 <body>
 	<div id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="picture" style="width: 800px;height:400px;"></div>
+    <div id="picture" style="width: 1000px;height:400px;"></div>
     <%-- <textarea style="height: 80px;width: 100%" id="area1">${data1}</textarea> --%>
     <%-- <textarea style="height: 80px;width: 100%" id="area2">${data2}</textarea> --%>
     
