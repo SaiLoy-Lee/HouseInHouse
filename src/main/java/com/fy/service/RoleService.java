@@ -13,9 +13,9 @@ public interface RoleService {
 
      public void deletehhRoleId(String[] hhRoleIds);
 
-     public void toStart(String[] hhRoleIds, int hhRoleStatus);
+     public void UpdateState(String[] hhRoleIds, int hhRoleStatus);
 
-      public void toStop(String[] hhRoleIds, int hhRoleStatus);
+
 
      public void SaveRole(Role role);
 
@@ -25,6 +25,7 @@ public interface RoleService {
 
     public Role toview(String hhRoleId);
 
+    public void saveRoleModules(String hhRoleId, String[] hhModuleIds);
 }
 
 

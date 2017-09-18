@@ -51,7 +51,7 @@
 				str += nodes[i].id;   
 			}
 			
-			$('#moduleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
+			$('#hhModuleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
 
 		}
 	</SCRIPT>
@@ -80,8 +80,8 @@
 			<div class="eXtremeTable" >
 				<table id="ec_table" class="tableRegion" width="98%" >
 
-					<input type="hidden" id="roleId" name="roleId" value="${roleId}"/>
-					<input type="hidden" id="moduleIds" name="moduleIds"/>
+					<input type="hidden" id="hhRoleId" name="hhRoleId" value="${hhRoleId}"/>
+					<input type="hidden" id="hhModuleIds" name="hhModuleIds"/>
 
 					<ul id="htZtree" class="ztree"></ul>
 				</table>

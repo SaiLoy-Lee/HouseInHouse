@@ -179,7 +179,23 @@ public class SendCode {
 
             return 0;
 
-        } else {
+        } else if(type.equals("8") || type == "8"){
+            SendSmsResponse response =sendSmsUserQuit(sMessage);
+
+            String name = sMessage.getHhSmessageRecipients();
+            String userId = sMessage.getHhSmessageUserID();
+            sMessage.setHhSmessageId(uuid);
+            sMessage.setHhSmessageContent(name+"管理员，您好，"+userId+"用户的房源信息录入已提交，请审核。");
+            sMessage.setHhSmessageIsOk("true");
+            sMessage.setCreateBy(name);
+            sMessage.setCreateTime(date);
+
+            System.out.print(sMessage.toString());
+
+            messageService.saveMessage(sMessage);
+
+            return 0;
+        }else {
             String name = sMessage.getHhSmessageRecipients();
             sMessage.setHhSmessageId(uuid);
             sMessage.setHhSmessageIsOk("false");
@@ -441,6 +457,35 @@ public class SendCode {
         request.setSignName("房中房");//此处填写已申请的短信签名
 
         request.setTemplateCode("SMS_96720017");//此处填写获得的短信模版CODE
+
+        request.setTemplateParam("{\"name\":\""+name+"\", \"userId\":\""+userId+"\"}");//笔者的短信模版中有${code}, 因此此处对应填写验证码
+
+        SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);//不必修改
+
+        return sendSmsResponse;
+    }
+    //通知管理员审核用户提交的房源信息录入
+    public static SendSmsResponse sendSmsHouseForUser(SMessage sMessage) throws ClientException {
+
+        String phoneNumber=sMessage.getHhSmessageCell();
+        String name =sMessage.getHhSmessageRecipients();
+        String userId=sMessage.getHhSmessageUserID();
+        System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
+        System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
+
+        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);//"***"分别填写自己的AccessKey ID和Secret
+
+        DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);//不必修改
+
+        IAcsClient acsClient = new DefaultAcsClient(profile);//不必修改
+
+        SendSmsRequest request = new SendSmsRequest();//不必修改
+
+        request.setPhoneNumbers(phoneNumber);//****处填写接收方的手机号码
+
+        request.setSignName("房中房");//此处填写已申请的短信签名
+
+        request.setTemplateCode("SMS_96650046");//此处填写获得的短信模版CODE
 
         request.setTemplateParam("{\"name\":\""+name+"\", \"userId\":\""+userId+"\"}");//笔者的短信模版中有${code}, 因此此处对应填写验证码
 

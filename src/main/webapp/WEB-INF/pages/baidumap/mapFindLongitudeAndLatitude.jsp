@@ -43,7 +43,6 @@
         return document.getElementById(id);
     }
 
-
     var map = new BMap.Map("l-map");
     map.centerAndZoom(new BMap.Point(116.561437,39.783354),16);              // 初始化地图,设置城市和地图级别。
     map.enableScrollWheelZoom();
@@ -54,12 +53,13 @@
     map.addEventListener("click", function(e){
          longitude = e.point.lng;
          latitude  = e.point.lat;
-        alert(longitude+","+latitude);
+         alert("获取坐标成功！");
+
+         //给文本框赋值 要改id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         document.getElementById("suggestId").value=latitude+","+longitude;
 
 
     });
-
-
 
     var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
             {"input" : "suggestId"

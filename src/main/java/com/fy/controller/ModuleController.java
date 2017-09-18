@@ -25,20 +25,20 @@ public class ModuleController {
 
         List<Module> hhModuleList=moduleService.findAll();
          model.addAttribute("hhModuleList",hhModuleList);
-        return "sysadmin/module/jModuleList";
+        return "/sysadmin/module/jModuleList";
     }
 
 
     @RequestMapping("/start")
-    public String toStart(@RequestParam(value = "hhModuleId",required = true) String[] hhModuleIds, int hhModuleState){
-              hhModuleState=1;
+    public String toStart(@RequestParam(value = "hhModuleId",required = true) String[] hhModuleIds){
+            int hhModuleState=1;
         moduleService.UpdateState(hhModuleIds,hhModuleState);
         return "redirect:/sysadmin/module/list";
     }
 
     @RequestMapping("/stop")
-    public String toStop(@RequestParam(value = "hhModuleId",required = true) String[] hhModuleIds, int hhModuleState){
-        hhModuleState=0;
+    public String toStop(@RequestParam(value = "hhModuleId",required = true) String[] hhModuleIds){
+        int hhModuleState=0;
         moduleService.UpdateState(hhModuleIds,hhModuleState);
         return "redirect:/sysadmin/module/list";
     }
