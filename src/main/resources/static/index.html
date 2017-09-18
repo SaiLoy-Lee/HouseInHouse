@@ -7,6 +7,7 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery.min.js"></script>
 	<!-- Custom Theme files -->
+
 	<!--menu-->
 	<script src="js/scripts.js"></script>
 	<link href="css/styles.css" rel="stylesheet">
@@ -17,7 +18,7 @@
 	<!-- 搜索框CSS -->
 	<link rel="stylesheet" href="css/jquery.typeahead.css">
 	<style type="text/css">
-		.col-md-3 header-left{float:left}
+		.col-md-3 {float:left}
 		#col-md-3-header-right{float:right;vertical-align: top;}
 
 	</style>
@@ -65,14 +66,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<!--logo-->
 		<div class="logo">
-			<h1><a href="index.html">房中房</a></h1>
+			<h1><a href="index.html">HouseInHouse</a></h1>
 		</div>
 		<!--//logo-->
 		<div class="top-nav">
 			<ul class="right-icons">
-				<%--<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>--%>
+				<!--<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>-->
 				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>登录</a></li>
-				<%--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>--%>
+				<!--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>-->
 
 			</ul>
 			<div class="nav-icon">
@@ -209,10 +210,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		template: "{{display}}, &#12288<small><em>{{group}}</em></small>",
 		emptyTemplate: "没有找到与 {{query}} 相关的内容",
 		source: {
-			美食: {
+			房源: {
 				ajax: {
 					url: "/searchHouseAddress",
-					path: "美食"
+					path: "房源"
 				}
 			}/* ,
 			 商家: {
@@ -338,47 +339,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!--//header-bottom-->
 
+<script type="text/javascript">
+	$(document).ready(function () {
+		$.ajax({
+			type: "post",
+			url: "query.action",
+			dataType: "json",
+			success: function (json) {
+				$("#house_id1").val(json[0].hhHouseId);
+				$("#house_id2").val(json[1].hhHouseId);
+				$("#house_id3").val(json[2].hhHouseId);
 
+				$("#hot1 a img").attr("src","getImage?imgUrl="+json[0].hhHouseImg.split(",")[1]);
+				$("#hot2 a img").attr("src","getImage?imgUrl="+json[1].hhHouseImg.split(",")[0]);
+				$("#hot3 a img").attr("src","getImage?imgUrl="+json[2].hhHouseImg.split(",")[0]);
+
+				$("#hot1 a span").text(json[0].hhHousePrice);
+				$("#hot2 a span").text(json[1].hhHousePrice);
+				$("#hot3 a span").text(json[2].hhHousePrice);
+
+				$("#tail1 a").text(json[0].hhHouseName);
+				$("#tail2 a").text(json[1].hhHouseName);
+				$("#tail3 a").text(json[2].hhHouseName);
+
+				$("#tail1 p").text(json[0].hhHouseVillage);
+				$("#tail2 p").text(json[0].hhHouseVillage);
+				$("#tail3 p").text(json[0].hhHouseVillage);
+
+				$("#hot1 a").attr("href","housedetail.html?hhHouse_Id="+$("house_id1").val());
+				$("#hot2 a").attr("href","housedetail.html?hhHouse_Id="+$("house_id2").val());
+				$("#hot3 a").attr("href","housedetail.html?hhHouse_Id="+$("house_id3").val());
+
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+			}
+		});
+
+	});
+</script>
 <!--//header-->
 <!--content-->
 <div class="content">
 	<div class="content-grid">
-		<div class="container">
-			<h3>热门房源</h3>
-			<div class="col-md-4 box_2">
-				<a href="single.html" class="mask">
-					<img class="img-responsive zoom-img" src="images/pc4.jpg" alt="">
+		<h3>热门房源</h3>
+		<div id = "hotHouse" class="container">
+			<div  id="hot1" class="col-md-4 box_2">
+				<a class="mask">
+					<img style="width:350px;height:262px;" class="img-responsive zoom-img"  src="images/pc4.jpg" alt="">
 					<span class="four">4000元/月</span>
 				</a>
-				<div class="most-1">
-					<h5><a href="single.html">高丽园装2居室</a></h5>
+				<div id="tail1" class="most-1">
+					<h5><a>高丽园装2居室</a></h5>
+					<input id="house_id1" class="house_id" type="hidden" />
 					<p>颐瑞一街  2室1厅1卫</p>
 				</div>
 			</div>
-			<div class="col-md-4 box_2">
-				<a href="single.html" class="mask">
-					<img class="img-responsive zoom-img" src="images/pc5.jpg" alt="">
+			<div id="hot2" class="col-md-4 box_2">
+				<a class="mask">
+					<img style="width:350px;height:262px;" class="img-responsive zoom-img" src="images/pc5.jpg" alt="">
 					<span class="four">5000元/月</span>
 				</a>
-				<div class="most-1">
-					<h5><a href="single.html">罗斯福广场九棵树地铁旁东总屯</a></h5>
+				<div id="tail2" class="most-1">
+					<h5><a href="housedetail.html">罗斯福广场九棵树地铁旁东总屯</a></h5>
+					<input id="house_id2" class="house_id" type="hidden" />
 					<p>怡乐北街11号  3室1厅1卫</p>
 				</div>
 
 			</div>
-			<div class="col-md-4 box_2">
-				<a href="single.html" class="mask">
-					<img class="img-responsive zoom-img" src="images/pc3.jpg" alt="" >
+			<div id="hot3" class="col-md-4 box_2">
+				<a href="#" class="mask">
+					<img style="width:350px;height:262px;" class="img-responsive zoom-img" src="images/pc3.jpg" alt="" >
 					<span class="four">3500元/月</span>
 				</a>
-				<div class="most-1">
-					<h5><a href="single.html">通州北关新华北路</a></h5>
+				<div id="tail3" class="most-1">
+					<h5><a href="housedetail.html">通州北关新华北路</a></h5>
+					<input id="house_id3" class="house_id" type="hidden" />
 					<p>新华北路59号 3室1厅1卫</p>
 				</div>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+
+
 
 	<!--service-->
 	<div class="services">
@@ -460,7 +504,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-3 amet-sed">
 				<h4>联系我们</h4>
-				<p>400-800-600</p>
 				<ul class="nav-bottom">
 					<li><a href="#">在线聊天</a></li>
 					<li><a href="faqs.html">常见问题</a></li>
@@ -487,8 +530,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="col-md-12 footer-class">
-				<p>Copyright © 2012-2017 房中房科技有限公司 版权所有 保留一切权利 京B2-20130048号 | 京ICP备09062682号-9</p>
-				<p >Copyright &copy; 2012-2017.HouseInHouse All rights reserved.</p>
+				<p  style="text-align: center">Copyright © 2012-2017 房中房科技有限公司 版权所有 保留一切权利 京B2-20130048号 | 京ICP备09062682号-9</p>
+				<p  style="text-align: center">Copyright &copy; 2012-2017.HouseInHouse All rights reserved.</p>
 			</div>
 			<div class="clearfix"> </div>
 		</div>

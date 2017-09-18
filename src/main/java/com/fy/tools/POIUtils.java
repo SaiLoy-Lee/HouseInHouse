@@ -62,19 +62,17 @@ public class POIUtils {
             Order order=data.get(i);
 
             Date in=order.getHhOrdersIntime();
-            Date out=new Date();
+            Date out=order.getHhOrdersOuttime();
 
             int day=0;
 
             if(out==null){
-                long ms=out.getTime()-in.getTime();
-                day=(int) (ms/(1000*60*60*24));
-            }else {
-                Long ms=out.getTime()-in.getTime();
-                day=(int) (ms/(1000*60*60*24));
+                out= new Date();
             }
 
 
+            long ms=out.getTime()-in.getTime();
+            day=(int) (ms/(1000*60*60*24));
 
 
             strArr[i][0]=i+1+"";

@@ -8,6 +8,10 @@
 #navMenubar #back {width:70px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/back.gif") no-repeat;}
 #navMenubar #stop {width:45px;height:21px;padding-left:16px;padding-top:5px;background:url("../images/button/iconbg.jpg") no-repeat left 1px;}
 #navMenubar #save {width:70px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/save.gif") no-repeat;}
+
+#navMenubar #save1 {width:90px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/save_edit.gif") no-repeat;}
+#navMenubar #download {width:95px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/dosearch1.gif") no-repeat;}
+
 #navMenubar #submit {width:70px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/save.gif") no-repeat;}
 #navMenubar #view {width:70px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/view.gif") no-repeat;}
 #navMenubar #accept { width:70px;height:25px;color:#00554a;padding-left:16px;padding-top:5px; background:url("../images/button/accept.gif") no-repeat;}

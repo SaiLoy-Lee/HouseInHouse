@@ -17,6 +17,7 @@
         body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
         #allmap{height:95%;width:100%;}
         #r-result{width:100%; font-size:14px;}
+        #lngLatFind{width: 300px;height:300px;}
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lmzmXu8zuVQieAs9UMqi3gY27pQFewEp"></script>
     <title>房中房获取小区地址</title>
@@ -26,9 +27,13 @@
 <div id="lngLatFind">
 <div id="allmap"></div>
 <div id="r-result">
-    经度: <input name="longitude" id="longitude" type="text" style="width:100px; margin-right:10px;" />
-    纬度: <input name="latitude" id="latitude" type="text" style="width:100px; margin-right:10px;" />
-    <input type="button" value="查询" onclick="theLocation()" />
+    经度: <input name="longitude" id="longitude" type="text" value="39.799384,116.591304" style="width:100px; margin-right:10px;" />
+    纬度: <input name="latitude" id="latitude" type="text" value=" 北小营路 " style="width:100px; margin-right:10px;" />
+    <input name="village" id="village" type="text" value="次渠嘉园一区" style="width:100px; margin-right:10px;" />
+    <%--<input type="button" value="查询" onclick="theLocation()" />--%>
+
+
+        <input type="button" value="地图详情>" onclick="theMapdetails()" style="width:280px; height:50px;  margin-right:10px;"/>
 </div>
     </div>
 </body>
@@ -51,7 +56,42 @@
 //    }
 
 
-    // 用经纬度设置地图中心点
+    //要改id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    var ll=document.getElementById("longitude").value;
+    var arr=ll.split(",");
+    address=document.getElementById("latitude").value.trim();
+    village=document.getElementById("village").value;
+
+    window.onload=function(){
+
+//        var ll="39.872488,116.694164";
+//        var arr=ll.split(",");
+
+
+
+        var longitude=arr[1];
+        var latitude=arr[0];
+
+
+        map.clearOverlays();
+
+        var new_point = new BMap.Point(longitude,latitude);
+
+        var marker = new BMap.Marker(new_point);
+        map.addOverlay(marker);
+        map.panTo(new_point);
+    }
+
+    function theMapdetails(){
+
+
+
+        window.location.href="http://map.baidu.com/?latlng="+ll+"&title="+address+"&content="+village+"&autoOpen=true&l";
+
+
+    }
+
+
     function theLocation(){
         if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
             map.clearOverlays();

@@ -21,15 +21,15 @@
         	</tr>
         	<tr>
 				<td class="model_intro_left">房源概况：</td>
-				<td class="model_intro_right">a) 房屋发布的租金 	b)	订单成交的租金	c)	图解：反映了大部分人的消费趋向</td>
+				<td class="model_intro_right"> 数据来源：房屋发布的租金 、订单成交的租金	</br>	图解：反映了大部分人的消费趋向</td>
         	</tr>        	
 			<tr>
 				<td class="model_intro_left">租金占比图：</td>
-				<td class="model_intro_right">a)	房屋信息发布数量 b)	订单成交入住数量 c)	图解：当发布数量与入住数量的间隔越小的时候，说明房屋资源利用率越高，反之则越低</td>
+				<td class="model_intro_right">数据来源：	房屋信息发布数量、订单成交入住数量</br>	  图解：当发布数量与入住数量的间隔越小的时候，说明房屋资源利用率越高，反之则越低</td>
         	</tr>        	
 			<tr>
 				<td class="model_intro_left" width="169">房屋来源占比图：</td>
-				<td class="model_intro_right" width="81%">a)	房源发布信息【管理员/个人】 b)	逻辑：反映了房源信息来源情况 </td>
+				<td class="model_intro_right" width="81%">数据来源：房源发布信息【管理员/个人】</br>	  图解反映了房源信息来源情况 </td>
 			</tr>
 			
 			<tfoot>

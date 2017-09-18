@@ -16,9 +16,47 @@ public class Role extends BaseEntity {
         return hhRoleId;
     }
     public  String getName(){
-        return  hhRoleName;
+        return hhRoleName;
+    }
+    public String getHhRoleId() {
+        return hhRoleId;
     }
 
+    public void setHhRoleId(String hhRoleId) {
+        this.hhRoleId = hhRoleId;
+    }
+
+    public String getHhRoleName() {
+        return hhRoleName;
+    }
+
+    public void setHhRoleName(String hhRoleName) {
+        this.hhRoleName = hhRoleName;
+    }
+
+    public Integer getHhRoleOrderNo() {
+        return hhRoleOrderNo;
+    }
+
+    public void setHhRoleOrderNo(Integer hhRoleOrderNo) {
+        this.hhRoleOrderNo = hhRoleOrderNo;
+    }
+
+    public String getHhRoleRemarks() {
+        return hhRoleRemarks;
+    }
+
+    public void setHhRoleRemarks(String hhRoleRemarks) {
+        this.hhRoleRemarks = hhRoleRemarks;
+    }
+
+    public Integer getHhRoleStatus() {
+        return hhRoleStatus;
+    }
+
+    public void setHhRoleStatus(Integer hhRoleStatus) {
+        this.hhRoleStatus = hhRoleStatus;
+    }
 
     public Boolean getChecked() {
         return checked;
@@ -26,47 +64,5 @@ public class Role extends BaseEntity {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
-    }
-
-
-
-    public String gethhRoleId() {
-        return hhRoleId;
-    }
-
-    public void sethhRoleId(String hhRoleId) {
-        this.hhRoleId = hhRoleId;
-    }
-
-    public String gethhRoleName() {
-        return hhRoleName;
-    }
-
-    public void sethhRoleName(String hhRoleName) {
-        this.hhRoleName = hhRoleName;
-    }
-
-    public String gethhRoleRemarks() {
-        return hhRoleRemarks;
-    }
-
-    public void sethhRoleRemarks(String hhRoleRemarks) {
-        this.hhRoleRemarks = hhRoleRemarks;
-    }
-
-    public Integer gethhRoleOrderNo() {
-        return hhRoleOrderNo;
-    }
-
-    public void sethhRoleOrderNo(Integer hhRoleOrderNo) {
-        this.hhRoleOrderNo = hhRoleOrderNo;
-    }
-
-    public Integer gethhRoleStatus() {
-        return hhRoleStatus;
-    }
-
-    public void sethhRoleStatus(Integer hhRoleStatus) {
-        this.hhRoleStatus = hhRoleStatus;
     }
 }
