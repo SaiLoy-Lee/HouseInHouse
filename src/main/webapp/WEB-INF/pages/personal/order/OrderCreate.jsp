@@ -1,3 +1,4 @@
+<%@ page import="com.fy.pojo.Order" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../baselist.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -120,6 +121,27 @@
 
         }
         //确认开始时间
+        <% Order order=(Order)request.getAttribute("order");
+                String  imgUrlB=order.getHouseInfo().getHhHouseImg();
+                String[] imgUrls=imgUrlB.split(",");
+                 String firstImg=null;
+                 String middImg=null;
+                 String lastImg=null;
+                 int nx=0;
+                if(imgUrls.length==1){
+                    firstImg=middImg=lastImg=imgUrls[0];
+                }else if(imgUrls.length==2){
+                    firstImg=middImg=imgUrls[0];
+                    lastImg=imgUrls[1];
+                }else if(imgUrls.length>2){
+                firstImg=imgUrls[0];
+                middImg=imgUrls[1];
+                lastImg=imgUrls[2];
+                }else{
+                 firstImg=middImg=lastImg="";
+                }
+
+                 %>
 
 
         //-------------------------------------------------------
@@ -176,8 +198,9 @@
     <div>
         <div id="warp">
             <div id="left">
+
                 <div id="left_top">
-                    <img src="img/prodInfo/prod.jpg"/>
+                    <img src="<%=firstImg%>"/>
                 </div>
                 <div style="text-align: center ; margin: 20px ; padding:0 50px; font-size: 16px;height: 60px;word-wrap: break-word">
 
@@ -185,9 +208,10 @@
 
                 </div>
                 <div id="left_bottom">
-                    <img id="lf_img" src="img/prodInfo/lf.jpg"/>
-                    <img id="mid_img" src="img/prodInfo/prod.jpg" width="60px" height="60px"/>
-                    <img id="rt_img" src="img/prodInfo/rt.jpg"/>
+                    <img id="lf_img" class="img" src="<%=firstImg%>" onclick="selectImg('per')"/>
+                    <img id="mid_img" src="<%=middImg%>" width="60px" height="60px" />
+                    <input value="" type="hidden">
+                    <img id="rt_img" src="<img src=<%=lastImg%>" onclick="selectImg('next')"/>
                 </div>
 
 
@@ -217,7 +241,7 @@
                         </tr>
                         <tr class="odd">
                             <td class="tda">房源编号:</td>
-                            <td>12${order.houseInfo.id}<input value="${order.houseInfo.hhHouseId}" name="hhHouseId"
+                            <td>12${order.houseInfo.hhHouseId}<input value="${order.houseInfo.hhHouseId}" name="hhHouseId"
                                                               type="hidden">
                             </td>
                         </tr>
@@ -341,7 +365,6 @@
             </div>
         </div>
     </div>
-
 
 </form>
 

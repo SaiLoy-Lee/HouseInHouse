@@ -23,4 +23,8 @@ public interface ModuleMapper {
 
     public void updateModule(Module module);
 
+    @Select("select hh_moduleid from hh_module_role where hh_roleid = #{hhRoleId}")
+    public List<String> findModuleListByRoleId(String hhRoleId);
+
+
 }

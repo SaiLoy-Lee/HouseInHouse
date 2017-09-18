@@ -15,5 +15,6 @@ public interface ModuleService {
     public void deleteModule(String[] hhModuleIds);
 
 
+    public List<String> findModuleListByRoleId(String hhRoleId);
 
 }

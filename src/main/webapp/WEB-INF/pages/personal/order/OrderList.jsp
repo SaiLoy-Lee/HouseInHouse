@@ -1,10 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../baselist.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%--<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>--%>
+
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>全部订单</title>
+    <script src="${ctx}/staticfile/js/jquery-1.6.2.js"></script>
 </head>
 
 <body>
@@ -17,6 +20,16 @@
                     <ul>
                         <li id="view"><a href="#" onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
                         <li id="update"><a href="#" onclick="formSubmit('delete','_self');this.blur();">删除</a>
+
+
+
+                        <li id="update"><a href="#" onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
+
+                        <li id="save1"><a href="#" onclick="formSubmit('auditing','_self');this.blur();">审核提交</a></li>
+
+                        <li id="save1"><a href="#" onclick="formSubmit('viewDel','_self');this.blur();">已删除订单</a></li>
+
+                        <li id="download"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载订单报表</a></li>
 
                     </ul>
                 </div>
@@ -61,15 +74,21 @@
                             <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
                                 <td><input type="checkbox" name="hhOrdersId" value="${o.hhOrdersId}"/></td>
                                 <td>${status.index+1}</td>
-                                    <td width="150px"><img src="${o.houseInfo.hhHouseImg}" width="150px" height="150px">
+                                    <td width="150px"><img src="" id="img${status.index+1}" width="150px" height="150px">
                                     </td>
+                                <script>
+                                    var urls="${o.houseInfo.hhHouseImg}";
+                                    var url="/personal/order/getImgUrl?imgUrl="+urls.split(",")[0];
+                                    $("#img${status.index+1}").attr("src",url);
+                                </script>
                                 <td style="word-wrap: break-word;width:120px;"><a
                                         href="dept/toview?id=${o.hhOrdersId}">${o.hhOrdersId}</a></td>
-                                <td><c:if test="${o.hhOrdersStatus==1}"><span style="color:red">审核中</span></c:if>
+                                <td><c:if test="${o.hhOrdersStatus==1}"><span style="color:red">订单审核中</span></c:if>
                                     <c:if test="${o.hhOrdersStatus==2}"><span style="color:red">审核未通过</span></c:if>
                                     <c:if test="${o.hhOrdersStatus==3}">已入住</c:if>
                                     <c:if test="${o.hhOrdersStatus==4}">已退房</c:if>
                                     <c:if test="${o.hhOrdersStatus==5}">已取消</c:if>
+                                    <c:if test="${o.hhOrdersStatus==6}"><span style="color:red">退租审核中</span></c:if>
                                 </td>
 
                                 <td style="word-wrap: break-word;width:120px;">${o.houseInfo.hhHouseId}12</td>

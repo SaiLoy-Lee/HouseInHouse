@@ -117,6 +117,11 @@
 			<artifactId>quartz</artifactId>
 			<version>2.2.1</version>
 		</dependency>
+		<dependency><!-- 该依赖必加，里面有sping对schedule的支持 -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
 
 		<!-- POI依赖 -->
 		<dependency>
