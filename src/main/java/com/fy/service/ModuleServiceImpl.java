@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class ModuleServiceImpl implements ModuleService{
 
-
+        @Autowired
         private ModuleMapper moduleMapper;
 
     @Override
@@ -44,7 +44,10 @@ public class ModuleServiceImpl implements ModuleService{
         moduleMapper.deleteModule(hhModuleIds);
     }
 
-
+    @Override
+    public List<String> findModuleListByRoleId(String hhRoleId) {
+        return moduleMapper.findModuleListByRoleId(hhRoleId);
+    }
 
 
 }

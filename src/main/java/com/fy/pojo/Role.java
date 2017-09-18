@@ -9,6 +9,26 @@ public class Role extends BaseEntity {
     private String hhRoleRemarks;
     private Integer hhRoleOrderNo;
     private Integer hhRoleStatus;
+    private Boolean  checked;
+
+
+    public  String getId(){
+        return hhRoleId;
+    }
+    public  String getName(){
+        return  hhRoleName;
+    }
+
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
+
 
     public String gethhRoleId() {
         return hhRoleId;

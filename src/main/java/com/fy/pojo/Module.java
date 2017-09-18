@@ -11,6 +11,32 @@ public class Module extends BaseEntity {
     private Integer hhModuleState;
     private Integer hhModuleOrderNo;
     private String hhModuleRemarks;
+    private Boolean checked;
+
+
+    public  String getId(){
+        return hhModuleId;
+    }
+    public  String getName(){
+        return hhModuleName;
+    }
+
+    public String getpId(){
+        //获取上级模块的id
+        if(parentModule !=null){
+            return parentModule.gethhModuleId();
+        }
+        return "";
+    }
+
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 
     public String gethhModuleId() {
         return hhModuleId;

@@ -47,6 +47,7 @@
 							<td class="tableHeader">备注信息</td>
 							<td class="tableHeader">排序号</td>
 							<td class="tableHeader">修改时间</td>
+							<td class="tableHeader">状态</td>
 						</tr>
 					</thead>
 					<tbody class="tableBody">
@@ -59,9 +60,13 @@
 								<td>${status.index+1}</td>
 								<td>${h.hhRoleName}</td>
 								<td>${h.hhRoleRemarks}</td>
-								<td>${h.hhRoleorderNo}</td>
+								<td>${h.hhRoleOrderNo}</td>
 								<td><fmt:formatDate value="${h.updateTime}"
 										pattern="yyyy-MM-dd" /></td>
+								<td>
+								<c:if test="${h.hhRoleStatus==1}"><a href="stop?hhRoleId=${h.hhRoleId}"><font color="green">启用</font> </a> </c:if>
+									<c:if test="${h.hhRoleStatus==0}"><a href="start?hhRoleId=${h.hhRoleId}"><font color="red">停用</font> </a> </c:if>
+								</td>
 							</tr>
 						</c:forEach>
 
@@ -74,34 +79,6 @@
 
 	</form>
 
-<div class="eXtremeTable" >
-<table id="ec_table" class="tableRegion" width="98%" >
-	<thead>
-	<tr>
-		<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('roleId',this)"></td>
-		<td class="tableHeader">序号</td>
-		<td class="tableHeader">角色名称</td>
-		<td class="tableHeader">备注信息</td>
-		<td class="tableHeader">排序号</td>
-		<td class="tableHeader">修改时间</td>
-	</tr>
-	</thead>
-	<tbody class="tableBody" >
-	
-	<c:forEach items="${roleList}" var="r" varStatus="status">
-	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
-		<td><input type="checkbox" name="roleId" value="${r.roleId}"/></td>
-		<td>${status.index+1}</td>
-		<td>${r.name}</td>
-		<td>${r.remarks}</td>
-		<td>${r.orderNo}</td>
-		<td><fmt:formatDate value="${r.updateTime}" pattern="yyyy-MM-dd"/></td>	
-	</tr>
-	</c:forEach>
-	
-	</tbody>
-</table>
-</div>
  
 </div>
  

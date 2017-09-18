@@ -35,25 +35,25 @@
 <div class="eXtremeTable" >
 <table id="ec_table" class="tableRegion" width="98%" >
 
-	<tr class="odd" hidden="hidden">
+	<%--<tr class="odd" hidden="hidden">
 		<td>角色Id:</td>
-		<td><input  type="text" name="roleId" value="${role.roleId}"/></td>
-	</tr>
+		<td><input  type="text" name="hhRoleId" value="${role.hhRoleId}"/></td>
+	</tr>--%>
 	
 	<tr class="odd">
 		<td>角色名称:</td>
 
 		<td>
-			<input  type="text" name="name" value="${role.hhRoleName}"/>
+			<input  type="text" name="hhRoleName" value="${role.hhRoleName}"/>
 			<input type="hidden" name="hhRoleId" value="${role.hhRoleId}"/>
 		</td>
 
-		<td><input  type="text" name="name" value="${role.name}"/></td>
+	<%--	<td><input  type="text" name="name" value="${role.name}"/></td>--%>
 
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="hhRoleorderNo" value="${role.hhRoleorderNo}"/></td>
+		<td><input  type="text" name="hhRoleOrderNo" value="${role.hhRoleOrderNo}"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>
@@ -69,10 +69,10 @@
 			<input type="radio" name="hhRoleStatus" value="0" <c:if test="${role.hhRoleStatus ==0}">checked="checked"</c:if>/>停用
 
 
-		<td>
+		<%--<td>
 			<textarea style="height:130px;width:100%" name="remarks">${role.remarks}</textarea>
 
-		</td>
+		</td>--%>
 	</tr>
 </table>
 </div>

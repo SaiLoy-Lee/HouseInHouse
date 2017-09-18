@@ -1,5 +1,6 @@
 package com.fy.service;
 
+import com.fy.mapper.ModuleMapper;
 import com.fy.mapper.RoleMapper;
 import com.fy.pojo.Role;
 
@@ -15,8 +16,10 @@ import java.util.UUID;
 @Service
 public class RoleServiceImpl implements  RoleService{
 
-
+    @Autowired
     private RoleMapper roleMapper;
+    @Autowired
+    private ModuleMapper moduleMapper;
 
 
     public List<Role> findAll() {
@@ -29,15 +32,11 @@ public class RoleServiceImpl implements  RoleService{
     }
 
     @Override
-    public void toStart(String[] hhRoleIds, int hhRoleStatus) {
+    public void UpdateState(String[] hhRoleIds, int hhRoleStatus) {
 
-        roleMapper.toStart(hhRoleIds,hhRoleStatus);
+        roleMapper.UpdateState(hhRoleIds,hhRoleStatus);
     }
 
-    @Override
-    public void toStop(String[] hhRoleIds, int hhRoleStatus) {
-        roleMapper.toStop(hhRoleIds,hhRoleStatus);
-    }
 
     @Override
     public void SaveRole(Role role) {
@@ -55,8 +54,7 @@ public class RoleServiceImpl implements  RoleService{
 
     @Override
     public void update(Role role) {
-        role.sethhRoleId(UUID.randomUUID().toString());
-        role.setCreateTime(new Date());
+
         role.setUpdateTime(role.getCreateTime());
         roleMapper.update(role);
     }
@@ -64,6 +62,17 @@ public class RoleServiceImpl implements  RoleService{
     @Override
     public Role toview(String hhRoleId) {
         return roleMapper.toview(hhRoleId);
+    }
+
+    @Override
+    public void saveRoleModules(String hhRoleId, String[] hhModuleIds) {
+        roleMapper.deleteRole(hhRoleId);
+
+        //保存角色和模块的关联关系
+        for (String hhModuleId : hhModuleIds) {
+            roleMapper.saveRoleModule(hhRoleId,hhModuleId);
+        }
+
     }
 
 

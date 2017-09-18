@@ -36,11 +36,11 @@
 	<tr class="odd">
 		<td>角色名称:</td>
 
-		<td>${role.name}</td>
+		<td>${role.hhRoleName}</td>
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td>${role.orderNo}</td>
+		<td>${role.hhRoleOrderNo}</td>
 	</tr>
 	<tr class="odd">
 		<td>创建日期:</td>
@@ -53,7 +53,7 @@
 	<tr class="odd">
 		<td>备注信息:</td>
 		<td>
-			<textarea style="height:130px;width:100%" name="remarks">${role.remarks}</textarea>
+		      ${role.hhRoleRemarks}
 		</td>
 	</tr>
 </table>
