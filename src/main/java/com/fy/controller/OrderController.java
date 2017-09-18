@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
@@ -69,11 +70,11 @@ public class OrderController extends BaseController {
         return "/personal/order/OrderCreate";
     }
 
-    @RequestMapping("/personal/order/getImgUrl/${ImgUrl}")
-    public void getImgUrl(@PathVariable String ImgUrl, HttpServletResponse response) {
-        String[] imgUrls=ImgUrl.split(",");
-        for (String imgUrl:imgUrls) {
-            File img = new File(ImgUrl);
+    @RequestMapping("/getImgUrl")
+    public void getImgUrl(String imgUrl,HttpServletResponse response) {
+
+
+            File img = new File(imgUrl);
             try {
                 InputStream is=new FileInputStream(img);
                 OutputStream os = response.getOutputStream();
@@ -87,7 +88,7 @@ public class OrderController extends BaseController {
                 e.printStackTrace();
             }
 
-        }
+
     }
 
     //获取手机验证
@@ -180,8 +181,15 @@ public class OrderController extends BaseController {
     }
 
     @RequestMapping("updateStatus/{status}")
-    public String updateStatus(@RequestParam(required = true, value = "hhOrdersId") String[] hhOrdersIds, String hhOrdersRemarks, @PathVariable String status) {
+    public String updateStatus(@RequestParam(required = true, value = "hhOrdersId") String[] hhOrdersIds, String hhOrdersRemarks,String userStatus, @PathVariable String status) {
+       if(userStatus!=null){
+           Order order=orderService.findOrderByOrderId(hhOrdersIds[0]);
+           String[] userIds=new String[]{order.getUser().getHhUserId()};
 
+
+           userService.updateStatus(userIds,Integer.parseInt(userStatus));
+
+       }
         orderService.updateOrderStatus(hhOrdersIds, status, hhOrdersRemarks);
         return "redirect:/personal/order/findList？status=" + status;
     }

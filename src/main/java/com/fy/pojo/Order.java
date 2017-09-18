@@ -8,6 +8,7 @@ import java.util.Date;
 public class Order extends BaseEntity{
     private String hhOrdersId;//订单D
     private User user;//用户ID
+
     private HouseInfo houseInfo;//房间ID
     private Integer hhOrdersStatus;//订单状态
     private Date hhOrdersIntime;//入住日期
