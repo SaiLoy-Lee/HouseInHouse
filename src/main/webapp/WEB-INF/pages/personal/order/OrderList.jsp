@@ -77,6 +77,7 @@
                                     <td width="150px"><img src="" id="img${status.index+1}" width="150px" height="150px">
                                     </td>
                                 <script>
+
                                     var urls="${o.houseInfo.hhHouseImg}";
                                     var url="/personal/order/getImgUrl?imgUrl="+urls.split(",")[0];
                                     $("#img${status.index+1}").attr("src",url);

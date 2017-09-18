@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../baselist.jsp" %>
-<%--<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>--%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -22,7 +22,14 @@
     <div class="panel">
         <div class="panel_icon"><img src="${ctx}/staticfile/skin/default/images/icon/cubes.png"/></div>
         <div class="panel-header">
-            <div class="panel-title">个人中心</div>
+            <div class="panel-title">
+<shiro:hasPermission name="用户">
+                个人中心
+</shiro:hasPermission>
+                <shiro:hasPermission name="管理员">
+                    订单管理
+                </shiro:hasPermission>
+            </div>
             <div class="panel-content">
                 <ul>
                     <shiro:hasPermission name="管理员">

@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../baselist.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%--<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>--%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>全部订单</title>
@@ -20,7 +20,7 @@
                         <c:if test="${o.hhOrdersStatus!=12}">
                         <li id="delete"><a href="#" onclick="formSubmit('updateStatus/12','_self');this.blur();">删除</a>
                             </c:if>
-                        <li id="save"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载</a></li>
+                        <li id="download"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载订单报表</a></li>
                     </ul>
                 </div>
             </div>

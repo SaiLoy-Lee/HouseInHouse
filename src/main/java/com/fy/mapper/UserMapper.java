@@ -33,7 +33,7 @@ public interface UserMapper {
     public void deleteUserRole(String hhUserId);
 
     @Insert("insert into hh_role_user(hh_role_id,hh_user_id) values (#{hhRoleId},#{hhUserId})")
-    public void saveUserRole(String hhUserId, String roleId);
+    public void saveUserRole(@Param("hhUserId") String hhUserId, @Param("hhRoleId")String hhRoleId);
 
     public List<User> findUserByStatus();
 }

@@ -2,7 +2,7 @@
 <%@ include file="../base.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<%--<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>--%>
+
 <jsp:useBean id="now" class="java.util.Date"/>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
