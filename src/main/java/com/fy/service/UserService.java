@@ -2,6 +2,7 @@ package com.fy.service;
 
 import com.fy.pojo.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,11 +16,20 @@ public interface UserService {
     public void deleteUser(String[] hhUserIds);
 
     public void saveUser(User user);
-
+    
 
     public User findUserById(String hhUserId);
 
     public void updateUser(User user);
 
     public User findUserByUsername(String hhUserUsername);
+
+
+    public List<String> findRoleIdList(String hhUserId);
+
+    public void saveUserRole(String hhUserId, String[] hhRoleIds);
+
+    public List<User> findUserByStatus();
+
+
 }
