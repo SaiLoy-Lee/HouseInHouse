@@ -41,7 +41,7 @@
 	</tr>
 	<tr class="odd">
 		<td>排序号:</td>
-		<td><input  type="text" name="hhRoleorderNo"/></td>
+		<td><input  type="text" name="hhRoleOrderNo"/></td>
 	</tr>
 	<tr class="odd">
 		<td>备注信息:</td>

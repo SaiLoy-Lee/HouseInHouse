@@ -24,7 +24,7 @@
     </resultMap>
 
     <update id="UpdateState">
-        update module_p set hhModuleState = #{hhModuleState} where hh_module_id in (
+        update hh_module set hh_module_state = #{hhModuleState} where hh_module_id in (
         <foreach collection="hhModuleIds" item="id" separator=",">
             #{id}
         </foreach>
@@ -34,13 +34,13 @@
     <insert id="saveModule">
 insert into hh_module (hh_module_id,hh_module_parent_id,hh_module_name,hh_module_ctype,hh_module_state,hh_module_order_no,hh_module_remarks,create_by,create_dept,create_time,update_by,update_time)
 values(
-	        #{hhmoduleid},
-			#{parentmodule.hhmoduleid},
-			#{hhmodulename},
-			#{hhmodulectype},
-			#{hhmodulestate},
-			#{hhmoduleorderno},
-			#{hhmoduleremarks},
+	        #{hhModuleId},
+			#{parentModule.hhModuleId},
+			#{hhModuleName},
+			#{hhModuleCtype},
+			#{hhModuleState},
+			#{hhModuleOrderNo},
+			#{hhModuleRemarks},
 			 #{createBy,jdbcType=VARCHAR},
               #{createDept,jdbcType=VARCHAR},
               #{createTime,jdbcType=DATE},
