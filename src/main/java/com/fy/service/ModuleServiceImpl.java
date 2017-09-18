@@ -33,8 +33,8 @@ public class ModuleServiceImpl implements ModuleService{
     public void saveModule(Module module) {
 
         module.sethhModuleId(UUID.randomUUID().toString());
-        module.setcreateTime(new Date());
-        module.setupdateTime(module.getcreateTime());
+        module.setCreateTime(new Date());
+        module.setUpdateTime(module.getCreateTime());
 
         moduleMapper.saveModule(module);
     }
