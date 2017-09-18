@@ -41,8 +41,8 @@ public class RoleServiceImpl implements  RoleService{
     @Override
     public void SaveRole(Role role) {
         role.sethhRoleId(UUID.randomUUID().toString());
-        role.setcreateTime(new Date());
-        role.setupdateTime(role.getcreateTime());
+        role.setCreateTime(new Date());
+        role.setUpdateTime(role.getCreateTime());
         roleMapper.SaveRole(role);
     }
 
@@ -55,7 +55,7 @@ public class RoleServiceImpl implements  RoleService{
     @Override
     public void update(Role role) {
 
-        role.setupdateTime(role.getcreateTime());
+        role.setUpdateTime(role.getCreateTime());
         roleMapper.update(role);
     }
 
