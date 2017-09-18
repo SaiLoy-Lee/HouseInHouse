@@ -54,10 +54,10 @@
 
 
     <select id="findAll" resultMap="orderRM">
-       <include refid="orderAll"  />
+       <include refid="orderAll"  /> order by create_time
     </select>
     <select id="findOrdersByUserId" resultMap="orderRM">
-        <include refid="orderAll"  />AND u.hh_user_id=#{hhUserId}
+        <include refid="orderAll"  />AND u.hh_user_id=#{hhUserId} order by create_time
     </select>
     <select id="findRolesByUserId" resultType="Role">
         select r.* from hh_role_user ru, hh_role r where ru.hh_role_id=r.hh_role_id and ru.hh_user_id=#{hhUserId}
