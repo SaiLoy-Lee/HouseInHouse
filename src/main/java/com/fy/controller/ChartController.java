@@ -82,11 +82,18 @@ public class ChartController {
         ObjectMapper objectMapper = new ObjectMapper();
         String data1 = objectMapper.writeValueAsString(arrHouse);
         String data2 = objectMapper.writeValueAsString(arrOrder);
-        Integer year = 2017;
-        String season = "二";
+        Integer year1 = date1.getYear()+1900;
+        Integer year2 = date2.getYear()+1900;
 
-        model.addAttribute("year", year);
-        model.addAttribute("season", season);
+        Integer month1 = date1.getMonth()+1;
+        Integer month2 = date2.getMonth()+1;
+        //String season = date1.getMonth()/3;
+
+        model.addAttribute("year1", year1);
+        model.addAttribute("year2", year2);
+        model.addAttribute("month1", month1);
+        model.addAttribute("month2", month2);
+        //model.addAttribute("season", season);
         model.addAttribute("data1", data1);
         model.addAttribute("data2", data2);
 
@@ -148,11 +155,18 @@ public class ChartController {
         ObjectMapper objectMapper = new ObjectMapper();
         String data1 = objectMapper.writeValueAsString(arrHouse);
         String data2 = objectMapper.writeValueAsString(arrOrder);
-        Integer year = 2017;
-        String season = "一";
+        Integer year1 = date1.getYear()+1900;
+        Integer year2 = date2.getYear()+1900;
 
-        model.addAttribute("year", year);
-        model.addAttribute("season", season);
+        Integer month1 = date1.getMonth()+1;
+        Integer month2 = date2.getMonth()+1;
+        //String season = date1.getMonth()/3;
+
+        model.addAttribute("year1", year1);
+        model.addAttribute("year2", year2);
+        model.addAttribute("month1", month1);
+        model.addAttribute("month2", month2);
+        //model.addAttribute("season", season);
         model.addAttribute("data1", data1);
         model.addAttribute("data2", data2);
 
@@ -203,11 +217,18 @@ public class ChartController {
         ObjectMapper objectMapper = new ObjectMapper();
         String data1 = objectMapper.writeValueAsString(arrHouse);
         String data2 = objectMapper.writeValueAsString(arrOrder);
-        Integer year = 2016;
-        String season = "四";
+        Integer year1 = date1.getYear()+1900;
+        Integer year2 = date2.getYear()+1900;
 
-        model.addAttribute("year", year);
-        model.addAttribute("season", season);
+        Integer month1 = date1.getMonth()+1;
+        Integer month2 = date2.getMonth()+1;
+        //String season = date1.getMonth()/3;
+
+        model.addAttribute("year1", year1);
+        model.addAttribute("year2", year2);
+        model.addAttribute("month1", month1);
+        model.addAttribute("month2", month2);
+        //model.addAttribute("season", season);
         model.addAttribute("data1", data1);
         model.addAttribute("data2", data2);
 

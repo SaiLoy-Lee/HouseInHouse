@@ -11,14 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BaiduMapController {
 
-    @RequestMapping("/openMap1")
-    public String openMap1(Model model){
-        return "/baidumap/map1";
+    @RequestMapping("/mapShow")
+    public String mapShow(Model model){
+        return "/baidumap/mapShow";
     }
 
-    @RequestMapping("/openMap2")
-    public String openMap2(Model model){
-        return "/baidumap/map2";
+    @RequestMapping("/mapOutdoorScene")
+    public String mapOutdoorScene(Model model){
+        return "/baidumap/mapOutdoorScene";
+    }
+
+    @RequestMapping("/mapLongitudeAndLatitudeFind")
+    public String mapLongitudeAndLatitudeFind(Model model){
+        return "/baidumap/mapLongitudeAndLatitudeFind";
+    }
+
+    @RequestMapping("/mapFindLongitudeAndLatitude")
+    public String mapFindLongitudeAndLatitude(Model model){
+        return "/baidumap/mapFindLongitudeAndLatitude";
     }
 
 
