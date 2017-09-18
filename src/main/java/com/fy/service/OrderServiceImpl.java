@@ -156,7 +156,7 @@ public class OrderServiceImpl implements OrderService {
     public void checkOutOrder(String hhOrdersId) throws MegException {
         Order order = orderMapper.findOrderByOrderId(hhOrdersId);
         if (order.getHhOrdersStatus() == 3) {
-            String status = "4";
+            String status = "6";
             orderMapper.updateOrderStatus(hhOrdersId, status);
             SendVerfyCodeReal(order, "6");
 
