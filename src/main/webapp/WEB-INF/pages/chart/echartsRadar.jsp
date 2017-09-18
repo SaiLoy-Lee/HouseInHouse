@@ -17,7 +17,7 @@
 
 	        option = {
 			    title: {
-			        text: '${year}年第${season}季度租金占比图'
+			        text: '${year1}年第${month1}月到${year2}年${month2}月租金占比图'
 			    },
 			    tooltip: {},
 			    legend: {
@@ -70,7 +70,7 @@
 <body>
 	<div id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="picture" style="width: 700px;height:500px;"></div>
+    <div id="picture" style="width: 800px;height:500px;"></div>
     
 </body>
 </html>
