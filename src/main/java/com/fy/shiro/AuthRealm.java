@@ -30,7 +30,7 @@ public class AuthRealm extends AuthorizingRealm{
 		List<Role> rList=orderMapper.findRolesByUserId(userId);
 		List<String> pList=new ArrayList<String>();
 		for (Role role:rList) {
-			pList.add(role.gethhRoleName());
+			pList.add(role.getHhRoleName());
 		}
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.addStringPermissions(pList);
