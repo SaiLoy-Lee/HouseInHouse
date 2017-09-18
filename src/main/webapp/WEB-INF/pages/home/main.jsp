@@ -167,9 +167,8 @@ window.onerror = killErrors;
  
 <li id="new"><a href="#">新建</a></li>
 <li id="save"><a href="#" title="保存留言窗口的位置信息">位置</a></li>
-	<%--POI订单报表下载--%>
-<li id="save"><a href="${ctx}/download.action" title="下载订单报表">下载</a></li>
- 
+
+
 </ul>
     </div>
 </div>

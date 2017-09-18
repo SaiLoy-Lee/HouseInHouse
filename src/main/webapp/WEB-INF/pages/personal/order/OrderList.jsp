@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../baselist.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>全部订单</title>
@@ -21,9 +21,11 @@
 
                         <li id="update"><a href="#" onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
 
-                        <li id="delete"><a href="#" onclick="formSubmit('auditing','_self');this.blur();">审核提交</a></li>
-                        <li id="new"><a href="#" onclick="formSubmit('viewDel','_self');this.blur();">已删除订单</a></li>
+                        <li id="save1"><a href="#" onclick="formSubmit('auditing','_self');this.blur();">审核提交</a></li>
 
+                        <li id="save1"><a href="#" onclick="formSubmit('viewDel','_self');this.blur();">已删除订单</a></li>
+
+                        <li id="download"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载订单报表</a></li>
 
                     </ul>
                 </div>
