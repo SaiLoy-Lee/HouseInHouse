@@ -91,7 +91,13 @@
         </set>
         where hh_user_id = #{hhUserId}
     </update>
-
+    <select id="toCheck">
+        select hh_user_username from hh_user where hh_user_username = #{hhUserUsername}
+    </select>
+    <select id="findUserByStatus" resultMap="userRM">
+        select hh_user_id,hh_user_name,hh_user_tel,create_dept,hh_dept_stoptime from hh_dept d,hh_user u
+        where d.hh_dept_id = u.hh_user_dept_id
+    </select>
 
 
 </mapper>

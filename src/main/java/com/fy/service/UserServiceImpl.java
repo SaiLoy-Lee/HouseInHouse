@@ -60,4 +60,24 @@ public class UserServiceImpl implements UserService{
         return userMapper.findUserByUsername(hhUserUsername);
     }
 
+    @Override
+    public List<String> findRoleIdList(String hhUserId) {
+        return userMapper.findRoleIdList(hhUserId);
+    }
+
+    @Override
+    public void saveUserRole(String hhUserId, String[] hhRoleIds) {
+        userMapper.deleteUserRole(hhUserId);
+
+        for (String roleId : hhRoleIds) {
+            userMapper.saveUserRole(hhUserId,roleId);
+        }
+    }
+
+    @Override
+    public List<User> findUserByStatus() {
+        return userMapper.findUserByStatus();
+    }
+
+
 }
