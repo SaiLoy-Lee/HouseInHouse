@@ -4,9 +4,64 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fy.mapper.HouseInfoMapper">
 
-    <select id="findAll" resultType="com.fy.pojo.Dept">
+    <select id="findAll" resultType="com.fy.pojo.HouseInfo">
         select * from
-       house_info
+       hh_house where hh_house_status NOT IN (2)
 
     </select>
+
+
+    <update id="deletehhHouseId">
+        update  hh_house set hh_house_status=#{hhHouseIdStatus} where hh_house_id in(
+        <foreach collection="hhHouseIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+    <update id="toStart">
+        update  hh_house set hh_house_status=#{hhHouseIdStatus} where hh_house_id in(
+        <foreach collection="hhHouseIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+
+    <update id="toStop">
+        update  hh_house set hh_house_status=#{hhHouseIdStatus} where hh_house_id in(
+        <foreach collection="hhHouseIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </update>
+    <insert id="save">
+        insert into hh_house (hh_house_id,hh_house_name,hh_house_address,hh_house_latlng,hh_house_village,hh_house_type,hh_house_maxnum,hh_house_residenum,hh_house_orient,hh_house_floor
+        ,hh_house_area,hh_house_support,hh_house_publisher,hh_house_status,hh_house_img,hh_house_publishtime,hh_house_description,create_by,
+        create_time,create_dept,update_by,update_time,hh_house_price,hh_house_telephone)
+        values(
+        #{hhHouseId,jdbcType=VARCHAR},
+         #{hhHouseName,jdbcType=VARCHAR},
+          #{hhHouseAddress,jdbcType=VARCHAR},
+           #{hhHouseLatlng,jdbcType=VARCHAR},
+            #{hhHouseVillage,jdbcType=VARCHAR},
+             #{hhHouseType,jdbcType=VARCHAR},
+              #{hhHouseMaxnum,jdbcType=INTEGER},
+               #{hhHouseResidenum,jdbcType=INTEGER},
+                #{hhHouseOrient,jdbcType=VARCHAR},
+                 #{hhHouseFloor,jdbcType=VARCHAR},
+                  #{hhHouseArea,jdbcType=VARCHAR},
+                   #{hhHouseSupport,jdbcType=VARCHAR},
+                #{hhHousePublisher,jdbcType=VARCHAR},
+                 #{hhHouseStatus,jdbcType=VARCHAR},
+                  #{hhHouseImg,jdbcType=VARCHAR},
+                   #{hhHousePublishtime,jdbcType=DATE},
+                #{hhHouseDescription,jdbcType=VARCHAR},
+                 #{CreateBy,jdbcType=VARCHAR},
+                  #{CreateTime,jdbcType=DATE},
+                   #{CreateDept,jdbcType=VARCHAR},
+                #{UpdateBy,jdbcType=VARCHAR},
+                 #{UpdateTime,jdbcType=DATE},
+                  #{hhHousePrice,jdbcType=INTEGER},
+                   #{hhHouseTelephone,jdbcType=VARCHAR}
+        )
+    </insert>
 </mapper>

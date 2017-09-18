@@ -1,34 +1,82 @@
 package com.fy.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fy.pojo.HouseInfo;
+import com.fy.pojo.User;
 import javafx.beans.binding.IntegerBinding;
+import org.apache.http.impl.bootstrap.HttpServer;
 import org.apache.solr.common.SolrDocument;
 import com.fy.service.HouseInfoService;
 import org.apache.solr.common.SolrDocumentList;
+
+import java.io.IOException;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/9/13.
  */
 @Controller
+@RequestMapping("/house")
 public class HouseInfoController {
-
     @Autowired
     private HouseInfoService houseInfoService;
-   /* @RequestMapping("houseFindAll")
+    @RequestMapping("/houseFindAll")
     public String findAll(Model model){
         List<HouseInfo> houseList= houseInfoService.findAll();
         model.addAttribute("houseList",houseList);
-        return "";
-    }*/
+        return "/house/jHouseList";
+    }
+
+
+
+    @RequestMapping("/save")
+    public String saveHouse(HouseInfo houseInfo){
+        houseInfoService.save(houseInfo);
+        return "redirect:/house/houseFindAll";
+    }
+
+    @RequestMapping("/tocreate")
+    public String tocreate(Model model, HttpSession httpSession){
+        User user=  (User)httpSession.getAttribute("SessionUser");
+        model.addAttribute("UserName",user.getHhUserName());
+        /*List<HouseInfo> houseList= houseInfoService.findAll();
+        model.addAttribute("houseList",houseList);*/
+        return "/house/jHouseInfo";
+    }
+    @RequestMapping("/delete")
+    public String deleteRole(@RequestParam(value = "hhHouseId",required = true) String[]hhHouseIds){
+       // int hhHouseIdStatus =2;   //假删除
+        houseInfoService.deletehhHouseId(hhHouseIds,2);
+
+        return "redirect:/house/houseFindAll";
+
+    }
+
+    @RequestMapping("/start")
+    public String Start(@RequestParam(value ="hhHouseId" ,required=true) String[]hhHouseIds){
+        //int hhHouseIdStatus =hhHouseIdStatus =0;  //上架
+        houseInfoService.toStart(hhHouseIds,0);
+        return "redirect:/house/houseFindAll";
+    }
+
+    @RequestMapping("/stop")
+    public String Stop(@RequestParam(value ="hhHouseId" ,required=true) String[]hhHouseIds){
+        //int hhHouseIdStatus =hhHouseIdStatus =1;//下架
+        houseInfoService.toStop(hhHouseIds,1);
+        return "redirect:/house/houseFindAll";
+    }
     /**
      * 根据关键字查询所有房屋信息
      * @return
@@ -41,7 +89,7 @@ public class HouseInfoController {
         for(SolrDocument doc :solrdocument){
             HouseInfo houseInfo1=new HouseInfo();
 
-            houseInfo1.setHhHouseId(doc.get("hh_house_id")==null?"":doc.get("hh_house_id").toString());//主键
+            houseInfo1.setHhHouseId(doc.get("id")==null?"":doc.get("id").toString());//主键   //修改成id才能从solr中获得值
             houseInfo1.setHhHouseName(doc.get("hh_house_name")==null?"":doc.get("hh_house_name").toString());//房屋名称
             houseInfo1.setHhHouseAddress(doc.get("hh_house_address")==null?"":doc.get("hh_house_address").toString());//房屋地址
             houseInfo1.setHhHouseLatlng(doc.get("hh_house_latlng")==null?"":doc.get("hh_house_latlng").toString());//经维度
@@ -84,6 +132,69 @@ public class HouseInfoController {
         //System.out.println("执行到这了2");
         return "/sysadmin/main";
     }
-
+    /**
+     * 根据关键字查询所有房屋信息
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/searchHouseAddress")
+    @ResponseBody
+    public String jsonquerysolr(HouseInfo houseInfo,Model model,HttpServletResponse response) throws ParseException, IOException {
+        //houseInfo.setHhHouseAddress("");
+        SolrDocumentList solrdocument=houseInfoService.searchproduct(houseInfo);
+        List houseInfo1list=new ArrayList();
+        String nameadd="";
+        for(SolrDocument doc :solrdocument){
+            if(doc.get("HH_HOUSE_ADDRESS")!=null||!"".equals(doc.get("HH_HOUSE_ADDRESS"))){
+                nameadd=doc.get("HH_HOUSE_ADDRESS").toString();//房屋地址
+            }
+            // nameadd=doc.get("HH_HOUSE_ADDRESS")==null?"":doc.get("HH_HOUSE_ADDRESS").toString();//房屋地址
+            //houseInfo1.setHhHouseVillage(doc.get("HH_HOUSE_VILLAGE")==null?"":doc.get("HH_HOUSE_VILLAGE").toString());//小区名称
+            houseInfo1list.add(nameadd);
+            //System.out.println("id:"+doc.get("id")+"title:"+doc.get("title")+"link:"+doc.get("link")+"price:"+doc.get("price"));
+        }
+        ObjectMapper objectMapper =new ObjectMapper();
+        String jsonStr="";
+        try {
+            jsonStr=objectMapper.writeValueAsString(houseInfo1list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        response.setCharacterEncoding("utf-8");
+//        response.getWriter().write("美食:"+jsonStr);
+        return "{\"美食\":"+jsonStr+"}";
+    }
+    /**
+     * 根据关键字查询所有房屋信息
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/searchHouseXQMC")
+    @ResponseBody
+public String jsonquerysolrXQ(HouseInfo houseInfo,Model model,HttpServletResponse response) throws ParseException, IOException {
+        //houseInfo.setHhHouseAddress("");
+        SolrDocumentList solrdocument=houseInfoService.searchproduct(houseInfo);
+        List houseInfo1list=new ArrayList();
+        String nameadd="";
+        for(SolrDocument doc :solrdocument){
+            if(doc.get("HH_HOUSE_ADDRESS")!=null||!"".equals(doc.get("HH_HOUSE_ADDRESS"))){
+                nameadd=doc.get("HH_HOUSE_ADDRESS").toString();//房屋地址
+            }
+            // nameadd=doc.get("HH_HOUSE_ADDRESS")==null?"":doc.get("HH_HOUSE_ADDRESS").toString();//房屋地址
+            //houseInfo1.setHhHouseVillage(doc.get("HH_HOUSE_VILLAGE")==null?"":doc.get("HH_HOUSE_VILLAGE").toString());//小区名称
+            houseInfo1list.add(nameadd);
+            //System.out.println("id:"+doc.get("id")+"title:"+doc.get("title")+"link:"+doc.get("link")+"price:"+doc.get("price"));
+        }
+        ObjectMapper objectMapper =new ObjectMapper();
+        String jsonStr="";
+        try {
+            jsonStr=objectMapper.writeValueAsString(houseInfo1list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        response.setCharacterEncoding("utf-8");
+//        response.getWriter().write("美食:"+jsonStr);
+        return "{\"美食\":"+jsonStr+"}";
+    }
 
 }

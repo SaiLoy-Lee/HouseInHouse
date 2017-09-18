@@ -50,7 +50,7 @@
                                target="main" id="aa_1">我的信息</a></li>
                         <li><a href="${ctx}/personal/export/exportAction_contractList" onclick="linkHighlighted(this)"
                                target="main" id="aa_4">房源中心</a></li>
-                        <li><a href="${ctx}/personal/export/exportAction_list" onclick="linkHighlighted(this)"
+                        <li><a href="${ctx}/house/houseFindAll" onclick="linkHighlighted(this)"
                                target="main" id="aa_5">发布房源</a></li>
                         <li><a href="${ctx}/personal/export/exportAction_ws" onclick="linkHighlighted(this)"
                                target="main" id="aa_6">我的留言</a></li>
