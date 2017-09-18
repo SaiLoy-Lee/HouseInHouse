@@ -4,6 +4,7 @@ import com.fy.pojo.Order;
 import com.fy.pojo.User;
 import com.fy.service.OrderService;
 import com.fy.tools.POIUtils;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -32,7 +33,7 @@ public class DownloadController {
    @Autowired
    private OrderService orderService;
 
-    @RequestMapping("download")
+    @RequestMapping("/personal/order/download")
     //@ResponseBody
     public ResponseEntity<byte[]> download(HttpServletResponse response) throws Exception {
         // ServletOutputStream stream = response.getOutputStream();
@@ -66,130 +67,8 @@ public class DownloadController {
         createSheet(wb, lists[2], "已入住订单", "cell_green");
         createSheet(wb, lists[3], "已退房订单", "cell_g");
         createSheet(wb, lists[4], "已取消订单", "cell_g");
+        createSheet(wb, list,"总订单报表","cell_blug");
 
-        String[] titles = {
-                "序号", "房屋ID", "用户ID", "Days", "入住时间", "退房时间","金额"};
-
-        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-
-
-
-
-        String[][] data=POIUtils.toArray(list);
-
-        Map<String, CellStyle> styles = createStyles(wb);
-
-        Sheet sheet = wb.createSheet("总订单报表");
-
-        //turn off gridlines
-        sheet.setDisplayGridlines(false);
-        sheet.setPrintGridlines(false);
-        sheet.setFitToPage(true);
-        sheet.setHorizontallyCenter(true);
-        PrintSetup printSetup = sheet.getPrintSetup();
-        printSetup.setLandscape(true);
-
-        //the following three statements are required only for HSSF
-        sheet.setAutobreaks(true);
-        printSetup.setFitHeight((short)1);
-        printSetup.setFitWidth((short)1);
-
-        //the header row: centered text in 48pt font
-        Row headerRow = sheet.createRow(0);
-        headerRow.setHeightInPoints(12.75f);
-        for (int i = 0; i < titles.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(titles[i]);
-            cell.setCellStyle(styles.get("header"));
-        }
-        //columns for 11 weeks starting from 9-6
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-
-        calendar.setTime(fmt.parse("2017-6-9"));
-        calendar.set(Calendar.YEAR, year);
-
-        //freeze the first row
-        sheet.createFreezePane(0, 1);
-
-        Row row;
-        Cell cell;
-
-        int rownum = 1;
-        for (int i = 0; i < data.length; i++, rownum++) {
-            row = sheet.createRow(rownum);
-            if(data[i] == null) continue;
-
-            for (int j = 0; j < data[i].length; j++) {
-                cell = row.createCell(j);
-                String styleName;
-                boolean isHeader = i == 0;
-                switch(j){
-                    case 0:
-                        if(isHeader) {
-                            styleName = "cell_b";
-                            cell.setCellValue(Double.parseDouble(data[i][j]));
-                        } else {
-                            styleName = "cell_normal";
-                            cell.setCellValue(data[i][j]);
-                        }
-                        break;
-                    case 1:
-                        if(isHeader) {
-                            styleName = i == 0 ? "cell_h" : "cell_bb";
-                        } else {
-                            styleName = "cell_indented";
-                        }
-                        cell.setCellValue(data[i][j]);
-                        break;
-                    case 2:
-                        styleName = isHeader ? "cell_b" : "cell_normal";
-                        cell.setCellValue(data[i][j]);
-                        break;
-                    case 3:
-                        styleName = isHeader ? "cell_b_centered" : "cell_normal_centered";
-                        cell.setCellValue(Integer.parseInt(data[i][j]));
-                        break;
-                    case 4: {
-                        calendar.setTime(fmt.parse(data[i][j]));
-                        calendar.set(Calendar.YEAR, year);
-                        cell.setCellValue(calendar);
-                        styleName = isHeader ? "cell_b_date" : "cell_normal_date";
-                        break;
-                    }
-                    case 5: {
-                        calendar.setTime(fmt.parse(data[i][j]));
-                        calendar.set(Calendar.YEAR, year);
-                        cell.setCellValue(calendar);
-                        styleName = isHeader ? "cell_bg" : "cell_g";
-                        break;
-                    }
-                    case 6: {
-                        styleName = isHeader ? "cell_b" : "cell_normal";
-                        cell.setCellValue(data[i][j]);
-                        break;
-                    }
-                    default:
-                        styleName = data[i][j] != null ? "cell_blue" : "cell_normal";
-                }
-
-                cell.setCellStyle(styles.get(styleName));
-            }
-        }
-
-        //group rows for each phase, row numbers are 0-based
-        sheet.groupRow(4, 6);
-        sheet.groupRow(9, 13);
-        sheet.groupRow(16, 18);
-
-        //set column widths, the width is measured in units of 1/256th of a character width
-        sheet.setColumnWidth(0, 256*6);
-        sheet.setColumnWidth(1, 256*33);
-        sheet.setColumnWidth(2, 256*20);
-        sheet.setColumnWidth(4, 256*13);
-        sheet.setColumnWidth(5, 256*13);
-
-        //sheet.setZoom(75); //75% scale
         return  wb;
     }
 
@@ -243,12 +122,32 @@ public class DownloadController {
         styles.put("cell_g", style);
 
         style = createBorderedStyle(wb);
+        style.setAlignment(HorizontalAlignment.RIGHT);
+        style.setFont(font1);
+        style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setDataFormat(HSSFDataFormat.getBuiltinFormat("0.00"));
+        styles.put("cell_g_mon", style);
+
+
+
+        style = createBorderedStyle(wb);
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setFont(font1);
         style.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         style.setDataFormat(df.getFormat("yyyy-MM-dd"));
         styles.put("cell_green", style);
+
+        style = createBorderedStyle(wb);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setFont(font1);
+        style.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setDataFormat(df.getFormat("yyyy-MM-dd"));
+        styles.put("cell_blug", style);
+
+
 
         style = createBorderedStyle(wb);
         style.setAlignment(HorizontalAlignment.CENTER);
@@ -394,7 +293,7 @@ public class DownloadController {
 
         Row headerRow = sheet.createRow(0);
         Cell cell=headerRow.createCell(0);
-        cell.setCellValue("House in house"+sheetName);
+        cell.setCellValue("House In House"+sheetName);
         cell.setCellStyle(styles.get("cell_h"));
 
         headerRow = sheet.createRow(1);
@@ -412,7 +311,8 @@ public class DownloadController {
         calendar.set(Calendar.YEAR, year);
         Row row;
         int rownum=2;
-        for (int i = 0; i < data.length; i++, rownum++) {
+        int i=0;
+        for (; i < data.length; i++, rownum++) {
             row = sheet.createRow(rownum);
             if(data[i] == null) continue;
 
@@ -432,6 +332,10 @@ public class DownloadController {
                         cell.setCellValue(calendar);
                         styleName =  instylename;
                         break;
+                    case 6:
+                        cell.setCellValue(Double.parseDouble(data[i][j]));
+                        styleName = "cell_g_mon";
+                        break;
 
                     default:
                         cell.setCellValue(data[i][j]);
@@ -443,12 +347,22 @@ public class DownloadController {
             }
 
         }
+        row=sheet.createRow(rownum);
+        cell=row.createCell(5);
+        cell.setCellValue("总计");
+        cell.setCellStyle(styles.get("cell_g"));
+
+        cell=row.createCell(6);
+        //=SUM(G169:G171)
+        cell.setCellFormula("SUM(G3:G"+rownum+")");
+        cell.setCellStyle(styles.get("cell_g_mon"));
 
         sheet.setColumnWidth(0, 256*6);
         sheet.setColumnWidth(1, 256*33);
         sheet.setColumnWidth(2, 256*20);
         sheet.setColumnWidth(4, 256*13);
         sheet.setColumnWidth(5, 256*13);
+        sheet.setColumnWidth(6, 256*10);
 
         return sheet;
 

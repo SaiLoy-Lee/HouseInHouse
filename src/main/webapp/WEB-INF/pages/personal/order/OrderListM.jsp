@@ -20,6 +20,7 @@
                         <c:if test="${o.hhOrdersStatus!=12}">
                         <li id="delete"><a href="#" onclick="formSubmit('updateStatus/12','_self');this.blur();">删除</a>
                             </c:if>
+                        <li id="save"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,12 +65,14 @@
 
                                 <td style="word-wrap: break-word;width:120px;"><a
                                         href="dept/toview?id=${o.hhOrdersId}">${o.hhOrdersId}</a></td>
-                                <td><c:if test="${o.hhOrdersStatus==1}"><span style="color:red">审核中</span></c:if>
+                                <td><c:if test="${o.hhOrdersStatus==1}"><span style="color:red">订单审核中</span></c:if>
                                     <c:if test="${o.hhOrdersStatus==2}"><span style="color:red">审核未通过</span></c:if>
                                     <c:if test="${o.hhOrdersStatus==3}">已入住</c:if>
                                     <c:if test="${o.hhOrdersStatus==4}">已退房</c:if>
                                     <c:if test="${o.hhOrdersStatus==5}">已取消</c:if>
                                     <c:if test="${o.hhOrdersStatus==12}">已删除</c:if>
+                                    <c:if test="${o.hhOrdersStatus==6}"><span style="color:red">退租审核中</span></c:if>
+
                                 </td>
 
                                 <td style="word-wrap: break-word;width:120px;">${o.houseInfo.hhHouseId}12</td>

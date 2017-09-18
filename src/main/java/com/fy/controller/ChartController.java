@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -41,13 +42,21 @@ public class ChartController {
 
     //统计每季度房源概况
     @RequestMapping("/chart/chartMultiX")
-    public String chartMultiX(@RequestParam(value="startDate",required=true)Date date1, @RequestParam(value="endDate", required=true)Date date2, Model model) throws JsonProcessingException {
+    public String chartMultiX(Model model) throws JsonProcessingException {
 
 
         //Date date1 = new Date(117,5,1);
         //Date date2 = new Date(117,8,1);
 
-        Integer[] dayHouse =  chartService.findDayHouseNum(date1,date2);  //每天的房源发布数目
+        Date date2 = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(cal.MONTH, -3);
+        Date date1 = cal.getTime();
+
+
+
+        Integer[] dayHouse = chartService.findDayHouseNum(date1, date2);  //每天的房源发布数目
         Integer[] dayOrder = chartService.findDayOrderNum(date1,date2);   //每天的订单入住数目
 
         Integer[] arrHouse = new Integer[]{0,0,0,0,0,0,0,0,0,0,0,0};  //每周的房源发布数目
@@ -102,10 +111,17 @@ public class ChartController {
 
     //统计租金分布占比
     @RequestMapping("/chart/chartRadar")
-    public String chartRadar(@RequestParam(value="startDate",required=true)Date date1, @RequestParam(value="endDate", required=true)Date date2, Model model) throws JsonProcessingException {
+    public String chartRadar( Model model) throws JsonProcessingException {
 
         //Date date1 = new Date(117,5,1);
         //Date date2 = new Date(117,8,1);
+
+        Date date2 = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(cal.MONTH, -3);
+        Date date1 = cal.getTime();
+
 
         Integer[] HouseRents = chartService.findHouseRents(date1,date2);    //查询每个的房源发布的租金
         Integer[] OrderRents = chartService.findOrderRents(date1,date2);    //查询每个的订单的租金
@@ -175,12 +191,16 @@ public class ChartController {
 
     //统计每季度房屋来源占比
     @RequestMapping("/chart/chartBars")
-    public String chartBars(@RequestParam(value="startDate", required=true)Date date1, @RequestParam(value="endDate", required=true)Date date2, Model model) throws JsonProcessingException {
+    public String chartBars( Model model) throws JsonProcessingException {
 
         //Date date1 = new Date(117,5,1);
         //Date date2 = new Date(117,8,1);
 
-
+        Date date2 = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(cal.MONTH, -3);
+        Date date1 = cal.getTime();
 
         Integer[] adminNum = chartService.findAdminDayNum(date1,date2);    //查询每个的房源发布的租金
         Integer[] UserNum = chartService.findUserDayNum(date1,date2);    //查询每个的订单的租金
