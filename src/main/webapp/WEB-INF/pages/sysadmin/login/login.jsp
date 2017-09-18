@@ -2,8 +2,6 @@
 <%@ include file="../../base.jsp" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" rev="stylesheet" type="text/css" href="${ctx}/staticfile/skin/default/css/login.css" media="all" />
-	<script src="${ctx}/staticfile/components/pngfix/DD_belatedPNG.js"></script>
 	<link href="${ctx}/staticfile/css/style.css" rel='stylesheet' type='text/css' />
 	<script src="${ctx}/staticfile/js/jquery.min.js"></script>
 </head>
@@ -24,6 +22,7 @@
 						<div class="key">
 						<input type="password" value="" name="password" id="password" onfocus="$('#ts').css('display','none');this.select();"
 						onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }" title="请您输入密码"/>
+							</div>
 			</form>
 
 	<div class="msgtip">
