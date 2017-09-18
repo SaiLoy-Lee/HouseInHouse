@@ -96,6 +96,8 @@ public class ShiroConfiguration {
         filterChains.put("logout",logoutFilter);
         shiroFilterFactoryBean.setFilters(filterChains);
 
+
+        filterChainDefinitionMap.put("../resources/static/**","anon");
         filterChainDefinitionMap.put("/staticfile/**", "anon");
         filterChainDefinitionMap.put("/tologin.action","anon");
 
