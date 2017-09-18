@@ -8,20 +8,15 @@ import java.util.Date;
 public class Order extends BaseEntity{
     private String hhOrdersId;//订单D
     private User user;//用户ID
-//    private House house;//房间ID
+    private HouseInfo houseInfo;//房间ID
     private Integer hhOrdersStatus;//订单状态
     private Date hhOrdersIntime;//入住日期
     private Date hhOrdersOuttime;//退租日期
     private String hhOrdersRemarks;//备注
     private double hhOrdersPrice;
 
-    public double getHhOrdersPrice() {
-        return hhOrdersPrice;
-    }
 
-    public void setHhOrdersPrice(double hhOrdersPrice) {
-        this.hhOrdersPrice = hhOrdersPrice;
-    }
+
 
     public String getHhOrdersId() {
         return hhOrdersId;
@@ -39,13 +34,13 @@ public class Order extends BaseEntity{
         this.user = user;
     }
 
-//    public House getHouse() {
-//        return house;
-//    }
+    public HouseInfo getHouseInfo() {
+        return houseInfo;
+    }
 
-//    public void setHouse(House house) {
-//        this.house = house;
-//    }
+    public void setHouseInfo(HouseInfo houseInfo) {
+        this.houseInfo = houseInfo;
+    }
 
     public Integer getHhOrdersStatus() {
         return hhOrdersStatus;
@@ -79,11 +74,20 @@ public class Order extends BaseEntity{
         this.hhOrdersRemarks = hhOrdersRemarks;
     }
 
+    public double getHhOrdersPrice() {
+        return hhOrdersPrice;
+    }
+
+    public void setHhOrdersPrice(double hhOrdersPrice) {
+        this.hhOrdersPrice = hhOrdersPrice;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "hhOrdersId='" + hhOrdersId + '\'' +
                 ", user=" + user +
+                ", houseInfo=" + houseInfo +
                 ", hhOrdersStatus=" + hhOrdersStatus +
                 ", hhOrdersIntime=" + hhOrdersIntime +
                 ", hhOrdersOuttime=" + hhOrdersOuttime +

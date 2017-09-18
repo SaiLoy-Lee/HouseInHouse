@@ -1,5 +1,6 @@
 package com.fy.service;
 
+
 import com.fy.pojo.HouseInfo;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
@@ -17,6 +18,7 @@ import java.util.List;
 @Service("HouseInfoService")
 public class HouseInfoServiceImpl implements HouseInfoService{
     @Override
+
     public List<HouseInfo> findAll() {
         return null;
     }
@@ -25,7 +27,7 @@ public class HouseInfoServiceImpl implements HouseInfoService{
     public SolrDocumentList searchproduct(HouseInfo houseInfo) {
         SolrServer solrServer = new HttpSolrServer("http://localhost:8083/solr/house_info");
         SolrQuery query=new SolrQuery();
-        query.setQuery("v_house_name:"+houseInfo.getvHouseName());
+        query.setQuery("hh_house_name:"+houseInfo.getHhHouseName());
         query.setHighlightSimplePre("<font color='red'>");
         query.setHighlightSimplePost("</font>");
 		/*query.addSort("id",ORDER.asc);

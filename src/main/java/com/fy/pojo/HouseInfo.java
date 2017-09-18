@@ -6,229 +6,221 @@ import java.util.Date;
  * Created by Administrator on 2017/9/13.
  */
 public class HouseInfo {
-  private  String id;          //  主键
-  private  String vHouseName;          //  房屋名称
-  private  String vAddress;         //  房屋地址
-  private  String vLatlngJ;         //  经度
-  private  String vLatlngV;         //  维度
-  private  String vVillage;         //  小区名称
-  private  String vType;         //  户型
-  private  Integer iMaxnum;         //  可住人数
-  private  Integer iResidenu;         //  已住人数
-  private  String vOrient;         //  朝向
-  private  Integer iFloor;         //  楼层
-  private  String vArea;         //  面积
-  private  String vVarchar;         //  配套信息
-  private  String vPublisher;         //  发布人
-  private  String vStatus;         //  状态
-  private  String vImg;        //  图片路径
-  private  Date dPublishtime;         //  发布时间
-  private  String vDescriptime;         //  房屋描述
-  private  String vCreateBy;         //  创建人
-  private  Date dCreateTime;        //  创建时间
-  private  String vCreateDept;         //  创建部门
-  private  String vUpdateBy;         //  修改人
-  private  Date dUpdateTime;        //  修改时间
-  private  String vTelephone;         //  联系方式
-    private String vMonmay;           //月租金
+  private  String hhHouseId;          //  主键
+  private  String hhHouseName;          //  房屋名称
+  private  String hhHouseAddress;         //  房屋地址
+  private  String hhHouseLatlng;         //  经维度
+  //private  String vLatlngV;         //  维度
+  private  String hhHouseVillage;         //  小区名称
+  private  String hhHouseType;         //  户型
+  private  Integer hhHouseMaxnum;         //  可住人数
+  private  Integer hhHouseResidenum;         //  已住人数
+  private  String hhHouseOrient;         //  朝向
+  private  String hhHouseFloor;     //  楼层
+  private  String hhHouseArea;         //  面积
+  private  String hhHouseSupport;         //  配套信息
+  private  String hhHousePublisher;         //  发布人
+  private  String hhHouseStatus;         //  状态
+  private  String hhHouseImg;        //  图片路径
+  private  Date hhHousePublishtime;         //  发布时间
+  private  String hhHouseDescription;         //  房屋描述
+  private  String CreateBy;         //  创建人
+  private  Date CreateTime;        //  创建时间
+  private  String CreateDept;         //  创建班级
+  private  String UpdateBy;         //  修改人
+  private  Date UpdateTime;        //  修改时间
+  private  String hhHouseTelephone;         //  联系方式
+  private String hhHousePrice;              //月租金
 
-    public String getvMonmay() {
-        return vMonmay;
+    public String getHhHouseId() {
+        return hhHouseId;
     }
 
-    public void setvMonmay(String vMonmay) {
-        this.vMonmay = vMonmay;
+    public void setHhHouseId(String hhHouseId) {
+        this.hhHouseId = hhHouseId;
     }
 
-    public String getId() {
-        return id;
+    public String getHhHouseName() {
+        return hhHouseName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setHhHouseName(String hhHouseName) {
+        this.hhHouseName = hhHouseName;
     }
 
-    public String getvHouseName() {
-        return vHouseName;
+    public String getHhHouseAddress() {
+        return hhHouseAddress;
     }
 
-    public void setvHouseName(String vHouseName) {
-        this.vHouseName = vHouseName;
+    public void setHhHouseAddress(String hhHouseAddress) {
+        this.hhHouseAddress = hhHouseAddress;
     }
 
-    public String getvAddress() {
-        return vAddress;
+    public String getHhHouseLatlng() {
+        return hhHouseLatlng;
     }
 
-    public void setvAddress(String vAddress) {
-        this.vAddress = vAddress;
+    public void setHhHouseLatlng(String hhHouseLatlng) {
+        this.hhHouseLatlng = hhHouseLatlng;
     }
 
-    public String getvLatlngJ() {
-        return vLatlngJ;
+    public String getHhHouseVillage() {
+        return hhHouseVillage;
     }
 
-    public void setvLatlngJ(String vLatlngJ) {
-        this.vLatlngJ = vLatlngJ;
+    public void setHhHouseVillage(String hhHouseVillage) {
+        this.hhHouseVillage = hhHouseVillage;
     }
 
-    public String getvLatlngV() {
-        return vLatlngV;
+    public String getHhHouseType() {
+        return hhHouseType;
     }
 
-    public void setvLatlngV(String vLatlngV) {
-        this.vLatlngV = vLatlngV;
+    public void setHhHouseType(String hhHouseType) {
+        this.hhHouseType = hhHouseType;
     }
 
-    public String getvVillage() {
-        return vVillage;
+    public Integer getHhHouseMaxnum() {
+        return hhHouseMaxnum;
     }
 
-    public void setvVillage(String vVillage) {
-        this.vVillage = vVillage;
+    public void setHhHouseMaxnum(Integer hhHouseMaxnum) {
+        this.hhHouseMaxnum = hhHouseMaxnum;
     }
 
-    public String getvType() {
-        return vType;
+    public Integer getHhHouseResidenum() {
+        return hhHouseResidenum;
     }
 
-    public void setvType(String vType) {
-        this.vType = vType;
+    public void setHhHouseResidenum(Integer hhHouseResidenum) {
+        this.hhHouseResidenum = hhHouseResidenum;
     }
 
-    public Integer getiMaxnum() {
-        return iMaxnum;
+    public String getHhHouseOrient() {
+        return hhHouseOrient;
     }
 
-    public void setiMaxnum(Integer iMaxnum) {
-        this.iMaxnum = iMaxnum;
+    public void setHhHouseOrient(String hhHouseOrient) {
+        this.hhHouseOrient = hhHouseOrient;
     }
 
-    public Integer getiResidenu() {
-        return iResidenu;
+    public String getHhHouseFloor() {
+        return hhHouseFloor;
     }
 
-    public void setiResidenu(Integer iResidenu) {
-        this.iResidenu = iResidenu;
+    public void setHhHouseFloor(String hhHouseFloor) {
+        this.hhHouseFloor = hhHouseFloor;
     }
 
-    public String getvOrient() {
-        return vOrient;
+    public String getHhHouseArea() {
+        return hhHouseArea;
     }
 
-    public void setvOrient(String vOrient) {
-        this.vOrient = vOrient;
+    public void setHhHouseArea(String hhHouseArea) {
+        this.hhHouseArea = hhHouseArea;
     }
 
-    public Integer getiFloor() {
-        return iFloor;
+    public String getHhHouseSupport() {
+        return hhHouseSupport;
     }
 
-    public void setiFloor(Integer iFloor) {
-        this.iFloor = iFloor;
+    public void setHhHouseSupport(String hhHouseSupport) {
+        this.hhHouseSupport = hhHouseSupport;
     }
 
-    public String getvArea() {
-        return vArea;
+    public String getHhHousePublisher() {
+        return hhHousePublisher;
     }
 
-    public void setvArea(String vArea) {
-        this.vArea = vArea;
+    public void setHhHousePublisher(String hhHousePublisher) {
+        this.hhHousePublisher = hhHousePublisher;
     }
 
-    public String getvVarchar() {
-        return vVarchar;
+    public String getHhHouseStatus() {
+        return hhHouseStatus;
     }
 
-    public void setvVarchar(String vVarchar) {
-        this.vVarchar = vVarchar;
+    public void setHhHouseStatus(String hhHouseStatus) {
+        this.hhHouseStatus = hhHouseStatus;
     }
 
-    public String getvPublisher() {
-        return vPublisher;
+    public String getHhHouseImg() {
+        return hhHouseImg;
     }
 
-    public void setvPublisher(String vPublisher) {
-        this.vPublisher = vPublisher;
+    public void setHhHouseImg(String hhHouseImg) {
+        this.hhHouseImg = hhHouseImg;
     }
 
-    public String getvStatus() {
-        return vStatus;
+    public Date getHhHousePublishtime() {
+        return hhHousePublishtime;
     }
 
-    public void setvStatus(String vStatus) {
-        this.vStatus = vStatus;
+    public void setHhHousePublishtime(Date hhHousePublishtime) {
+        this.hhHousePublishtime = hhHousePublishtime;
     }
 
-    public String getvImg() {
-        return vImg;
+    public String getHhHouseDescription() {
+        return hhHouseDescription;
     }
 
-    public void setvImg(String vImg) {
-        this.vImg = vImg;
+    public void setHhHouseDescription(String hhHouseDescription) {
+        this.hhHouseDescription = hhHouseDescription;
     }
 
-    public Date getdPublishtime() {
-        return dPublishtime;
+    public String getCreateBy() {
+        return CreateBy;
     }
 
-    public void setdPublishtime(Date dPublishtime) {
-        this.dPublishtime = dPublishtime;
+    public void setCreateBy(String createBy) {
+        CreateBy = createBy;
     }
 
-    public String getvDescriptime() {
-        return vDescriptime;
+    public Date getCreateTime() {
+        return CreateTime;
     }
 
-    public void setvDescriptime(String vDescriptime) {
-        this.vDescriptime = vDescriptime;
+    public void setCreateTime(Date createTime) {
+        CreateTime = createTime;
     }
 
-    public String getvCreateBy() {
-        return vCreateBy;
+    public String getCreateDept() {
+        return CreateDept;
     }
 
-    public void setvCreateBy(String vCreateBy) {
-        this.vCreateBy = vCreateBy;
+    public void setCreateDept(String createDept) {
+        CreateDept = createDept;
     }
 
-    public Date getdCreateTime() {
-        return dCreateTime;
+    public String getUpdateBy() {
+        return UpdateBy;
     }
 
-    public void setdCreateTime(Date dCreateTime) {
-        this.dCreateTime = dCreateTime;
+    public void setUpdateBy(String updateBy) {
+        UpdateBy = updateBy;
     }
 
-    public String getvCreateDept() {
-        return vCreateDept;
+    public Date getUpdateTime() {
+        return UpdateTime;
     }
 
-    public void setvCreateDept(String vCreateDept) {
-        this.vCreateDept = vCreateDept;
+    public void setUpdateTime(Date updateTime) {
+        UpdateTime = updateTime;
     }
 
-    public String getvUpdateBy() {
-        return vUpdateBy;
+    public String getHhHouseTelephone() {
+        return hhHouseTelephone;
     }
 
-    public void setvUpdateBy(String vUpdateBy) {
-        this.vUpdateBy = vUpdateBy;
+    public void setHhHouseTelephone(String hhHouseTelephone) {
+        this.hhHouseTelephone = hhHouseTelephone;
     }
 
-    public Date getdUpdateTime() {
-        return dUpdateTime;
+    public String getHhHousePrice() {
+        return hhHousePrice;
     }
 
-    public void setdUpdateTime(Date dUpdateTime) {
-        this.dUpdateTime = dUpdateTime;
-    }
-
-    public String getvTelephone() {
-        return vTelephone;
-    }
-
-    public void setvTelephone(String vTelephone) {
-        this.vTelephone = vTelephone;
+    public void setHhHousePrice(String hhHousePrice) {
+        this.hhHousePrice = hhHousePrice;
     }
 }
