@@ -37,6 +37,7 @@ public class SMessage {
     private String hhSmessageType;
 
 
+
     public String getHhSmessageId() {
         return hhSmessageId;
     }
