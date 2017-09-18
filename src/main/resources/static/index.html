@@ -1,162 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<!--menu-->
-<script src="js/scripts.js"></script>
-<link href="css/styles.css" rel="stylesheet">
-<!--//menu-->
-<!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Custom Theme files -->
+	<!--menu-->
+	<script src="js/scripts.js"></script>
+	<link href="css/styles.css" rel="stylesheet">
+	<!--//menu-->
+	<!--theme-style-->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- 搜索框CSS -->
+	<link rel="stylesheet" href="css/jquery.typeahead.css">
+	<style type="text/css">
+		.col-md-3 header-left{float:left}
+		#col-md-3-header-right{float:right;vertical-align: top;}
+
+	</style>
+	<!-- 搜索框JS -->
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.typeahead.js"></script>
+
+	<!--//theme-style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- slide -->
-<script src="js/responsiveslides.min.js"></script>
-   <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- slide -->
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider").responsiveSlides({
+				auto: true,
+				speed: 500,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	</script>
 </head>
 <body >
 <!--header-->
-	<div class="navigation">
-			<div class="container-fluid">
-				<nav class="pull">
-					<ul>
-						<li><a  href="index.html">Home</a></li>
-						<li><a  href="about.html">About Us</a></li>
-						<li><a  href="blog.html">Blog</a></li>
-						<li><a  href="terms.html">Terms</a></li>
-						<li><a  href="privacy.html">Privacy</a></li>
-						<li><a  href="contact.html">Contact</a></li>
-					</ul>
-				</nav>			
-			</div>
-		</div>
+<div class="navigation">
+	<div class="container-fluid">
+		<nav class="pull">
+			<ul>
+				<li><a  href="index.html">首页</a></li>
+				<li><a  href="about.html">公司简介</a></li>
+				<li><a  href="blog.html">博客</a></li>
+				<li><a  href="terms.html">团队</a></li>
+				<li><a  href="privacy.html">隐私</a></li>
+				<li><a  href="contact.html">联系方式</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
 
 <div class="header">
 	<div class="container">
 		<!--logo-->
-			<div class="logo">
-				<h1><a href="index.html">REAL HOME</a></h1>
-			</div>
+		<div class="logo">
+			<h1><a href="index.html">房中房</a></h1>
+		</div>
 		<!--//logo-->
 		<div class="top-nav">
 			<ul class="right-icons">
-				<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>
-				<li><a  href="/tologin.action"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
-				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
-				
+				<%--<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>--%>
+				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>登录</a></li>
+				<%--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>--%>
+
 			</ul>
 			<div class="nav-icon">
 				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
-						<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
-					</div>	
+					<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+				</div>
 				<!---
 				<a href="#" class="right_bt" id="activator"><i class="glyphicon glyphicon-menu-hamburger"></i>  </a>
 			--->
 			</div>
-		<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 			<!---pop-up-box---->
-			   
-				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-			<!---//pop-up-box---->
-				<div id="small-dialog" class="mfp-hide">
-					    <!----- tabs-box ---->
-				<div class="sap_tabs">	
-				     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-						  <ul class="resp-tabs-list">
-						  	  <li class="resp-tab-item " aria-controls="tab_item-0" role="tab"><span>All Homes</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>For Sale</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>For Rent</span></li>
-							  <div class="clearfix"></div>
-						  </ul>				  	 
-						  <div class="resp-tabs-container">
-						  		<h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>All Homes</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
-								 	<div class="facts">
-									  	<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div>        
-							        </div>
-						  		</div>
-							     <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>For Sale</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<div class="facts">									
-										<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div> 
-							        </div>	
-								 </div>									
-							      <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><span class="resp-arrow"></span>For Rent</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-									 <div class="facts">
-										<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div> 
-							         </div>	
-							    </div>
-					      </div>
-					 </div>
-					 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-				    	<script type="text/javascript">
-						    $(document).ready(function () {
-						        $('#horizontalTab').easyResponsiveTabs({
-						            type: 'default', //Types: default, vertical, accordion           
-						            width: 'auto', //auto or any width like 600px
-						            fit: true   // 100% fit in a container
-						        });
-						    });
-			  			 </script>	
-				</div>
-				</div>
-				 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>
-					
-	
+
+
 		</div>
 		<div class="clearfix"> </div>
-		</div>	
+	</div>
 </div>
-<!--//-->	
-	<div class="copyrights">Collect from</div>
-	<div class=" header-right">
-		<div class=" banner" >
+<!--//-->
 
-			<div class=" banner" style="position: relative">
+<div class=" header-right">
+	<div class=" banner" >
+		<div class="slider" >
+			<div class="callbacks_container" style="position: relative">
 				<!-- -------------------搜索框----------------------- -->
 				<div class="div-inline" style="width: 650px; max-width: 850px; height: 150px; z-index: 999999; margin: 0px auto; position: absolute;margin:0 30%;top:360px">
 					<div class="js-result-container"></div>
-					<form action="buy.html">
+					<form action="search.html">
 						<div class="typeahead__container">
 							<div class="typeahead__field">
 										<span class="typeahead__query">
@@ -176,483 +120,378 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</form>
 				</div>
 				<!-- -------------------搜索框----------------------- -->
-
-			 <div class="slider">
-			    <div class="callbacks_container">
-			      <ul class="rslides" id="slider">		       
-					 <li>
-			          	 <div class="banner1">
-			           		<div class="caption">
-					          	<h3><span>vivam</span>us site</h3>
-					          	<p>Nunc dignissim risus idi</p>
-								
-			          		</div>
-			          	</div>
-			         </li>
-					 <li>
-			          	 <div class="banner2">
-			           		<div class="caption">
-					          	<h3><span>vivam</span>us site</h3>
-					          	<p>Nunc dignissim risus idi</p>
-			          		</div>
-			          	</div>
-			         </li>
-			         <li>
-			          	 <div class="banner3">
-			           		<div class="caption">
-					          	<h3><span>vivam</span>us site</h3>
-					          	<p>Nunc dignissim risus idi</p>
-			          		</div>
-			          	</div>
-			         </li>		
-			      </ul>
-			  </div>
+				<ul class="rslides" id="slider" >
+					<li>
+						<div class="banner1">
+							<div class="caption">
+								<h3><span>房中房</span></h3>
+								<p>连接每个房的故事</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner2">
+							<div class="caption">
+								<h3><span>房中房</span></h3>
+								<p>连接每个房的故事</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner3">
+							<div class="caption">
+								<h3><span>房中房</span></h3>
+								<p>连接每个房的故事</p>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	 
-	<!--header-bottom-->
-	<div class="banner-bottom-top">
-			<div class="container">
-			<div class="bottom-header">
-				<div class="header-bottom">
-					<div class=" bottom-head">
-						<a href="buy.html">
-							<div class="buy-media">
-								<i class="buy"> </i>
-								<h6>Buy</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="buy.html">
-							<div class="buy-media">
-							<i class="rent"> </i>
-							<h6>Rent</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="buy.html">
-							<div class="buy-media">
-							<i class="pg"> </i>
-							<h6>Hostels</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="buy.html">
-							<div class="buy-media">
-							<i class="sell"> </i>
-							<h6>Resale</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="loan.html">
-							<div class="buy-media">
-							<i class="loan"> </i>
-							<h6>Home Loans</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="buy.html">
-							<div class="buy-media">
-							<i class="apart"> </i>
-							<h6>Projects</h6>
-							</div>
-						</a>
-					</div>
-					<div class=" bottom-head">
-						<a href="dealers.html">
-							<div class="buy-media">
-							<i class="deal"> </i>
-							<h6>Dealers</h6>
-							</div>
-						</a>
-					</div>
-					<div class="clearfix"> </div>
+</div>
+
+
+<!-- -------------------搜索框----------------------- -->
+<script>
+	/*var data = {
+	 美食 : ["瓜丝儿","山鸡丁儿","拌海蜇","龙须菜","炝冬笋","玉兰片","浇鸳鸯","烧鱼头",
+	 "烧槟子","烧百合","炸豆腐","炸面筋","糖熘 儿","拔丝山药","糖焖莲子","酿山药",
+	 "杏仁酪","小炒螃蟹","氽大甲","什锦葛仙米","蛤蟆鱼","扒带鱼","海鲫鱼","黄花鱼",
+	 "扒海参","扒燕窝","扒鸡腿儿","扒鸡块儿","扒肉","扒面筋","扒三样儿","油泼肉",
+	 "酱泼肉","炒虾黄儿","熘蟹黄儿","炒子蟹","佛手海参","炒芡子米","奶汤","翅子汤",
+	 "三丝汤","熏斑鸠","卤斑鸠","海白米","烩腰丁儿","火烧茨菰","炸鹿尾儿","焖鱼头",
+	 "拌皮渣儿","氽肥肠儿","清拌粉皮儿","木须菜","烹丁香","烹大肉","烹白肉","麻辣野鸡",
+	 "咸肉丝儿","白肉丝儿","荸荠","一品锅","素炝春不老","清焖莲子","酸黄菜","烧萝卜",
+	 "烩银耳","炒银枝儿","八宝榛子酱","黄鱼锅子"," 白菜锅子","什锦锅子","汤圆子锅",
+	 "菊花锅子","煮饽饽锅子","肉丁辣酱","炒肉丝儿","炒肉片","烩酸菜","烩白菜","烩豌豆",
+	 "焖扁豆","氽毛豆","外加腌苤蓝丝儿"],
+	 商家 : ["老成都","圣华苑","积香居","丽景轩","福来喜","福星餐厅","龙腾燕","蜀都旋转","老格蔸川菜",
+	 "小公牛","巴蜀家宴","唐人街","天香耳片餐厅","玉林高记","少城春秋","顺星苑","正宗川菜",
+	 "三倒拐海","桥南一品香苑","美味独特","蜀香园","川芙蓉","知味观","麻辣诱惑","蜀留香"]
+	 };*/
+
+	typeof $.typeahead === 'function' && $.typeahead({
+		input: ".js-typeahead",
+		minLength: 1,
+		order: "asc",
+		group: true,
+		maxItemPerGroup: 10,
+		groupOrder: function () {
+
+			var scope = this,
+					sortGroup = [];
+
+			for (var i in this.result) {
+				sortGroup.push({
+					group: i,
+					length: this.result[i].length
+				});
+			}
+
+			sortGroup.sort(
+					scope.helper.sort(
+							["length"],
+							false, // false = desc, the most results on top
+							function (a) {
+								return a.toString().toUpperCase()
+							}
+					)
+			);
+
+			return $.map(sortGroup, function (val, i) {
+				return val.group
+			});
+		},
+		hint: true,
+		dropdownFilter: "全部",
+		/*  href: "/search?q={{display}}", */
+		template: "{{display}}, &#12288<small><em>{{group}}</em></small>",
+		emptyTemplate: "没有找到与 {{query}} 相关的内容",
+		source: {
+			美食: {
+				ajax: {
+					url: "/searchHouseAddress",
+					path: "美食"
+				}
+			}/* ,
+			 商家: {
+			 data: data.商家
+			 }      */
+		},
+
+
+		/*  source: {
+		 country: {
+		 ajax: {
+		 url: "/jquerytypeahead/country_v2.json",
+		 path: "data.country"
+		 }
+		 },
+		 capital: {
+		 ajax: {
+		 type: "POST",
+		 url: "/jquerytypeahead/country_v2.json",
+		 path: "data.capital",
+		 data: {myKey: "myValue"}
+		 }
+		 }
+		 }, */
+
+
+		callback: {
+			/* onClickAfter: function (node, a, item, event) {
+			 event.preventDefault();
+
+			 var r = confirm("您将前往此结果的连接:\n" + item.href + "\n\n是否继续?");
+			 if (r == true) {
+			 window.open(item.href);
+			 }
+
+			 $('.js-result-container').text('');
+
+			 }, */
+			onResult: function (node, query, obj, objCount) {
+
+				console.log(objCount)
+
+				var text = "";
+				if (query !== "") {
+					text = objCount + ' 个结果与 "' + query + '" 相似';
+				}
+				$('.js-result-container').text(text);
+
+			}
+		},
+		debug: true
+	});
+</script>
+<!-- -------------------搜索框----------------------- -->
+
+<!--header-bottom-->
+<div class="banner-bottom-top">
+	<div class="container">
+		<div class="bottom-header">
+			<div class="header-bottom">
+				<div class=" bottom-head">
+					<a href="buy.html">
+						<div class="buy-media">
+							<i class="buy"> </i>
+							<h6>宿舍</h6>
+						</div>
+					</a>
 				</div>
+				<div class=" bottom-head">
+					<a href="buy.html">
+						<div class="buy-media">
+							<i class="rent"> </i>
+							<h6>个人房源</h6>
+						</div>
+					</a>
+				</div>
+				<div class=" bottom-head">
+					<a href="buy.html">
+						<div class="buy-media">
+							<i class="pg"> </i>
+							<h6>经纪人</h6>
+						</div>
+					</a>
+				</div>
+				<div class=" bottom-head">
+					<a href="buy.html">
+						<div class="buy-media">
+							<i class="sell"> </i>
+							<h6>品牌公寓</h6>
+						</div>
+					</a>
+				</div>
+				<div class=" bottom-head">
+					<a href="loan.html">
+						<div class="buy-media">
+							<i class="loan"> </i>
+							<h6>热门小区</h6>
+						</div>
+					</a>
+				</div>
+				<div class=" bottom-head">
+					<a href="buy.html">
+						<div class="buy-media">
+							<i class="apart"> </i>
+							<h6>地图找房</h6>
+						</div>
+					</a>
+				</div>
+				<div class=" bottom-head">
+					<a href="dealers.html">
+						<div class="buy-media">
+							<i class="deal"> </i>
+							<h6>问答</h6>
+						</div>
+					</a>
+				</div>
+				<div class="clearfix"> </div>
 			</div>
+		</div>
 	</div>
-	</div>
-			<!--//-->
-				
-	<!--//header-bottom-->
-	
-	
+</div>
+<!--//-->
+
+<!--//header-bottom-->
+
+
 <!--//header-->
 <!--content-->
 <div class="content">
 	<div class="content-grid">
 		<div class="container">
-			<h3>Most Popular</h3>
-				<div class="col-md-4 box_2">
-			     	 <a href="single.html" class="mask">
-			     	   	<img class="img-responsive zoom-img" src="images/pc4.jpg" alt="">
-			     	   	<span class="four">40,000$</span>
-			     	 </a>
-			     	   <div class="most-1">
-			     	   	 <h5><a href="single.html">Contrary to popular</a></h5>
-			     	    	<p>Lorem ipsum</p>
-			     	   </div>
-			 </div>
-			  <div class="col-md-4 box_2">
-		     	 <a href="single.html" class="mask">
-			     	   	<img class="img-responsive zoom-img" src="images/pc5.jpg" alt="">
-			     	   	<span class="four">40,000$</span>
-			     	 </a>
-		     	   <div class="most-1">
-			     	   	<h5><a href="single.html">Contrary to popular</a></h5>
-			     	    	<p>Lorem ipsum</p>
-			     	   </div>
-		     	
-		      </div>
-			  <div class="col-md-4 box_2">
-		     	 <a href="single.html" class="mask">
-			     	   	<img class="img-responsive zoom-img" src="images/pc3.jpg" alt="" >
-			     	   	<span class="four">40,000$</span>
-			     	 </a>
-		     	   <div class="most-1">
-			     	   	 <h5><a href="single.html">Contrary to popular</a></h5>
-			     	    	<p>Lorem ipsum</p>
-			     	   </div>
-		     	
-		      </div>
-		 	<div class="clearfix"> </div>
+			<h3>热门房源</h3>
+			<div class="col-md-4 box_2">
+				<a href="single.html" class="mask">
+					<img class="img-responsive zoom-img" src="images/pc4.jpg" alt="">
+					<span class="four">4000元/月</span>
+				</a>
+				<div class="most-1">
+					<h5><a href="single.html">高丽园装2居室</a></h5>
+					<p>颐瑞一街  2室1厅1卫</p>
+				</div>
+			</div>
+			<div class="col-md-4 box_2">
+				<a href="single.html" class="mask">
+					<img class="img-responsive zoom-img" src="images/pc5.jpg" alt="">
+					<span class="four">5000元/月</span>
+				</a>
+				<div class="most-1">
+					<h5><a href="single.html">罗斯福广场九棵树地铁旁东总屯</a></h5>
+					<p>怡乐北街11号  3室1厅1卫</p>
+				</div>
+
+			</div>
+			<div class="col-md-4 box_2">
+				<a href="single.html" class="mask">
+					<img class="img-responsive zoom-img" src="images/pc3.jpg" alt="" >
+					<span class="four">3500元/月</span>
+				</a>
+				<div class="most-1">
+					<h5><a href="single.html">通州北关新华北路</a></h5>
+					<p>新华北路59号 3室1厅1卫</p>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!--service-->
+
+	<!--service-->
 	<div class="services">
 		<div class="container">
 			<div class="service-top">
-				<h3>Services</h3>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+				<h3>服务</h3>
+				<p>"让每一位消费者都能在房中房愉悦的找到一个家"是我们最大的梦想。</p>
 			</div>
 			<div class="services-grid">
-		   		<div class="col-md-6 service-top1">
-		   			<div class=" ser-grid">	
-		   				<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-user"> </a>
-		   			</div>
-		   			<div  class="ser-top">
-		   				<h4>Ut wisi enim ad</h4>
-		   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-		   					It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-		   		    </div>
-					<div class="clearfix"> </div>
-		   	   </div>
 				<div class="col-md-6 service-top1">
-		   			<div class=" ser-grid">	
-		   				<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-leaf"> </a>
-		   			</div>
-		   			<div  class="ser-top">
-		   				<h4>Ut wisi enim ad</h4>
-		   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-		   					It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-		   		    </div>
+					<div class=" ser-grid">
+						<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-user"> </a>
+					</div>
+					<div  class="ser-top">
+						<h4>客户至上</h4>
+						<p>我们知道链家的存在对于有房地产需求的客户来讲，意味着是值得信赖和依靠的</p>
+					</div>
 					<div class="clearfix"> </div>
-		   		</div>
-		   	<div class="clearfix"> </div>
-		 </div>
-		 <div class="services-grid">
-			   	<div class="col-md-6 service-top1">
-			   		<div class=" ser-grid">	
-			   			<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-cog"> </a>
-			   		</div>
-			   		<div  class="ser-top">
-			   			<h4>Ut wisi enim ad</h4>
-			   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-			   					It has roots in a piece of classical.Contrary to popular belief, Lorem Ipsum </p>
-			   		</div>
-					<div class="clearfix"> </div>
-			   	</div>
-				<div class="col-md-6 service-top1">
-			   		<div class=" ser-grid">	
-			   			<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-file"> </a>
-			   		</div>
-			   		<div  class="ser-top">
-			   			<h4>Ut wisi enim ad</h4>
-			   			<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-			   					It has roots in a piece of classical .Contrary to popular belief, Lorem Ipsum</p>
-			   		</div>
-					<div class="clearfix"> </div>
-			   	</div>
-		   	  <div class="clearfix"> </div>
-		 	</div>
-		</div>
-	</div>
-<!--//services-->
-<!--features-->
-		<div class="content-middle">
-			<div class="container">
-				<div class="mid-content">
-					<h3>the best features</h3>
-					<p>Contrary to popular belief
-							, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-					<a class="hvr-sweep-to-right more-in" href="single.html">Read More</a>
 				</div>
-			</div>
-		</div>
-<!--//features-->
-<!--phone-->
-	<div class="phone">
-		<div class="container">
-			<div class="col-md-6">
-				<img src="images/ph1.png" class="img-responsive" alt=""/>
-			</div>
-			<div class="col-md-6 phone-text">
-				<h4>Search Homes Everywhere</h4>
-					<div class="text-1">
-						<h5>Custom Location Tracker</h5>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
+				<div class="col-md-6 service-top1">
+					<div class=" ser-grid">
+						<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-leaf"> </a>
 					</div>
-					<div class="text-1">
-						<h5>Map Search</h5>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
-					</div>
-					<div class="text-1">
-						<h5>Quick Details</h5>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majorit</p>
-					</div>
-					<a href="mobile_app.html" class="hvr-sweep-to-right more">Download the App</a>
-			</div>
-		</div>
-	</div>
-<!--//phone-->
-<!--project--->
-	<div class="project">
-		<div class="container">
-			<h3>Project Gallery</h3>
-				<div class="project-top">
-					<div class="col-md-3 project-grid">
-						<div class="project-grid-top">
-							 <a href="single.html" class="mask"><img src="images/ga.jpg" class="img-responsive zoom-img" alt=""/></a>
-							 <div class="col-md1">
-								 <div class="col-md2">
-									 <div class="col-md3">
-									 	<span class="star"> 4.5</span>
-									 </div>
-									 <div class="col-md4">
-									 	<strong>Venice</strong>
-									 	<small>50 Reviews</small>
-									 </div>
-									 <div class="clearfix"> </div>
-								 </div>
-								 <p>2, 3, 4 BHK Flats</p>
-								 <p class="cost">$65,000</p>
-								 <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-							 </div>
-						</div>
-					</div>
-					<div class="col-md-3 project-grid">
-						<div class="project-grid-top">
-							  <a href="single.html" class="mask"><img src="images/ga1.jpg" class="img-responsive zoom-img" alt=""/></a>
-							 <div class="col-md1">
-								 <div class="col-md2">
-									 <div class="col-md3">
-									 	<span class="star"> 4.5</span>
-									 </div>
-									 <div class="col-md4">
-									 	<strong>Venice</strong>
-									 	<small>50 Reviews</small>
-									 </div>
-									 <div class="clearfix"> </div>
-								 </div>
-								 <p>2, 3, 4 BHK Flats</p>
-								 <p class="cost">$65,000</p>
-								 <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-							 </div>
-						</div>
-					</div>
-					<div class="col-md-3 project-grid">
-						<div class="project-grid-top">
-							  <a href="single.html" class="mask"><img src="images/ga2.jpg" class="img-responsive zoom-img" alt=""/></a>
-							 <div class="col-md1">
-								 <div class="col-md2">
-									 <div class="col-md3">
-									 	<span class="star"> 4.5</span>
-									 </div>
-									 <div class="col-md4">
-									 	<strong>Venice</strong>
-									 	<small>50 Reviews</small>
-									 </div>
-									 <div class="clearfix"> </div>
-								 </div>
-								 <p>2, 3, 4 BHK Flats</p>
-								 <p class="cost">$65,000</p>
-								 <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-							 </div>
-						</div>
-					</div>
-					<div class="col-md-3 project-grid">
-						<div class="project-grid-top">
-							  <a href="single.html" class="mask"><img src="images/ga3.jpg" class="img-responsive zoom-img" alt=""/></a>
-							 <div class="col-md1">
-								 <div class="col-md2">
-									 <div class="col-md3">
-									 	<span class="star"> 4.5</span>
-									 </div>
-									 <div class="col-md4">
-									 	<strong>Venice</strong>
-									 	<small>50 Reviews</small>
-									 </div>
-									 <div class="clearfix"> </div>
-								 </div>
-								 <p>2, 3, 4 BHK Flats</p>
-								 <p class="cost">$65,000</p>
-								 <a href="single.html" class="hvr-sweep-to-right more">See Details</a>
-							 </div>
-						</div>
+					<div  class="ser-top">
+						<h4>诚实可信</h4>
+						<p>我们可以没有聪明的脑袋、漂亮的脸蛋、绚丽的背景，但是我们诚实，我们让人信任 </p>
 					</div>
 					<div class="clearfix"> </div>
-				</div>				
-		</div>
-	</div>
-<!--//project-->
-<!--test-->
-		<div class="content-bottom">
-			<div class="container">
-				<h3>Testimonials</h3>
-					<div class="col-md-6 name-in">
-						<div class=" bottom-in">
-							<p class="para-in">Duis aute irure dolor in reprehenderit in voluptate
-							velit esse cillum dolore eu fugiat nulla pariatur.</p>
-						    <i class="dolor"> </i>
-							<div class="men-grid">
-								<a href="#" class="men-top"><img class="img-responsive men-top" src="images/te.jpg" alt=""></a>
-								<div class="men">
-								<span>Roger V. Coates</span>
-								<p>Ut enim ad minim</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="services-grid">
+				<div class="col-md-6 service-top1">
+					<div class=" ser-grid">
+						<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-cog"> </a>
 					</div>
-						<div class=" bottom-in">
-							<p class="para-in">Duis aute irure dolor in reprehenderit in voluptate
-							velit esse cillum dolore eu fugiat nulla pariatur.</p>
-							<i class="dolor"> </i>
-							<div class="men-grid">
-								<a href="#" class="men-top"><img class="img-responsive " src="images/te2.jpg" alt=""></a>
-								<div class="men">
-									<span>Ann K. Perez</span>
-									<p>Ut enim ad minim</p>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6  name-on">
-						<div class="bottom-in ">
-							<p class="para-in">Duis aute irure dolor in reprehenderit in voluptate
-							velit esse cillum dolore eu fugiat nulla pariatur.</p>
-							<i class="dolor"> </i>
-							<div class="men-grid">
-								<a href="#" class="men-top"><img class="img-responsive " src="images/te1.jpg" alt=""></a>
-								<div class="men">
-									<span>Nancy M. Picker</span>
-									<p>Ut enim ad minim</p>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
+					<div  class="ser-top">
+						<h4>团队合作</h4>
+						<p>我们正是因为自认在竞争中很弱小才走到一起，我们只能彼此依靠、彼此关照才能强大</p>
 					</div>
 					<div class="clearfix"> </div>
-			</div>
-		</div>		
-<!--//test-->	
-<!--partners-->
-	<div class="content-bottom1">
-		<h3>Our Partners</h3>
-	 		<div class="container">
-				<ul>
-					<li><a href="#"><img class="img-responsive" src="images/lg.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg1.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg2.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg3.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg4.png" alt=""></a></li>
+				</div>
+				<div class="col-md-6 service-top1">
+					<div class=" ser-grid">
+						<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-file"> </a>
+					</div>
+					<div  class="ser-top">
+						<h4>拼搏进取</h4>
+						<p>我们不掌控任何稀缺资源，唯有比别人更努力才能取得成功</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
 				<div class="clearfix"> </div>
-				</ul>
-				<ul>
-					<li><a href="#"><img class="img-responsive" src="images/lg5.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg6.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg7.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg8.png" alt=""></a></li>
-					<li><a href="#"><img class="img-responsive" src="images/lg9.png" alt=""></a></li>	
-				<div class="clearfix"> </div>
-				</ul>
 			</div>
-		</div>	
-<!--//partners-->	
+		</div>
 	</div>
+	<!--//services-->
+
+</div>
 <!--footer-->
 <div class="footer">
 	<div class="container">
 		<div class="footer-top-at">
 			<div class="col-md-3 amet-sed">
-				<h4>Our Company</h4>
+				<h4>公司简介</h4>
 				<ul class="nav-bottom">
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="blog.html">For Sale By Owner Blog</a></li>
-					<li><a href="mobile_app.html">Mobile</a></li>
-					<li><a href="terms.html">Terms & Conditions</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>	
-					<li><a href="blog.html">Blog</a></li>
-					
-				</ul>	
+					<li><a href="about.html">关于我们</a></li>
+					<li><a href="terms.html">团队文化</a></li>
+					<li><a href="privacy.html">隐私政策</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed ">
-				<h4>Work With Us</h4>
-					<ul class="nav-bottom">
-						<li><a href="single.html">Real Estate Brokers</a></li>
-						<li><a href="single.html">Business Development</a></li>
-						<li><a href="single.html">Affiliate Programs</a></li>
-						<li><a href="contact.html">Sitemap</a></li>
-						<li><a href="career.html">Careers</a></li>
-						<li><a href="feedback.html">Feedback</a></li>	
-					</ul>	
+				<h4>招聘合作</h4>
+				<ul class="nav-bottom">
+					<li><a href="single.html">经纪人</a></li>
+					<li><a href="single.html">加盟计划</a></li>
+					<li><a href="career.html">职业发展</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed">
-				<h4>Customer Support</h4>
-				<p>Mon-Fri, 7AM-7PM </p>
-				<p>Sat-Sun, 8AM-5PM </p>
-				<p>177-869-6559</p>
-					<ul class="nav-bottom">
-						<li><a href="#">Live Chat</a></li>
-						<li><a href="faqs.html">Frequently Asked Questions</a></li>
-						<li><a href="suggestion.html">Make a Suggestion</a></li>
-					</ul>	
+				<h4>联系我们</h4>
+				<p>400-800-600</p>
+				<ul class="nav-bottom">
+					<li><a href="#">在线聊天</a></li>
+					<li><a href="faqs.html">常见问题</a></li>
+					<li><a href="suggestion.html">提出意见</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed ">
-				<h4>Property Services</h4>
-				   <ul class="nav-bottom">
-						<li><a href="single.html">Residential Property</a></li>
-						<li><a href="single.html">Commercial Property</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="register.html">Register</a></li>
-						<li><a href="typo.html">Short Codes</a></li>	
-					</ul>	
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="camera"> </i></a></li>
-						<li><a href="#"><i class="dribble"> </i></a></li>
-					</ul>
+				<h4>功能服务</h4>
+				<ul class="nav-bottom">
+					<li><a href="faqs.html">常见问题</a></li>
+					<li><a href="typo.html">网站导航</a></li>
+				</ul>
+				<ul class="social">
+					<li><a href="#"><i class="facebook"> </i></a></li>
+					<li><a href="#"><i class="gmail"> </i></a></li>
+					<li><a href="#"><i class="twitter"> </i></a></li>
+					<li><a href="#"><i class="camera"> </i></a></li>
+					<li><a href="#"><i class="dribble"> </i></a></li>
+				</ul>
 			</div>
-		<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="col-md-4 footer-logo">
-				<h2><a href="index.html">REAL HOME</a></h2>
+			<div class="col-md-12 footer-class">
+				<p>Copyright © 2012-2017 房中房科技有限公司 版权所有 保留一切权利 京B2-20130048号 | 京ICP备09062682号-9</p>
+				<p >Copyright &copy; 2012-2017.HouseInHouse All rights reserved.</p>
 			</div>
-			<div class="col-md-8 footer-class">
-				<p >Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-			</div>
-		<div class="clearfix"> </div>
-	 	</div>
+			<div class="clearfix"> </div>
+		</div>
 	</div>
 </div>
 <!--//footer-->
