@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class ModuleServiceImpl implements ModuleService{
 
-
+        @Autowired
         private ModuleMapper moduleMapper;
 
     @Override
@@ -33,8 +33,8 @@ public class ModuleServiceImpl implements ModuleService{
     public void saveModule(Module module) {
 
         module.sethhModuleId(UUID.randomUUID().toString());
-        module.setCreateTime(new Date());
-        module.setUpdateTime(module.getCreateTime());
+        module.setcreateTime(new Date());
+        module.setupdateTime(module.getcreateTime());
 
         moduleMapper.saveModule(module);
     }
@@ -44,7 +44,10 @@ public class ModuleServiceImpl implements ModuleService{
         moduleMapper.deleteModule(hhModuleIds);
     }
 
-
+    @Override
+    public List<String> findModuleListByRoleId(String hhRoleId) {
+        return moduleMapper.findModuleListByRoleId(hhRoleId);
+    }
 
 
 }

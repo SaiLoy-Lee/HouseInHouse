@@ -1,6 +1,10 @@
 package com.fy.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fy.pojo.Module;
 import com.fy.pojo.Role;
+import com.fy.service.ModuleService;
 import com.fy.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,9 @@ import java.util.List;
 public class RoleController {
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private ModuleService moduleService;
 
     @RequestMapping("/list")
     public String findAll(Model model){
@@ -33,16 +40,16 @@ public class RoleController {
     }
 
     @RequestMapping("/start")
-    public String Start(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds,int hhRoleStatus){
-         hhRoleStatus =1;
-        roleService.toStart(hhRoleIds,hhRoleStatus);
+    public String Start(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds){
+         int hhRoleStatus =1;
+        roleService.UpdateState(hhRoleIds,hhRoleStatus);
          return "redirect:/sysadmin/role/list";
     }
 
     @RequestMapping("/stop")
-    public String Stop(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds,int hhRoleStatus){
-        hhRoleStatus =0;
-        roleService.toStop(hhRoleIds,hhRoleStatus);
+    public String Stop(@RequestParam(value ="hhRoleId" ,required=true) String[]hhRoleIds){
+        int hhRoleStatus =0;
+        roleService.UpdateState(hhRoleIds,hhRoleStatus);
         return "redirect:/sysadmin/role/list";
     }
 
@@ -83,6 +90,44 @@ public class RoleController {
          Role role=roleService.toview(hhRoleId);
           model.addAttribute("role",role);
         return "/sysadmin/role/jRoleView";
+    }
+
+    @RequestMapping("/roleModule")
+    public String roleModule(String hhRoleId,Model model) throws JsonProcessingException {
+
+        //2.根据roleId查询全部模块信息
+        List<String> rModuleList = moduleService.findModuleListByRoleId(hhRoleId);
+
+        //查询全部的模块信息
+        List<Module> moduleList = moduleService.findAll();
+
+        //全部模块信息列表
+        for (Module module : moduleList) {
+
+            if(rModuleList.contains(module.gethhModuleId())){
+                module.setChecked(true);
+            }
+
+        }
+
+        //将数据转化为JSON串
+        ObjectMapper objectMapper = new ObjectMapper();
+        String zTreeJSON = objectMapper.writeValueAsString(moduleList);
+
+
+        model.addAttribute("zTreeJSON", zTreeJSON);
+        model.addAttribute("hhRoleId", hhRoleId);
+        //跳转到模块展现页面
+        return "/sysadmin/role/jRoleModule";
+    }
+
+    @RequestMapping("/saveRoleModule")
+    public String saveRoleModule(String hhRoleId,String[] hhModuleIds){
+
+        roleService.saveRoleModules(hhRoleId,hhModuleIds);
+
+        //跳转到角色列表页面
+        return "redirect:/sysadmin/role/list";
     }
 
 
