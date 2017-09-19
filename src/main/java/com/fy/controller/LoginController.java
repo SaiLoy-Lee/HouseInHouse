@@ -48,7 +48,7 @@ public class LoginController {
         if(user==null){
             return "<a  href='/tologin.action'><i class='glyphicon glyphicon-user'>登录</i>";
         }else{
-            return " <a  href='/logout'>"+user.getHhUserName()+" | 退出</a>";
+            return " <a  href='/logout'>"+user.getHhUserName()+" | 退出</a> <a  href='/home'> | 后台</a>";
         }
     }
 
