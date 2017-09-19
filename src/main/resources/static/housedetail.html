@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-7 single-box">
 				<h2 id="hhHouseName">	梨园新通国际花园梨园地铁附近精装正规两居出租</h2>
 
-		   		<div class=" buying-top" style="width: 650px;height: 350px;">
+		   		<div class=" buying-top" >
 				<div class="flexslider">
 					  <ul class="slides">
 							<li id="ss1" data-thumb="">
@@ -130,11 +130,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		Request = getRequest();
 		var hhHouseId= Request["hhHouseId"];
 
+
+		//data:{hhHouseId:hhHouseId},
+
 	$.ajax({
+
 		type:"GET",
 		url:"/houseInfo",
 		async:false,
-		data:{hhHouseId:hhHouseId},
+		data:"hhHouseId="+hhHouseId,
 		dataType:"json",
 		success:function (data) {
 			/*var houseInfo = data.rows;*/
@@ -143,6 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			$('.slides').empty();*/
 			for(var i=1; i<=5; i++){
 				$('#ss'+i).attr("src","/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]);
+				$('#ss'+i).attr("style","width: 650px;height: 350px;");
 				$('#ss'+i).empty();
 				$('#ss'+i).html("<img src='/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]+"' />");
 
@@ -156,7 +161,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			$('.typeInfo #area').text(data.hhHouseArea);
 			$('.floorInfo #floor').text(data.hhHouseFloor);
 			$('.floorInfo #orient').text(data.hhHouseOrient);
-			$('.latlng #longitude').text(data.hhHouseLatlng);
+			//$('.latlng #longitude').text(data.hhHouseLatlng);
+			$('.latlng #longitude').val(data.hhHouseLatlng);
 			$('.villageInfo #village').text(data.hhHouseVillage);
 			$('.addressInfo #address').text(data.hhHouseAddress);
 			$('.publisherInfo #publisher').text(data.hhHousePublisher);
@@ -170,9 +176,77 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		}
 	});
+		baiduMap();
+
 
 	});
+
+
+	/*----------------------------------------*/
+	function baiduMap(){
+
+		// 百度地图API功能
+		var map = new BMap.Map("allmap");
+		map.centerAndZoom(new BMap.Point(116.561437,39.783354),16);
+		map.enableScrollWheelZoom(true);
+
+		//    window.onload = function() {
+		//        map.clearOverlays();
+		//        var new_point = new BMap.Point(99,33);
+		//        var marker = new BMap.Marker(new_point);  // 创建标注
+		//        map.addOverlay(marker);              // 将标注添加到地图中
+		//        map.panTo(new_point);
+		//
+		//    }
+
+		//要改id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//经纬度
+		//var ll=document.getElementById("longitude").value;
+		var ll = $('#longitude').val();
+
+		var arr=ll.split(",");
+
+		var address=$('#address').text();
+		var village=$('#village').text();
+
+		/*address=document.getElementById("address").value.trim();
+		village=document.getElementById("village").value;*/
+
+
+
+
+//        var ll="39.872488,116.694164";
+//        var arr=ll.split(",");
+		var longitude=arr[1];
+		var latitude=arr[0];
+
+		map.clearOverlays();
+
+		var new_point = new BMap.Point(longitude,latitude);
+
+		var marker = new BMap.Marker(new_point);
+		map.addOverlay(marker);
+		map.panTo(new_point);
+	}
+
+	function theMapdetails(){
+
+		window.location.href="http://map.baidu.com/?latlng="+$('#longitude').val()+"&title="+$('#address').text()+"&content="+$('#village').text()+"&autoOpen=true&l";
+
+	}
+
+	function theLocation(){
+		if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+			map.clearOverlays();
+			var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+			var marker = new BMap.Marker(new_point);  // 创建标注
+			map.addOverlay(marker);              // 将标注添加到地图中
+			map.panTo(new_point);
+		}
+	}
 </script>
+
+
 </div>
 
 				<div class="buy-sin-single">
@@ -197,8 +271,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										纬度: <input name="latitude" id="latitude" type="text" value=" 北小营路 " style="width:100px; margin-right:10px;" />
 										<input name="village" id="village" type="text" value="次渠嘉园一区" style="width:100px; margin-right:10px;" />
 										<input type="button" value="查询" onclick="theLocation()" />-->
-
-
 									</div>
 								</div>
 							</div>
@@ -207,64 +279,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 			<script type="text/javascript">
-				// 百度地图API功能
-				var map = new BMap.Map("allmap");
-				map.centerAndZoom(new BMap.Point(116.561437,39.783354),16);
-				map.enableScrollWheelZoom(true);
-
-				//    window.onload = function() {
-				//        map.clearOverlays();
-				//        var new_point = new BMap.Point(99,33);
-				//        var marker = new BMap.Marker(new_point);  // 创建标注
-				//        map.addOverlay(marker);              // 将标注添加到地图中
-				//        map.panTo(new_point);
-				//
-				//    }
-
-				//要改id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				//经纬度
-				var ll=document.getElementById("longitude").value;
 
 
 
 
-				var arr=ll.split(",");
 
-				address=document.getElementById("address").value.trim();
-				village=document.getElementById("village").value;
-
-				window.onload=function(){
-
-//        var ll="39.872488,116.694164";
-//        var arr=ll.split(",");
-
-					var longitude=arr[1];
-					var latitude=arr[0];
-
-					map.clearOverlays();
-
-					var new_point = new BMap.Point(longitude,latitude);
-
-					var marker = new BMap.Marker(new_point);
-					map.addOverlay(marker);
-					map.panTo(new_point);
-				}
-
-				function theMapdetails(){
-
-					window.location.href="http://map.baidu.com/?latlng="+ll+"&title="+address+"&content="+village+"&autoOpen=true&l";
-
-				}
-
-				function theLocation(){
-					if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
-						map.clearOverlays();
-						var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
-						var marker = new BMap.Marker(new_point);  // 创建标注
-						map.addOverlay(marker);              // 将标注添加到地图中
-						map.panTo(new_point);
-					}
-				}
 			</script>
 
 
@@ -275,7 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="price" style="margin: 0 0;"><h2 style="color: red;">1900元/月</h2></div>
 				<div class="typeInfo"><span>房屋类型:</span><span  id="type"> 2室1厅1卫 </span><span id="area"> 88平 精装修 </span></div>
 				<div class="floorInfo"><span>楼层朝向:</span><span id="floor"> 中层/共24层 </span><span id="orient"> 南</span></div>
-				<div class="latlng" hidden="hidden"><span>经纬度:</span><span id="longitude">39.888995,116.678608</span></div>
+				<div class="latlng" hidden="hidden"><span>经纬度:</span><input id="longitude"/>39.888995,116.678608</div>
 				<div class="villageInfo"><span>所在小区:</span><span id="village">新通国际花园北区</span></div>
 				<div class="addressInfo"><span>所属区域:</span><span id="address">梨园北街</span></div>
 				<div class="publisherInfo"><span>发布人:</span><span id="publisher"> 管理员  </span></div>
