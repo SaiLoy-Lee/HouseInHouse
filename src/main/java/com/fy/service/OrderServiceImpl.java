@@ -181,5 +181,7 @@ public class OrderServiceImpl implements OrderService {
     public HouseInfo findHouseInfoById(String houseInfoId) {
         return orderMapper.findHouseInfoById(houseInfoId);
     }
-
+    public void auto(){
+        System.out.println("OrderServiceImpl定时任务中");
+    }
 }

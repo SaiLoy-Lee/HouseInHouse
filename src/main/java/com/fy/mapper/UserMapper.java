@@ -35,5 +35,5 @@ public interface UserMapper {
     @Insert("insert into hh_role_user(hh_role_id,hh_user_id) values (#{hhRoleId},#{hhUserId})")
     public void saveUserRole(@Param("hhUserId") String hhUserId, @Param("hhRoleId")String hhRoleId);
 
-    public List<User> findUserByStatus();
+    public List<User> findUserByStatus(String hhUserStatus);
 }

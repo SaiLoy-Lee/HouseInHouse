@@ -3,12 +3,14 @@ package com.fy.quartz;
 import com.aliyuncs.exceptions.ClientException;
 import com.fy.pojo.SMessage;
 import com.fy.pojo.User;
+import com.fy.service.OrderService;
 import com.fy.service.UserService;
 import com.fy.tools.SendCode;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -22,11 +24,16 @@ import java.util.List;
 public class UserJob implements Job{
    /* @Autowired
     private User user;*/
-    @Autowired
-    private UserService userService;
+   private static ApplicationContext applicationContext;
+    public static void setApplicationContext(ApplicationContext context) {
+        applicationContext = context;
+    }
+
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        List<User> userList = userService.findUserByStatus();
+        UserService userService  = (UserService)applicationContext.getBean(UserService.class);
+
+        List<User> userList = userService.findUserByStatus("1");
         for(User user:userList) {
             String hhUserId = user.getHhUserId();
             String hhUserName = user.getHhUserName();
@@ -47,7 +54,8 @@ public class UserJob implements Job{
                 smessage.setHhSmessageCell(hhUserTel);
                 smessage.setCreateDept(creatDept);
                 smessage.setHhSmessageType("4");
-                SendCode sc = new SendCode();
+
+                SendCode sc  = (SendCode)applicationContext.getBean(SendCode.class);
                 try {
                     sc.sendSms(smessage);
                 } catch (ClientException e) {
