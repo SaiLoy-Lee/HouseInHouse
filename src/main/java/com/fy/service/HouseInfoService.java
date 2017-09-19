@@ -10,8 +10,11 @@ import java.util.List;
  */
 public interface HouseInfoService {
     public List<HouseInfo> findAll();
+    public List<HouseInfo> findById(String houseInfoId);
     public void save(HouseInfo houseInfo);
     public SolrDocumentList searchproduct(HouseInfo houseInfo);
+    public SolrDocumentList searchproduct3();
+    public SolrDocumentList searchAll();
     public void deletehhHouseId(String[] hhHouseIds, int hhHouseIdStatus);
 
     public void toStart(String[] hhHouseIds, int hhHouseIdStatus);

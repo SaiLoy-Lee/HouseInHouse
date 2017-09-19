@@ -23,11 +23,18 @@ import java.util.UUID;
  */
 @Service("HouseInfoService")
 public class HouseInfoServiceImpl implements HouseInfoService{
+
     @Autowired
     private  HouseInfoMapper houseInfoMapper;
 
+
     public List<HouseInfo> findAll() {
         return houseInfoMapper.findAll();
+    }
+
+    @Override
+    public List<HouseInfo> findById(String HouseInfoId) {
+        return houseInfoMapper.findById(HouseInfoId);
     }
 
     @Override
@@ -60,15 +67,19 @@ public class HouseInfoServiceImpl implements HouseInfoService{
 
     @Override
     public SolrDocumentList searchproduct(HouseInfo houseInfo) {
-        SolrServer solrServer = new HttpSolrServer("http://10.8.37.158:8083/solr/house_info");
+        SolrServer solrServer = new HttpSolrServer("http://10.8.37.210:8083/solr/house_info");
+
+
+//        SolrServer solrServer = new HttpSolrServer("http://DADI:8083/solr/house_info");
         SolrQuery query=new SolrQuery();
         if (!"".equals(houseInfo.getHhHouseAddress())||houseInfo.getHhHouseAddress()!=null){
-            query.setQuery("HH_HOUSE_ADDRESS:"+houseInfo.getHhHouseAddress());  //房屋地址
+            query.setQuery("HH_HOUSE_ADDRESS:"+houseInfo.getHhHouseAddress()+"AND HH_HOUSE_STATUS:  0");  //房屋地址
         }else if (!"".equals(houseInfo.getHhHouseVillage())||houseInfo.getHhHouseVillage()!=null){
-            query.setQuery("HH_HOUSE_VILLAGE:"+houseInfo.getHhHouseVillage());//街道名称
+            query.setQuery("HH_HOUSE_VILLAGE:"+houseInfo.getHhHouseVillage()+"AND HH_HOUSE_STATUS:  0");//街道名称
         }else{
-            query.setQuery("HH_HOUSE_TELEPHONE:1");//手机号带1的
+            query.setQuery("HH_HOUSE_TELEPHONE:1 AND HH_HOUSE_STATUS:  0");//手机号带1的
         }
+        query.setHighlight(true);
         query.setHighlightSimplePre("<font color='red'>");
         query.setHighlightSimplePost("</font>");
 		/*query.addSort("id",ORDER.asc);
@@ -92,6 +103,72 @@ public class HouseInfoServiceImpl implements HouseInfoService{
         }
         return solrDocumentList;
     }
+
+    @Override
+    public SolrDocumentList searchproduct3() {
+        SolrServer solrServer = new HttpSolrServer("http://10.8.37.210:8083/solr/house_info");
+//        SolrServer solrServer = new HttpSolrServer("http://DADI:8083/solr/house_info");
+        SolrQuery query=new SolrQuery();
+        query.setQuery("*:* AND HH_HOUSE_STATUS:  0");  //房屋地址
+        //query.setQuery("hhHouseVillage:1");//手机号带1的
+        query.setHighlight(true);
+        query.setHighlightSimplePre("<font color='red'>");
+        query.setHighlightSimplePost("</font>");
+        query.setRows(3);
+		/*query.addSort("id",ORDER.asc);
+		query.setStart(0);
+		query.setRows(100);
+		query.set("q","title:"+keyword);
+		query.setHighlight(true);
+		query.addHighlightField("title");
+		query.setHighlightSimplePre("<font color='red'>");
+		query.setHighlightSimplePost("</font>"); */
+        SolrDocumentList solrDocumentList=null;
+        try {
+            QueryResponse response = solrServer.query(query);
+            solrDocumentList = response.getResults();
+			 /*for (SolrDocument doc : solrDocumentList) {
+				 System.out.println(doc.get("id"));
+			 }*/
+        } catch (SolrServerException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return solrDocumentList;
+    }
+
+    @Override
+    public SolrDocumentList searchAll() {
+        SolrServer solrServer = new HttpSolrServer("http://10.8.37.210:8083/solr/house_info");
+//        SolrServer solrServer = new HttpSolrServer("http://DADI:8083/solr/house_info");
+        SolrQuery query=new SolrQuery();
+        query.setQuery("*:* AND HH_HOUSE_STATUS:  0");  //房屋地址
+        //query.setQuery("hhHouseVillage:1");//手机号带1的
+        query.setHighlight(true);
+        query.setHighlightSimplePre("<font color='red'>");
+        query.setHighlightSimplePost("</font>");
+		/*query.addSort("id",ORDER.asc);
+		query.setStart(0);
+		query.setRows(100);
+		query.set("q","title:"+keyword);
+		query.setHighlight(true);
+		query.addHighlightField("title");
+		query.setHighlightSimplePre("<font color='red'>");
+		query.setHighlightSimplePost("</font>"); */
+        SolrDocumentList solrDocumentList=null;
+        try {
+            QueryResponse response = solrServer.query(query);
+            solrDocumentList = response.getResults();
+			 /*for (SolrDocument doc : solrDocumentList) {
+				 System.out.println(doc.get("id"));
+			 }*/
+        } catch (SolrServerException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return solrDocumentList;
+    }
+
 
     @Override
     public void deletehhHouseId(String[] hhHouseIds, int hhHouseIdStatus) {

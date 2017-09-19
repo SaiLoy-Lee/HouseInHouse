@@ -10,6 +10,9 @@ import java.util.List;
  */
 public interface HouseInfoMapper {
     public List<HouseInfo> findAll();
+
+    public List<HouseInfo> findById(String houseInfoId);
+
     public void save(HouseInfo houseInfo);
     public void deletehhHouseId(@Param("hhHouseIds") String[] hhHouseIds , @Param("hhHouseIdStatus") int hhHouseIdStatus);
 
