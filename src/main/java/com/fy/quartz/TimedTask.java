@@ -24,8 +24,8 @@ public class TimedTask {
 //       CronScheduleBuilder.cronSchedule("1 2 3 4 5 6 7"))
 //--------------------------------------------
 //        触发时间 每天十点自动运行定时任务
-    //private static String time = "1/10 * * * * ?";
-    private static String time = "0 0 10 * * ?";
+    private static String time = "1/10 * * * * ?";
+    //private static String time = "0 0 10 * * ?";
 
     @PostConstruct
     public static void Start() throws Exception {

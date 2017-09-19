@@ -85,4 +85,6 @@ public interface OrderService {
     public List<Order> findOrdersByStatus(int status);
 
     public HouseInfo findHouseInfoById(String houseInfoId);
+
+    void auto();
 }

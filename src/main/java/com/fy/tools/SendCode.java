@@ -81,7 +81,6 @@ public class SendCode {
 
             messageService.saveMessage(sMessage);
 
-
             return 0;//0表示成功
         } else if (type.equals("3") || type == "3") {
             SendSmsResponse response = sendSmsPayment(sMessage);
