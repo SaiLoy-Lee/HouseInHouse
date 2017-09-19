@@ -103,7 +103,6 @@
 				<tr class="odd">
 					<td><span style="color: red">*</span>上传房源图片</td>
 					<td><input  type="file"  id="importFile" />
-						<input type="text"  name="hhHouseImg" onclick="upload()">
 					</td>
 
 				</tr>

@@ -44,9 +44,9 @@ public class HouseInfoServiceImpl implements HouseInfoService{
         houseInfo.setCreateTime(new Date());
         houseInfo.setUpdateTime(houseInfo.getCreateTime());
 
-        /**
+      /*  *//**
          *   上传图片到阿里云OSS
-         */
+         *//*
         // endpoint以杭州为例，其它region请按实际情况填写
         String endpoint = "http://oss-cn-qingdao.aliyuncs.com";
 // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建
@@ -61,7 +61,7 @@ public class HouseInfoServiceImpl implements HouseInfoService{
 
         System.out.print(ossClient.getObject("weizhen520",uuId).toString());
 // 关闭client
-        ossClient.shutdown();
+        ossClient.shutdown();*/
         houseInfoMapper.save(houseInfo);
     }
 
@@ -111,6 +111,7 @@ public class HouseInfoServiceImpl implements HouseInfoService{
         SolrQuery query=new SolrQuery();
         query.setQuery("*:* AND HH_HOUSE_STATUS:  0");  //房屋地址
         //query.setQuery("hhHouseVillage:1");//手机号带1的
+        query.setSort("HH_HOUSE_PUBLISHTIME", SolrQuery.ORDER.desc);
         query.setHighlight(true);
         query.setHighlightSimplePre("<font color='red'>");
         query.setHighlightSimplePost("</font>");
@@ -145,6 +146,8 @@ public class HouseInfoServiceImpl implements HouseInfoService{
         query.setQuery("*:* AND HH_HOUSE_STATUS:  0");  //房屋地址
         //query.setQuery("hhHouseVillage:1");//手机号带1的
         query.setHighlight(true);
+        query.setStart(0);
+        query.setRows(Integer.MAX_VALUE);
         query.setHighlightSimplePre("<font color='red'>");
         query.setHighlightSimplePost("</font>");
 		/*query.addSort("id",ORDER.asc);
