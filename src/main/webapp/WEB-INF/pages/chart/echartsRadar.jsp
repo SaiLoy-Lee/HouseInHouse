@@ -17,7 +17,7 @@
 
 	        option = {
 			    title: {
-			        text: '${year1}年第${month1}月到${year2}年${month2}月租金占比图'
+			        text: '最近一季度租金占比图'
 			    },
 			    tooltip: {},
 			    legend: {

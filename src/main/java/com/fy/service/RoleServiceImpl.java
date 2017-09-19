@@ -40,7 +40,7 @@ public class RoleServiceImpl implements  RoleService{
 
     @Override
     public void SaveRole(Role role) {
-        role.sethhRoleId(UUID.randomUUID().toString());
+        role.setHhRoleId(UUID.randomUUID().toString());
         role.setCreateTime(new Date());
         role.setUpdateTime(role.getCreateTime());
         roleMapper.SaveRole(role);

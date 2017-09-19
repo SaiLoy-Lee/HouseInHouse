@@ -49,7 +49,7 @@
 				str += nodes[i].id;   
 			}
 			
-			$('#roleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
+			$('#hhRoleIds').val(str);		//将拼接完成的字符串放入隐藏域，这样就可以通过post提交
 		}
 	</SCRIPT>
 </head>
@@ -77,9 +77,10 @@
 			<div class="eXtremeTable" >
 				<table id="ec_table" class="tableRegion" width="98%" >
 					<!--隐藏域用来传递数据  -->
-					<input type="hidden" id="userId" name="userId" value="${userId}"/>
-					<input type="hidden" id="roleIds" name="roleIds"/>
+					<input readonly="readonly" type="hidden" id="hhUserId" name="hhUserId" value="${user.hhUserId}"/>
+					<input type="hidden" id="hhRoleIds" name="hhRoleIds"/>
 					<ul id="htZtree" class="ztree"></ul>
+
 				</table>
 			</div>
 		</div>

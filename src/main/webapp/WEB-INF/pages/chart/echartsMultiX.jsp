@@ -26,7 +26,7 @@
 	        var option = {
 
 		        title: {
-	                text: "${year1}年第${month1}月到${year2}年${month2}月房源概况"
+	                text: "最近一季度房源概况"
 	            },
 		        
 	            color: colors,

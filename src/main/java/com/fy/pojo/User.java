@@ -15,6 +15,21 @@ public class User extends BaseEntity{
     private String hhUserTel;
     private String hhUserStatus;
 
+    private Boolean checked;
+
+    public String getId(){
+        return  hhUserId;
+     }
+    public String getName(){
+        return hhUserName;
+    }
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 
     public Dept getDept() {
         return dept;

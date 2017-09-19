@@ -2,53 +2,37 @@
 <%@ include file="../../base.jsp" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>国际物流汇通商贸</title>
-	<link rel="stylesheet" rev="stylesheet" type="text/css" href="${ctx}/staticfile/skin/default/css/login.css" media="all" />
-	<script src="${ctx}/staticfile/components/pngfix/DD_belatedPNG.js"></script>
-	<script> DD_belatedPNG.fix('*'); </script>
+	<link href="${ctx}/staticfile/css/style.css" rel='stylesheet' type='text/css' />
+	<script src="${ctx}/staticfile/js/jquery.min.js"></script>
 </head>
-
 <body>
-<form id="login_main" method="post">
-<div id="png">
-	<div class="box">
-			<div class="inputstyle">
-				<div class="inputlable">用户名：
+<div class="login-form">
+	<div class="close"> </div>
+		<div class="head-info">
+			<label class="lbl-1"> </label>
+			<label class="lbl-2"> </label>
+			<label class="lbl-3"> </label>
+		</div>
+			<div class="clear"> </div>
+	<div class="avtar">
+		<img src="${ctx}/staticfile/images/avtar.png" />
+	</div>
+			<form method="post">
 					<input type="text" value="" name="userName" id="userName" onFocus="this.select();" title="请您输入用户名"/>
-					<div id="ts" style="z-index:1;">
-					</div>
-				</div>
-
-			    <div class="inputlable">密　码：
-					<input type="password" value="" name="password" id="password" onfocus="$('#ts').css('display','none');this.select();"
+						<div class="key">
+						<input type="password" value="" name="password" id="password" onfocus="$('#ts').css('display','none');this.select();"
 						onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }" title="请您输入密码"/>
-				</div>
-			</div>
-			<div class="btnstyle">
-				<input  class="loginImgOut" value="" type="button" onclick="formSubmit('${ctx}/login.action','_self');"
-				  onmouseover="this.className='loginImgOver'" 
-				  onmouseout="this.className='loginImgOut'"
-				/>
-				<input class="resetImgOut" value="" type="button"   
-				  onmouseover="this.className='resetImgOver'" 
-				  onmouseout="this.className='resetImgOut'"
-				/>
+							</div>
+			</form>
 
-			</div>
-		  	<div class="msgtip">
-				<c:if test="${!empty errorInfo}">
-					${errorInfo}
-				</c:if>
-			</div>
+	<div class="msgtip">
+		<c:if test="${!empty errorInfo}">
+			${errorInfo}
+		</c:if>
+	</div>
+	<div class="signin">
+		<input  stype="height:70px padding:0" type="submit" value="Login" onclick="formSubmit('${ctx}/login.action','_self');" >
 	</div>
 </div>
-</form>
-
-<script type="text/JavaScript">
-	document.getElementById('login_main').userName.focus();
-</script>
-
 </body>
 </html>
-
-
