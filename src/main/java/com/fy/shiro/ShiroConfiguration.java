@@ -92,7 +92,7 @@ public class ShiroConfiguration {
 
         Map<String, Filter> filterChains = new LinkedHashMap<String, Filter>();
         SystemLogoutFilter logoutFilter = new SystemLogoutFilter();
-        logoutFilter.setRedirectUrl("/index");
+        logoutFilter.setRedirectUrl("/index.html");
         filterChains.put("logout",logoutFilter);
         shiroFilterFactoryBean.setFilters(filterChains);
 
@@ -114,7 +114,7 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/login.action", "anon");
         filterChainDefinitionMap.put("/logout*","logout");
 
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;

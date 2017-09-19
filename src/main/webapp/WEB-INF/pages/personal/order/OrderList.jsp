@@ -21,16 +21,6 @@
                         <li id="view"><a href="#" onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
                         <li id="update"><a href="#" onclick="formSubmit('delete','_self');this.blur();">删除</a>
 
-
-
-                        <li id="update"><a href="#" onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
-
-                        <li id="save1"><a href="#" onclick="formSubmit('auditing','_self');this.blur();">审核提交</a></li>
-
-                        <li id="save1"><a href="#" onclick="formSubmit('viewDel','_self');this.blur();">已删除订单</a></li>
-
-                        <li id="download"><a href="#" onclick="formSubmit('download','_self');this.blur();">下载订单报表</a></li>
-
                     </ul>
                 </div>
             </div>

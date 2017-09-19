@@ -34,6 +34,7 @@
     <script type="application/x-javascript">
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 
+
     $(function(){
 
 
@@ -59,12 +60,20 @@
                        var hhHouseName=datas[n].hhHouseName;
                        var hhHouseArea=datas[n].hhHouseArea;
                        var hhHouseId=datas[n].hhHouseId;
-
-                       temp = "<tr><td>" + hhHouseName + "</td><td>" + hhHouseArea + "</td><td>" +
-                               hhHouseId + "</td></tr>";
+                       var hhHouseLatlng = datas[n].hhHouseLatlng;
+                       var hhHouseTelephone =  datas[n].hhHouseTelephone;
+                       var hhHouseVillage = datas[n].hhHouseVillage;
+                       temp = "<tr><td><a href='housedetail.html?hhHouseId="+hhHouseId+"'>" + hhHouseName + "</a></td><td>" + hhHouseArea + "</td></tr><hr/><hr/> <hr/>";
                        $("#tab").append(temp);
+
+
+
                    }
-                   alert(datas[0].hhHouseAddress);
+
+
+                   $("#hiddenlnt").val(123);
+
+                   /* alert(datas[0].hhHouseAddress);*/
   /*                         data, function(index, content)
                            {
                               alert(content.HH_HOUSE_ADDRESS);
@@ -123,32 +132,36 @@
 	</div>
 </div>
 <div style="min-width: 1024px;">
-<div class="listpage" style=" float: left;min-width:300px;width:30%;opacity:0.7; height: 80%; background-color: #7a8387;">
+<div class="listpage" style=" float: left;min-width:500px;width:30%;opacity:0.7; height: 80%; background-color: white;">
 
-    <div id="dataslist" style="width:300px;height:850px;">
+    <div id="dataslist" style="width:500px;height:850px;">
         <table id="tab">
 
 
         </table>
 
     </div>
+    <input id="hiddenlnt" type="hidden"/>
 </div>
 <div class="content" style="float: left; width: 70%;height:100%; background-color: #2b927d;" >
         <div style="min-height: 90%; height:850px; width: 100%;" id="map">
         </div>
         <script type="text/javascript">
-            var markerArr = [
+
+            var markerArr = $("#hiddenlnt").val()
+
+/*            var markerArr = [
                 { title: "名称：广州火车站", point: "113.264531,23.157003", address: "广东省广州市广州火车站", tel: "12306" },
                 { title: "名称：广州塔（赤岗塔）", point: "113.330934,23.113401", address: "广东省广州市广州塔（赤岗塔） ", tel: "18500000000" },
                 { title: "名称：广州动物园", point: "113.312213,23.147267", address: "广东省广州市广州动物园", tel: "18500000000" },
                 { title: "名称：天河公园", point: "113.372867,23.134274", address: "广东省广州市天河公园", tel: "18500000000" }
-            ];
+            ];*/
 
             var map; //Map实例
             function map_init() {
                 map = new BMap.Map("map");
                 //第1步：设置地图中心点，广州市
-                var point = new BMap.Point(113.312213, 23.147267);
+                var point = new BMap.Point(116.561437,39.783354);
                 //第2步：初始化地图,设置中心点坐标和地图级别。
                 map.centerAndZoom(point, 13);
                 //第3步：启用滚轮放大缩小

@@ -43,6 +43,7 @@ public class HouseInfoServiceImpl implements HouseInfoService{
         houseInfo.setHhHouseId(uuId);
         houseInfo.setCreateTime(new Date());
         houseInfo.setUpdateTime(houseInfo.getCreateTime());
+        houseInfo.setHhHousePublishtime(houseInfo.getCreateTime());
 
       /*  *//**
          *   上传图片到阿里云OSS

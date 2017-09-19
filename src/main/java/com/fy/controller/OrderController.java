@@ -46,11 +46,11 @@ public class OrderController extends BaseController {
     @RequestMapping("/toCreateOrder")
     public String toCreateOrder(@RequestParam(required = true) String hhUserId, @RequestParam(required = true) String hhHouseId, Model model, HttpSession session) {
         if (session.getAttribute("SessionUser") == null) {
-            return "redirect:login";
+            return "redirect:/tologin";
         }
 
         User user = null;
-        user = userService.findUserById(hhUserId);
+        user = (User) session.getAttribute("SessionUser");
         HouseInfo houseInfo = null;
         houseInfo = orderService.findHouseInfoById(hhHouseId);
 
@@ -140,7 +140,7 @@ public class OrderController extends BaseController {
         }
         order.setHhOrdersId(hhOrdersId);
         order.setHouseInfo(order.getHouseInfo());
-        order.setUser(order.getUser());
+        order.setUser((User) session.getAttribute("SessionUser"));
         int numPer = 1;//入住人数
         try {
             orderService.createOrder(order, numPer);

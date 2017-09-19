@@ -34,6 +34,9 @@ public class UserJob implements Job{
         UserService userService  = (UserService)applicationContext.getBean(UserService.class);
 
         List<User> userList = userService.findUserByStatus("1");
+        if(userList.isEmpty() || userList ==null){
+            return;
+        }
         for(User user:userList) {
             String hhUserId = user.getHhUserId();
             String hhUserName = user.getHhUserName();

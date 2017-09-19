@@ -23,11 +23,13 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="HouseInHouse" />
+        <module name="web" />
         <module name="webdemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="HouseInHouse" target="1.7" />
+      <module name="web" target="1.7" />
       <module name="webdemo" target="1.7" />
     </bytecodeTargetLevel>
   </component>

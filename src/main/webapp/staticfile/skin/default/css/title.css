@@ -38,10 +38,10 @@
 }
 
 .top_logo {
-	background:url("../images/login/logo.png") no-repeat -2px 2px;
+	background:url("../images/login/logo.png")  no-repeat -2px 2px;
     height:91px;
     white-space:nowrap;
-    overflow:hiddle;
+    /*overflow:hiddle;*/
 }
 .headerBg {
 	background:url(../images/title/title_bgs.jpg) no-repeat right top;

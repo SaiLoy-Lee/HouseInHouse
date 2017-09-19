@@ -11,6 +11,7 @@ import com.fy.service.HouseInfoService;
 import org.apache.solr.common.SolrDocumentList;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,7 +91,16 @@ public class HouseInfoController {
      * @throws ParseException
      */
     @RequestMapping("/query")
-    public String jddnproductquer(HouseInfo houseInfo,Model model) throws ParseException{
+    @ResponseBody
+    public String jddnproductquer(HouseInfo houseInfo,String hh_house_address,Model model) throws ParseException{
+        String usernameString="";
+        try {
+            usernameString = new String(hh_house_address.getBytes("ISO-8859-1"),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        houseInfo.setHhHouseAddress(usernameString);
         SolrDocumentList solrdocument=houseInfoService.searchproduct(houseInfo);
         List<HouseInfo> houseInfo1list=new ArrayList<HouseInfo>();
         for(SolrDocument doc :solrdocument){
@@ -135,10 +145,16 @@ public class HouseInfoController {
             houseInfo1list.add(houseInfo1);
             //System.out.println("id:"+doc.get("id")+"title:"+doc.get("title")+"link:"+doc.get("link")+"price:"+doc.get("price"));
         }
-        model.addAttribute("size",houseInfo1list.size());
-        model.addAttribute("houseInfo1list",houseInfo1list);
-        //System.out.println("执行到这了2");
-        return "/sysadmin/main";
+        ObjectMapper objectMapper =new ObjectMapper();
+        String jsonStr="";
+        try {
+            jsonStr=objectMapper.writeValueAsString(houseInfo1list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        response.setCharacterEncoding("utf-8");
+//        response.getWriter().write("美食:"+jsonStr);
+        return jsonStr;
     }
 
     /**
@@ -146,8 +162,9 @@ public class HouseInfoController {
      * @return
      * @throws ParseException
      */
-    @ResponseBody
+
     @RequestMapping("/query3")
+    @ResponseBody
     public String jddnproductquer3(Model model) throws ParseException{
         SolrDocumentList solrdocument=houseInfoService.searchproduct3();
         List<HouseInfo> houseInfo1list=new ArrayList<HouseInfo>();
@@ -201,7 +218,7 @@ public class HouseInfoController {
         }
 //        response.setCharacterEncoding("utf-8");
 //        response.getWriter().write("美食:"+jsonStr);
-        return "{\"房屋地址\":"+jsonStr+"}";
+        return jsonStr;
     }
     /**
      * 根据关键字查询所有房屋信息
@@ -240,6 +257,38 @@ public class HouseInfoController {
      * @return
      * @throws ParseException
      */
+    @RequestMapping("/searchHouseXqmc")
+    @ResponseBody
+    public String jsonquerysolrX(HouseInfo houseInfo,Model model,HttpServletResponse response) throws ParseException, IOException {
+        //houseInfo.setHhHouseAddress("");
+        SolrDocumentList solrdocument=houseInfoService.searchAll();
+        List houseInfo1list=new ArrayList();
+        String nameadd="";
+        for(SolrDocument doc :solrdocument){
+            if(doc.get("HH_HOUSE_VILLAGE")!=null||!"".equals(doc.get("HH_HOUSE_VILLAGE"))){
+                nameadd=doc.get("HH_HOUSE_VILLAGE").toString();//房屋地址
+            }
+            // nameadd=doc.get("HH_HOUSE_ADDRESS")==null?"":doc.get("HH_HOUSE_ADDRESS").toString();//房屋地址
+            //houseInfo1.setHhHouseVillage(doc.get("HH_HOUSE_VILLAGE")==null?"":doc.get("HH_HOUSE_VILLAGE").toString());//小区名称
+            houseInfo1list.add(nameadd);
+            //System.out.println("id:"+doc.get("id")+"title:"+doc.get("title")+"link:"+doc.get("link")+"price:"+doc.get("price"));
+        }
+        ObjectMapper objectMapper =new ObjectMapper();
+        String jsonStr="";
+        try {
+            jsonStr=objectMapper.writeValueAsString(houseInfo1list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        response.setCharacterEncoding("utf-8");
+//        response.getWriter().write("美食:"+jsonStr);
+        return "{\"小区名称\":"+jsonStr+"}";
+    }
+   /* *//**
+     * 根据关键字查询所有房屋信息
+     * @return
+     * @throws ParseException
+     *//*
     @RequestMapping("/searchHouseXQMC")
     @ResponseBody
 public String jsonquerysolrXQ(HouseInfo houseInfo,Model model,HttpServletResponse response) throws ParseException, IOException {
@@ -266,6 +315,6 @@ public String jsonquerysolrXQ(HouseInfo houseInfo,Model model,HttpServletRespons
 //        response.setCharacterEncoding("utf-8");
 //        response.getWriter().write("美食:"+jsonStr);
         return "{\"小区名称\":"+jsonStr+"}";
-    }
+    }*/
 
 }

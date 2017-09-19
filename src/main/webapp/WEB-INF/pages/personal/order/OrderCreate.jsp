@@ -341,7 +341,7 @@
                     <tr class="odd">
                         <td class="tda">手机号:</td>
                         <td colspan="1"><input type="tel" class="tel" id="mobile"
-                                               value="${user.hhUserTel}18600960865" disabled="disabled"></td>
+                                               value="${user.hhUserTel}18600960865"></td>
                     </tr>
                     <tr class="odd">
                         <td class="tda">

@@ -226,7 +226,7 @@
 
 <div class="PositionFrame_black" id="PositionFrame"></div>
 <div id="userInfo" style="z-index:999;" onclick="HideLoginDiv()" title="点击关闭">
-    <a href="${ctx}/">首页</a>
+    <a onclick="window.open('index.html')">首页</a>
     <img src="${ctx}/staticfile/skin/default/images/title/avataronline.gif" border="0" style="margin-top:-1px;"/>
     您好：<strong>${SessionUser.hhUserName}</strong>&nbsp;&nbsp;|
     您所属单位：<strong>
@@ -270,7 +270,7 @@
                                 id="tm_separator"></span>
                         </shiro:hasPermission>
                         <shiro:hasPermission name="管理员">
-                            <span id="topmenu" onclick="toModule('house');">房源管理</span><span
+                            <span id="topmenu" onclick="toModule('house');">管理</span><span
                                 id="tm_separator"></span>
                         </shiro:hasPermission>
                         <shiro:hasPermission name="管理员">
