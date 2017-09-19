@@ -41,13 +41,18 @@ public class LoginController {
         return "/sysadmin/login/login";
     }
 
+    //ajax
     @RequestMapping("/ajax/login")
     @ResponseBody
     public String toAjax(HttpSession session){
         User user = (User) session.getAttribute("SessionUser");
         if(user==null){
+
+
             return "<a  href='/tologin.action'><i class='glyphicon glyphicon-user'>登录</i>";
         }else{
+
+
             return " <a  href='/logout'>"+user.getHhUserName()+" | 退出</a> <a href='/home'> | 后台</a>";
         }
     }
