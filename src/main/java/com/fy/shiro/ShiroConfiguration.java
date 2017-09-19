@@ -109,9 +109,9 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/css/*.css","anon");
 
         filterChainDefinitionMap.put("/staticfile/**", "anon");
-        filterChainDefinitionMap.put("/tologin.action","anon");
-
-        filterChainDefinitionMap.put("/login.action", "anon");
+        filterChainDefinitionMap.put("/tologin*","anon");
+        filterChainDefinitionMap.put("/ajax/*","anon");
+        filterChainDefinitionMap.put("/login*", "anon");
         filterChainDefinitionMap.put("/logout*","logout");
 
         filterChainDefinitionMap.put("/", "authc");

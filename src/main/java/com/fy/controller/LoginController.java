@@ -1,10 +1,13 @@
 package com.fy.controller;
 
+import com.fy.mapper.OrderMapper;
+import com.fy.pojo.Role;
 import com.fy.pojo.User;
 import com.fy.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +17,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -25,6 +31,8 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderMapper orderMapper;
 
     @RequestMapping("/tologin")
     //@ResponseBody
@@ -33,6 +41,16 @@ public class LoginController {
         return "/sysadmin/login/login";
     }
 
+    @RequestMapping("/ajax/login")
+    @ResponseBody
+    public String toAjax(HttpSession session){
+        User user = (User) session.getAttribute("SessionUser");
+        if(user==null){
+            return "<a  href='/tologin.action'><i class='glyphicon glyphicon-user'>登录</i>";
+        }else{
+            return " <a  href='/logout'>"+user.getHhUserName()+" | 退出</a> <a href='/home'> | 后台</a>";
+        }
+    }
 
     @RequestMapping("/login")
     public String login(String userName, String password, Model model){
@@ -52,8 +70,9 @@ public class LoginController {
             User user = (User) subject.getPrincipal();
             Session session = subject.getSession();
             session.setAttribute("SessionUser",user);
-
-            return "/home/fmain";
+            List<Role> roles = orderMapper.findRolesByUserId(user.getHhUserId());
+            session.setAttribute("UserRole",roles);
+            return "redirect:/index.html";
 
         } catch (AuthenticationException a){
             a.printStackTrace();

@@ -52,7 +52,6 @@
 				<li><a  href="blog.html">博客</a></li>
 				<li><a  href="terms.html">团队</a></li>
 				<li><a  href="privacy.html">隐私</a></li>
-				<li><a  href="contact.html">联系方式</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -68,7 +67,22 @@
 		<div class="top-nav">
 			<ul class="right-icons">
 				<!--<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>-->
-				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>登录</a></li>
+				<li id="loginli" class="glyphicon"><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>登录</a></li>
+
+				<script>
+					$(document).ready(function(){
+						$.ajax({
+							type:"GET",
+							url:"/ajax/login.action",
+
+							success:function(result){
+
+
+								$("#loginli").html(result);
+							}
+						});
+					});
+				</script>
 				<!--<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>-->
 
 			</ul>
