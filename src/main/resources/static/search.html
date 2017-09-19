@@ -8,41 +8,73 @@
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="http://www.w3school.com.cn/jquery/jquery.js" type="text/javascript"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
+<!--    <Script type="application/x-javascript">
+        var url=window.location.href;
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        alert(GetQueryString(q));
+        alert(0);
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+    </Script>-->
+    <script type="application/x-javascript">
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 
-    function showList(data){
-
-
-            (function($){
-                $.getUrlParam = function(name)
-                {
-                    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-                    var r = window.location.search.substr(1).match(reg);
-                    if (r!=null) return unescape(r[2]); return null;
-                }
-            })(jQuery);
     $(function(){
-       if($.getUrlParam('q') != null){
 
 
+        (function ($) {
+            $.getUrlParam = function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]); return null;
+            }
+        })(jQuery);
+
+        var xx = $.getUrlParam('q');
+//       if($.getUrlParam('q') != null){
+        $.getUrlParam('q')
            $.ajax({
                type: "post",
-               url: "query.action",
+               url: "/house/query?hh_house_address="+$.getUrlParam('q'),
                dataType: "json",
-               success: function (data) {
-                   alert(data[0]);
-                   temp+="<div id='datas' classdivclass=\"d_out\" onmouseover=\"this.className='d_over'\" "+
-                           "onmouseout=\"this.className='d_out'\" style='padding: 10px 15px 12px 15px;'>"+
-                           "<strong> <a style='font-size: 20px;' href='"+item.URL+"' target='_blank'>"+
-                           item.title+"</a></strong>"+
+               success: function (datas) {
+                   var temp ="";
+                   for(var n=0;n<datas.length;n++){
+                      // alert(datas[n].hhHouseName);
+                       var hhHouseName=datas[n].hhHouseName;
+                       var hhHouseArea=datas[n].hhHouseArea;
+                       var hhHouseId=datas[n].hhHouseId;
+
+                       temp = "<tr><td>" + hhHouseName + "</td><td>" + hhHouseArea + "</td><td>" +
+                               hhHouseId + "</td></tr>";
+                       $("#tab").append(temp);
+                   }
+                   alert(datas[0].hhHouseAddress);
+  /*                         data, function(index, content)
+                           {
+                              alert(content.HH_HOUSE_ADDRESS);
+                               temp+="<div id='data'  style='padding: 10px 15px 12px 15px;'>" +
+                                       "<strong> <a style='font-size: 20px;' href='"+item.URL+"' target='_blank'>content.hh_house_name</a></strong>"+
                            "<div style='font-size: 14px; font-famliy: 宋体; text-indent: 2em; margin-top: 5px;'>"+
-                           item.summary+" }</div></div><hr />";
+                                       content.hh_house_price+" }</div></div><hr />";
                    $("#datas").html(temp);
+                           }*/
+                   /*);*/
                },
                error: function (XMLHttpRequest, textStatus, errorThrown) {
                    alert(errorThrown);
@@ -50,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            });
 
 
-       }
+//       }
     })
 
 </script>
@@ -93,7 +125,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div style="min-width: 1024px;">
 <div class="listpage" style=" float: left;min-width:300px;width:30%;opacity:0.7; height: 80%; background-color: #7a8387;">
 
-    <div id="datas" style="width:300px;height:850px;">
+    <div id="dataslist" style="width:300px;height:850px;">
+        <table id="tab">
+
+
+        </table>
 
     </div>
 </div>

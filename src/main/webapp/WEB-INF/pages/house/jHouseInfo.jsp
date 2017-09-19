@@ -144,13 +144,15 @@
 			<table id="ec_table" class="tableRegion" width="98%" >
 				<tr class="odd">
 					<td><span style="color: red">*</span>小区名称</td>
+					<td><input  type="text" name="hhHouseName" id="hhHouseVillage" class="item-text"/></td>
+					<td><span style="color: red">*</span>房屋名称</td>
 					<td><input  type="text" name="hhHouseName" id="hhHouseName" class="item-text"/></td>
-					<td><span style="color: red">*</span>发布时间:</td>
-					<td>
+					<%--<td><span style="color: red">*</span>发布时间:</td>--%>
+					<%--<td>--%>
 
 
-							<input type="text" id="hhDeptStarttime" name="hhHousePublishtime " class="item-text"
-								   autocomplete="off"  onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});">
+							<%--<input type="text" id="hhDeptStarttime" name="hhHousePublishtime " class="item-text"--%>
+								   <%--autocomplete="off"  onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});">--%>
 
 			<%--			<input type="text" style="width:121px;" name="hhHousePublishtime"
 							   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});"/>--%>

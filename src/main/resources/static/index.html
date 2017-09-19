@@ -27,10 +27,6 @@
 	<script src="js/jquery.typeahead.js"></script>
 
 	<!--//theme-style-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- slide -->
 	<script src="js/responsiveslides.min.js"></script>
@@ -210,15 +206,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		template: "{{display}}, &#12288<small><em>{{group}}</em></small>",
 		emptyTemplate: "没有找到与 {{query}} 相关的内容",
 		source: {
-			房源: {
+			/*小区名称: {
 				ajax: {
-					url: "/searchHouseAddress",
-					path: "房源"
+					url: "/house/searchHouseXQMC",
+					path: "小区名称"
 				}
-			}/* ,
-			 商家: {
-			 data: data.商家
-			 }      */
+			},*/
+			房屋地址: {
+				ajax: {
+					url: "/house/searchHouseAddress",
+					path: "房屋地址"
+				}
+			}
 		},
 
 
@@ -343,7 +342,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(document).ready(function () {
 		$.ajax({
 			type: "post",
-			url: "query.action",
+			url: "/house/query3",
 			dataType: "json",
 			success: function (json) {
 				$("#house_id1").val(json[0].hhHouseId);
