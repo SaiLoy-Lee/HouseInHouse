@@ -18,7 +18,7 @@
 
         function getVerfiy() {
             var mobile = $("#mobile").val();
-            var urlA = "/personal/order/getVerfiy/"+mobile;
+            var urlA = "/personal/order/getVerfiy/" + mobile;
 
             $.ajax({
                 type: "GET",
@@ -33,7 +33,7 @@
                     } else if (data == 0) {
                         alert("已发送");
 
-                        $(".code1").attr("disabled", true);
+
                         $(".code1").css("background-color", "#b4b2b3");
 //下面就是实现倒计时的效果代码
                         var d = new Date();
@@ -73,12 +73,12 @@
                                             }
                                             time_text += second + '秒';
                                         }
-                                        $("#new").text(time_text);
+                                        $(".code1").html(time_text);
                                     } else {
                                         clearInterval(timer);
-                                        $(".code1").attr("disabled", false);
-                                        $(".code1").text('获取验证码');
-                                        $(".code1").css("background-color", "lightgreen");
+                                        $(".code1").html("<a  href='#'  onclick='getVerfiy()' style=' display: block ;text-align:center ;background-color:lightgreen;'>获取验证码</a>");
+
+
                                     }
                                 },
                                 1000);
@@ -113,15 +113,21 @@
 
 
             if (parseInt(endDates) - parseInt(startDates) < 30 * 24 * 3600 * 1000) {
-                alert("您选定退租日期应大于当前日期，已帮您重置为默认日期");
+                alert("对不起，最少租住30天，已帮您重置为默认日期");
                 $("input[name='hhOrdersOuttime']").val($("#hhOrdersOuttime").val());
+                return;
+            }
+
+            if($("#verfyCode").val()==""||$("#verfyCode").val()==null){
+                alert("验证码不能为空")
                 return;
             }
             formSubmit('/personal/order/createOrder', '_self')
 
         }
         //确认开始时间
-        <% Order order=(Order)request.getAttribute("order");
+        <%
+                Order order=(Order)session.getAttribute("order");
                 String  imgUrlB=order.getHouseInfo().getHhHouseImg();
                 String[] imgUrls=imgUrlB.split(",");
                  String firstImg=null;
@@ -163,21 +169,23 @@
         }
 
         tr {
-
+            border:1px red solid;
             margin: 10px;
             width: 100%;
         }
 
         td {
             font-family: "微软雅黑", Arial, sans-serif;
-            color: #5b6869;
+            color: #4cae4c;
             font-size: 14px;
             line-height: 20px;
+            width: 180px;
         }
 
         .tda {
-            width: 85px;
+            width: 100px;
             text-align: right;
+            color: #5b6869;
         }
 
         .sub {
@@ -199,20 +207,19 @@
         <div id="warp">
             <div id="left">
 
-                <div id="left_top">
-                    <img src="<%=firstImg%>"/>
+                <div id="left_top" style="height: 300px">
+                    <img src="/personal/order/getImgUrl?imgUrl=<%=firstImg%>"/>
                 </div>
-                <div style="text-align: center ; margin: 20px ; padding:0 50px; font-size: 16px;height: 60px;word-wrap: break-word">
+                <div style="text-align: center ; margin: 20px 10px ;  font-size: 14px;word-wrap: break-word">
 
-                    <p>${house.hHouseName}</p>
+                    <div style="mapping:5px ">配套设施:${order.houseInfo.hhHouseSupport}</div>
+
+                    <br/>
+                        <div style="mapping:5px ">其它说明:${order.houseInfo.hhHouseDescription}</div>
 
                 </div>
-                <div id="left_bottom">
-                    <img id="lf_img" class="img" src="<%=firstImg%>" onclick="selectImg('per')"/>
-                    <img id="mid_img" src="<%=middImg%>" width="60px" height="60px" />
-                    <input value="" type="hidden">
-                    <img id="rt_img" src="<img src=<%=lastImg%>" onclick="selectImg('next')"/>
-                </div>
+
+
 
 
             </div>
@@ -221,19 +228,20 @@
                 <div id="right_top">
                     <table>
                         <tr class="odd">
-                            <td class="tda" colspan="2"
+                            <td class="tda" colspan="4"
                                 style="font-size: 18px; text-align: center; color: #000; padding-top: 10px;padding-bottom: 10px">
                                 订单详情:
                                 <input type="hidden" name="hhOrdersId" value="${order.hhOrdersId}"/>
                             </td>
+                        </tr>
                         <tr class="odd">
-                        <tr class="odd">
-                            <td class="tda" colspan="2"
+                            <td class="tda" colspan="4"
                                 style="font-size: 14px; text-align: center; color: red">
                                 ${message}
                             </td>
+                        </tr>
                         <tr class="odd">
-                            <td class="tda" colspan="2"
+                            <td class="tda" colspan="4"
                                 style="font-size: 16px; text-align: left; color: #000; padding-top: 5px;padding-bottom: 5px">
                                 一.房源信息:
                             </td>
@@ -241,16 +249,24 @@
                         </tr>
                         <tr class="odd">
                             <td class="tda">房源编号:</td>
-                            <td>12${order.houseInfo.hhHouseId}<input value="${order.houseInfo.hhHouseId}" name="hhHouseId"
-                                                              type="hidden">
+                            <td colspan="3">${order.houseInfo.hhHouseId}<input value="${order.houseInfo.hhHouseId }"
+                                                                     name="houseInfo.hhHouseId"
+                                                                     type="hidden">
                             </td>
                         </tr>
                         <tr class="odd">
-                            <td class="tda">发布时间:</td>
-                            <td>${order.houseInfo.hhHousePublishtime}</td>
+                            <td class="tda">房源简介:</td>
+                            <td colspan="3">${order.houseInfo.hhHouseName}</td>
                         </tr>
-                    </table>
-                    <table>
+                        <tr class="odd">
+                            <td class="tda">发布时间:</td>
+                            <td><fmt:formatDate value="${order.houseInfo.hhHousePublishtime}"
+                                                                pattern="yyyy年MM月dd日"/></td>
+
+                            <td class="tda">月租金:</td>
+                            <td>￥ ${order.houseInfo.hhHousePrice}</td>
+                        </tr>
+
                         <tr class="odd">
                             <td class="tda">小区:</td>
                             <td>${order.houseInfo.hhHouseVillage}</td>
@@ -259,56 +275,40 @@
                         </tr>
                         <tr class="odd">
                             <td class="tda">楼层:</td>
-                            <td>${order.houseInfo.hhHouseFloor} 楼</td>
+                            <td>${order.houseInfo.hhHouseFloor}</td>
                             <td class="tda">面积:</td>
-                            <td>${order.houseInfo.hhHouseArea} m²</td>
+                            <td>${order.houseInfo.hhHouseArea}</td>
                         </tr>
-                    </table>
-                    <table>
-                        <tr class="odd">
-                            <td class="tda">配套设施:</td>
-                            <td class="odd" colspan="3">${order.houseInfo.hhHouseSupport}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td class="tda">其它说明:</td>
-                            <td class="odd" colspan="3">${order.houseInfo.hhHouseDescription}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td class="tda">月租金:</td>
-                            <td>￥ ${order.houseInfo.hhHousePrice}400.00</td>
-                        </tr>
-                    </table>
-                    <table>
                         <tr class="odd">
                             <td class="tda" colspan="4"
                                 style="font-size: 16px; text-align: left; color: #000; padding-top: 5px;padding-bottom: 5px">
                                 二.地址及联系人
                             </td>
                         </tr>
-
                         <tr class="odd">
                             <td class="tda">联系人:</td>
-                            <td>${order.houseInfo.hhHousePublisher}张三</td>
+                            <td>${order.houseInfo.hhHousePublisher}</td>
                             <td class="tda">联系电话:</td>
-                            <td>${order.houseInfo.hhHouseTelephone}18657400034</td>
+                            <td>${order.houseInfo.hhHouseTelephone}</td>
                         </tr>
                         <tr class="odd">
                             <td class="tda">地址:</td>
                             <td colspan="3">${order.houseInfo.hhHouseAddress}</td>
                         </tr>
-                    </table>
-                    <table>
-                        <td class="tda" colspan="2"
+                        <td class="tda" colspan="4"
                             style="font-size: 16px; text-align: left; color: #000; padding-top: 5px;padding-bottom: 5px">
                             三.用户信息
                         </td>
 
                         <tr class="odd">
                             <td class="tda">用户ID:</td>
-                            <td>${order.user.hhUserId}12<input value="${order.user.hhUserId}" name="hhUserId"
+                            <td colspan="3">${order.user.hhUserId}<input value="${order.user.hhUserId}" name="user.hhUserId"
                                                                type="hidden"></td>
-                            <td class="tda">用户名:</td>
-                            <td>${order.user.hhUserName}</td>
+
+                        </tr>
+                        <tr class="odd">
+                        <td class="tda">用户名:</td>
+                        <td>${order.user.hhUserName}</td>
                         </tr>
                         <tr class="odd">
                             <td class="tda">入住时间:</td>
@@ -341,16 +341,17 @@
                     <tr class="odd">
                         <td class="tda">手机号:</td>
                         <td colspan="1"><input type="tel" class="tel" id="mobile"
-                                               value="<%--${user.hhUserTel}--%>18657411134" disabled="disabled"></td>
+                                               value="${user.hhUserTel}18657411134" disabled="disabled"></td>
                     </tr>
                     <tr class="odd">
                         <td class="tda">
-                            <div style="float: right; ">
-                                <span id="new" href="#" class="code1" onclick="getVerfiy()"
-                                      style=" display: block ;text-align:center ;background-color:lightgreen;">获取验证码</span>
+                            <div style="float: right; "><span class="code1">
+                                <a  href="#"  onclick="getVerfiy()"
+                                      style=" display: block ;text-align:center ;background-color:lightgreen;">获取验证码</a>
+                                </span>
                             </div>
                         </td>
-                        <td><input type="text" name="verfyCode" class="code" placeholder="输入验证码"/></td>
+                        <td><input type="text" name="verfyCode" class="code" placeholder="输入验证码" id="verfyCode"/></td>
                     </tr>
                 </table>
                 <div id="navMenubar" class="sub">

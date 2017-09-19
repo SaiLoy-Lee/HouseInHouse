@@ -6,7 +6,15 @@
 
     <select id="findAll" resultType="com.fy.pojo.HouseInfo">
         select * from
-       hh_house where hh_house_status NOT IN (2)
+       hh_house where hh_house_status NOT IN (2) order by hh_house_publishtime desc
+
+    </select>
+
+    <select id="findById" resultType="com.fy.pojo.HouseInfo">
+        select * from
+        hh_house where=  hh_house_id = (
+        #{id}
+        )
 
     </select>
 

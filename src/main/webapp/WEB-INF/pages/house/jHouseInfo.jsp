@@ -8,6 +8,11 @@
 <link rel="stylesheet" rev="stylesheet" type="text/css" href="${ctx}/staticfile/skin/default/css/button.css" media="all"/>
 <link rel="stylesheet" rev="stylesheet" type="text/css" href="${ctx}/staticfile/skin/default/css/table.css" media="all"/>
 <script language="javascript" src="${ctx}/staticfile/js/common.js"></script>
+<link rel="stylesheet" href="${ctx}/staticfile/css/form.css" />
+<script type="text/javascript" src="${ctx}/staticfile/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${ctx}/staticfile/js/jquery.validate.js"></script>
+<script type="text/javascript" src="${ctx}/staticfile/js/jquery.validate.extend.js"></script>
+<script type="text/javascript" src="${ctx}/staticfile/js/additional-methods.js"></script>
 
 <style type="text/css">
 	body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px;}
@@ -15,6 +20,95 @@
 	#r-result{width:100%;}
 	#findLngLat{width: 100%;height:250px}
 </style>
+<script type="text/javascript">
+	$(function(){
+		$("#myform").validate({
+			onfocusout: function(element) { $(element).valid(); },
+			rules: {
+				hhHouseName: {
+					required: true
+					<%--remote:{
+						url:"checkUsernameAjax.action",
+						type:"post",
+						DataType:"json",
+						data:{hhUserUsername:function () {
+						return $("#hhUserUsername").val();
+							}}
+						}--%>
+				},
+				hhHousePublishtime: {
+					required: true
+				},
+				hhHouseMaxnum: {
+					required: true,
+					max: 'hhHouseMaxnum'
+				},
+				hhHouseResidenum: {
+					required: true
+				},
+				hhHouseTelephone: {
+					required: true,
+					phone: true
+
+				},
+				hhHousePrice: {
+					required: true,
+
+				},
+				hhHouseArea: {
+					required: true
+				},
+				hhHouseStatus: {
+					required: true
+				},
+				hhHouseImg: {
+					required: true
+				}
+
+},
+			messages:{
+				hhHouseName:{
+					required:"请输入小区名称",
+				},
+				hhHousePublishtime:{
+					required:"请输入发布时间"
+
+				},
+				hhHouseMaxnum:{
+					required:"请选择可住人数"
+},
+				hhHouseResidenum:{
+					required:"请输入已住人数",
+					max: $.validator.format( "已住人数不能大于{0}." )
+				},
+				hhHouseTelephone:{
+					required:"请输入联系电话",
+					phone:"请输入正确的联系电话"
+				},
+				hhHousePrice:{
+					required:"请输入月租金"
+				},
+				hhHouseArea:{
+					required:"请输入房屋面积"
+				},
+				hhHouseStatus:{
+					required:"请选择房屋状态"
+				},
+				hhHouseImg:{
+					required:"请上传房源图片"
+				}
+
+}
+});
+		$("#btn").click(function(){
+			if($("#icform").valid()){
+
+				formSubmit('save','_self');
+				this.blur();
+			}
+		});
+})
+</script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lmzmXu8zuVQieAs9UMqi3gY27pQFewEp"></script>
 
 <head>
@@ -22,14 +116,14 @@
 </head>
 
 <body>
-<form name="icform" method="post">
+<form id="myform" name="icform" method="post">
 
 	<div id="menubar">
 		<div id="middleMenubar">
 			<div id="innerMenubar">
 				<div id="navMenubar">
 					<ul>
-						<li id="save"><a href="#" onclick="formSubmit('save','_self');this.blur();">保存</a></li>
+						<li id="save"><a id="btn" href="#" onclick="formSubmit('save','_self');this.blur();">保存</a></li>
 						<li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
 
 					</ul>
@@ -50,13 +144,13 @@
 			<table id="ec_table" class="tableRegion" width="98%" >
 				<tr class="odd">
 					<td><span style="color: red">*</span>小区名称</td>
-					<td><input  type="text" name="hhHouseName"/></td>
+					<td><input  type="text" name="hhHouseName" id="hhHouseName" class="item-text"/></td>
 					<td><span style="color: red">*</span>发布时间:</td>
 					<td>
 
 
 							<input type="text" id="hhDeptStarttime" name="hhHousePublishtime " class="item-text"
-								   autocomplete="off" tip="请输入开班时间" onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});">
+								   autocomplete="off"  onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});">
 
 			<%--			<input type="text" style="width:121px;" name="hhHousePublishtime"
 							   onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});"/>--%>
@@ -66,21 +160,21 @@
 				</tr>
 				<tr class="odd">
 					<td><span style="color: red">*</span>可住人数</td>
-					<td><input  type="number" name="hhHouseMaxnum"/></td>
+					<td><input  type="number" name="hhHouseMaxnum" id="hhHouseMaxnum"/></td>
 					<td><span style="color: red">*</span>已住人数:</td>
-					<td><input  type="text" name="hhHouseResidenum"/></td>
+					<td><input  type="text" name="hhHouseResidenum" id="hhHouseResidenum"/></td>
 				</tr>
 				<tr class="odd">
 					<td>朝向</td>
-					<td><input  type="text" name="hhHouseOrient"/></td>
+					<td><input  type="text" name="hhHouseOrient" id="hhHouseOrient"/></td>
 					<td>楼层:</td>
-					<td><input  type="text" name="hhHouseFloor"/></td>
+					<td><input  type="text" name="hhHouseFloor" id="hhHouseFloor"/></td>
 				</tr>
 				<tr class="odd">
 					<td><span style="color: red">*</span>联系电话</td>
-					<td><input  type="text" name="hhHouseTelephone"/></td>
+					<td><input  type="text" name="hhHouseTelephone" id="phone"/></td>
 					<td><span style="color: red">*</span>月租金:</td>
-					<td><input  type="number" name="hhHousePrice"/></td>
+					<td><input  type="number" name="hhHousePrice" id="hhHousePrice"/></td>
 				</tr>
 				<tr class="odd">
 					<td><span style="color: red">*</span>面积</td>
@@ -103,7 +197,6 @@
 				<tr class="odd">
 					<td><span style="color: red">*</span>上传房源图片</td>
 					<td><input  type="file"  id="importFile" />
-						<input type="text"  name="hhHouseImg" onclick="upload()">
 					</td>
 
 				</tr>
@@ -116,10 +209,10 @@
 				<tr class="odd"  style="margin-top: 30px;">
 					<td><span style="color: red">*</span>经纬度</td>
 					<td >
-						<input style="width: 100%"  type="text" id="hhHouseLatlng" name="hhHouseLatlng"/>
+						<input readonly="readonly" style="width: 100%"  type="text" id="hhHouseLatlng" name="hhHouseLatlng"/>
 					</td>
 					<td><span style="color: red">*</span>详情地址:</td>
-					<td><input  type="text" id="hhHouseAddress" name="hhHouseAddress" style="width: 100%"/></td>
+					<td><input  readonly="readonly" type="text" id="hhHouseAddress" name="hhHouseAddress" style="width: 100%"/></td>
 				</tr>
 				<tr class="odd">
 					<td colspan="4">

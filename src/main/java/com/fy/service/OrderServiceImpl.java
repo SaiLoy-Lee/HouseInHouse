@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void createOrder(Order order, int numPer) throws MegException {
         HouseInfo houseInfo = null;
-        //houseInfo=houseInfoMapper.findHouseInfoById(HouseInfoId);
+        houseInfo=orderMapper.findHouseInfoById(order.getHouseInfo().getHhHouseId());
         if ((houseInfo.getHhHouseMaxnum() - houseInfo.getHhHouseResidenum()) >= numPer) {
             order.setCreateBy("Order");
             order.setCreateTime(new Date());
@@ -181,5 +181,7 @@ public class OrderServiceImpl implements OrderService {
     public HouseInfo findHouseInfoById(String houseInfoId) {
         return orderMapper.findHouseInfoById(houseInfoId);
     }
-
+    public void auto(){
+        System.out.println("OrderServiceImpl定时任务中");
+    }
 }

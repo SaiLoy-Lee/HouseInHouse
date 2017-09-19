@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> findUserByStatus() {
-        return userMapper.findUserByStatus();
+    public List<User> findUserByStatus(String status) {
+        return userMapper.findUserByStatus(status);
     }
 
 

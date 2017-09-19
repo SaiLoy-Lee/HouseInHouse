@@ -29,7 +29,8 @@ public interface UserService {
 
     public void saveUserRole(String hhUserId, String[] hhRoleIds);
 
-    public List<User> findUserByStatus();
+    public List<User> findUserByStatus(String status);
+
 
 
 }
