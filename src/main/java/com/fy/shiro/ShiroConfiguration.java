@@ -96,8 +96,18 @@ public class ShiroConfiguration {
         filterChains.put("logout",logoutFilter);
         shiroFilterFactoryBean.setFilters(filterChains);
 
+        //filterChainDefinitionMap.put("","anon");
+        filterChainDefinitionMap.put("/*.html","anon");
+        filterChainDefinitionMap.put("/*/*.js","anon");
+        filterChainDefinitionMap.put("/*/*.jpg","anon");
+        filterChainDefinitionMap.put("/*/*.png","anon");
+        filterChainDefinitionMap.put("/*/*.ttf","anon");
+        filterChainDefinitionMap.put("/*/*.eot","anon");
+        filterChainDefinitionMap.put("/*/*.svg","anon");
+        filterChainDefinitionMap.put("/*/*.woff","anon");
+        filterChainDefinitionMap.put("/*/*.woff2","anon");
+        filterChainDefinitionMap.put("/css/*.css","anon");
 
-        filterChainDefinitionMap.put("../resources/static/**","anon");
         filterChainDefinitionMap.put("/staticfile/**", "anon");
         filterChainDefinitionMap.put("/tologin.action","anon");
 
