@@ -146,6 +146,7 @@ public class HouseInfoController {
      * @return
      * @throws ParseException
      */
+    @ResponseBody
     @RequestMapping("/query3")
     public String jddnproductquer3(Model model) throws ParseException{
         SolrDocumentList solrdocument=houseInfoService.searchproduct3();
@@ -191,10 +192,16 @@ public class HouseInfoController {
             houseInfo1list.add(houseInfo1);
             //System.out.println("id:"+doc.get("id")+"title:"+doc.get("title")+"link:"+doc.get("link")+"price:"+doc.get("price"));
         }
-        model.addAttribute("size",houseInfo1list.size());
-        model.addAttribute("houseInfo1list",houseInfo1list);
-        //System.out.println("执行到这了2");
-        return "/sysadmin/main";
+        ObjectMapper objectMapper =new ObjectMapper();
+        String jsonStr="";
+        try {
+            jsonStr=objectMapper.writeValueAsString(houseInfo1list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+//        response.setCharacterEncoding("utf-8");
+//        response.getWriter().write("美食:"+jsonStr);
+        return "{\"房屋地址\":"+jsonStr+"}";
     }
     /**
      * 根据关键字查询所有房屋信息

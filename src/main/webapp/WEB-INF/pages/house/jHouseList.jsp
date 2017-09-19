@@ -14,7 +14,7 @@
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
-	<li id="view"><a href="#" onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
+	<li id="view"><a href="#" onclick="formSubmit('houseFindById','_self');this.blur();">查看</a></li>
 	<li id="new"><a href="#" onclick="formSubmit('tocreate','_self');this.blur();">新增</a></li>
 	<li id="update"><a href="#" onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
 	<li id="delete"><a href="#" onclick="formSubmit('delete','_self');this.blur();">删除</a></li>
