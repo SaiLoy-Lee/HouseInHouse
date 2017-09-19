@@ -10,6 +10,14 @@
 
     </select>
 
+    <select id="findById" resultType="com.fy.pojo.HouseInfo">
+        select * from
+        hh_house where=  hh_house_id = (
+        #{id}
+        )
+
+    </select>
+
 
     <update id="deletehhHouseId">
         update  hh_house set hh_house_status=#{hhHouseIdStatus} where hh_house_id in(
