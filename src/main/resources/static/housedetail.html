@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>About</title>
+<title>housedetail</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -18,6 +19,16 @@
 <meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{height:100%;width:100%;}
+		#r-result{width:100%; font-size:14px;}
+		#lngLatFind{width: 640px;height:420px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lmzmXu8zuVQieAs9UMqi3gY27pQFewEp"></script>
+
+
 </head>
 <body>
 <!--header-->
@@ -25,12 +36,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container-fluid">
 				<nav class="pull">
 					<ul>
-						<li><a  href="index.html">Home</a></li>
-						<li><a  href="about.html">About Us</a></li>
-						<li><a  href="blog.html">Blog</a></li>
-						<li><a  href="terms.html">Terms</a></li>
-						<li><a  href="privacy.html">Privacy</a></li>
-						<li><a  href="contact.html">Contact</a></li>
+						<li><a  href="index.html">首页</a></li>
+						<li><a  href="about.html">公司简介</a></li>
+						<li><a  href="blog.html">博客</a></li>
+						<li><a  href="terms.html">团队</a></li>
+						<li><a  href="privacy.html">隐私</a></li>
+						<li><a  href="contact.html">联系方式</a></li>
 					</ul>
 				</nav>			
 			</div>
@@ -40,378 +51,396 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<!--logo-->
 			<div class="logo">
-				<h1><a href="index.html">REAL HOME</a></h1>
+				<h1><a href="index.html">HouseInHouse</a></h1>
 			</div>
 		<!--//logo-->
 		<div class="top-nav">
 			<ul class="right-icons">
-				<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>
-				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
-				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
-				
+				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>登录</a></li>
 			</ul>
 			<div class="nav-icon">
 				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
 						<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
-					</div>	
-				<!---
-				<a href="#" class="right_bt" id="activator"><i class="glyphicon glyphicon-menu-hamburger"></i>  </a>
-			--->
+				</div>
 			</div>
 		<div class="clearfix"> </div>
 			<!---pop-up-box---->
-			   
-				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-			<!---//pop-up-box---->
-				<div id="small-dialog" class="mfp-hide">
-					    <!----- tabs-box ---->
-				<div class="sap_tabs">	
-				     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-						  <ul class="resp-tabs-list">
-						  	  <li class="resp-tab-item " aria-controls="tab_item-0" role="tab"><span>All Homes</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>For Sale</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>For Rent</span></li>
-							  <div class="clearfix"></div>
-						  </ul>				  	 
-						  <div class="resp-tabs-container">
-						  		<h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>All Homes</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
-								 	<div class="facts">
-									  	<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div>        
-							        </div>
-						  		</div>
-							     <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>For Sale</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<div class="facts">									
-										<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div> 
-							        </div>	
-								 </div>									
-							      <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><span class="resp-arrow"></span>For Rent</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-									 <div class="facts">
-										<div class="login">
-											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
-									 		<input type="submit" value="">
-									 	</div> 
-							         </div>	
-							    </div>
-					      </div>
-					 </div>
-					 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-				    	<script type="text/javascript">
-						    $(document).ready(function () {
-						        $('#horizontalTab').easyResponsiveTabs({
-						            type: 'default', //Types: default, vertical, accordion           
-						            width: 'auto', //auto or any width like 600px
-						            fit: true   // 100% fit in a container
-						        });
-						    });
-			  			 </script>	
-				</div>
-				</div>
-				 <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>
-					
 	
 		</div>
 		<div class="clearfix"> </div>
 		</div>	
 </div>
-<!--//-->	
-<div class=" banner-buying">
-	<div class=" container">
-	<h3><span>Abo</span>ut</h3> 
-	<!---->
-	<div class="menu-right">
-		 <ul class="menu">
-			<li class="item1"><a href="#"> Menu<i class="glyphicon glyphicon-menu-down"> </i> </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="buy.html">Buy </a></li>
-				<li class="subitem2"><a href="buy.html">Rent </a></li>
-				<li class="subitem3"><a href="buy.html">Hostels </a></li>
-				<li class="subitem1"><a href="buy.html">Resale </a></li>
-				<li class="subitem2"><a href="loan.html">Home Loan</a></li>
-				<li class="subitem3"><a href="buy.html">Apartment </a></li>
-				<li class="subitem3"><a href="dealers.html">Dealers</a></li>
-			</ul>
-		</li>
-		</ul>
-	</div>
-	<div class="clearfix"> </div>
-		<!--initiate accordion-->
-		<script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
-			
-			});
-		</script>
-      		
-	</div>
-</div>
-<!--//header-->
-<div class="about">	
-	<div class="about-head">
-		<div class="container">
-			<h3>About Us</h3>
-				<div class="about-in">
-					<a href="blog_single.html"><img src="images/at.jpg" alt="image" class="img-responsive ">	</a>			
-					<h6 ><a href="blog_single.html">Lorem ipsum dolor sit amet, consectetur adipisci ngelit. Donec nisi sem, vestibulum Etortor tortor in turpis. Proin mauris nulla, rutrum aliquet arcu vel</a></h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sem, vestibulum ac lobortis quis, aliquet in metus. Suspendi sse a nibh id eros consectetur laoreet. Etiam viverra auctor orci, eu mattis ipsum rutrum nec.
-						Etortor tortor in turpis. Proin mauris nulla, rutrum aliquet arcu vel, porttitor varius dolor. Phasellus vitae tincidunt orci, et faucibus eros. Sed dolor sapien, pharetra placerat feugiat.</p>
-				</div>
-		</div>
-	</div>
-	<!---->
-	<div class="about-middle">
-		<div class="container">		
-			<div class="col-md-8 about-mid">
-				<h4>Lorem ipsum dolor</h4>
-				<h6><a href="blog_single.html">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</a> </h6>
-				<p >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen</p>
-			</div>
-			<div class="col-md-4 about-mid1">
-				<p>The standard chunk of Lorem Ipsum used since adisipicing elit</p>
-				<a href="blog_single.html" class="hvr-sweep-to-right more-in">READ MORE</a>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<!---->
-	<!---->
-	<div class="choose-us">
-		<div class="container">
-			<h3>why choose us</h3>
-			<div class="us-choose">
-				<div class="col-md-6 why-choose">
-					<div class="  ser-grid ">
-						<i class="hi-icon hi-icon-archive glyphicon glyphicon-pencil"> </i>
-					</div>
-					<div class="ser-top beautiful"> 
-						<h5>beautiful &amp; enjoyable designs</h5>
-						<label>The standard chunk of Lorem</label>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-6 why-choose">
-					<div class=" ser-grid">
-						<i class="hi-icon hi-icon-archive glyphicon glyphicon-time"> </i>
-					</div>
-					<div class="ser-top beautiful"> 
-						<h5>beautiful &amp; enjoyable designs</h5>
-						<label>The standard chunk of Lorem</label>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="us-choose">
-				<div class="col-md-6 why-choose">
-					<div class=" ser-grid">
-						<i class="hi-icon hi-icon-archive glyphicon glyphicon-cog"> </i>
-					</div>
-					<div class="ser-top beautiful"> 
-						<h5>beautiful &amp; enjoyable designs</h5>
-						<label>The standard chunk of Lorem</label>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-6 why-choose">
-					<div class=" ser-grid">
-						<i class="hi-icon hi-icon-archive glyphicon glyphicon-file"> </i>
-					</div>
-					<div class="ser-top beautiful"> 
-						<h5>beautiful &amp; enjoyable designs</h5>
-						<label>The standard chunk of Lorem</label>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-				
-			</div>
-		</div>
-	<!---->
-	<!---->
-	<div class="about-bottom">
-		<div class="container">
-				<div class="col-md-6 bottom-about">
-					<h4><a href="blog_single.html">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</a></h4>
-					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-					<a href="blog_single.html" class="hvr-sweep-to-right more">Read More</a>
-				</div>
-				<div class="col-md-6 bottom-about1">
-					<iframe src="https://player.vimeo.com/video/12690053"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<!---->
-		<div class="container">
-		<div class="content-events">
-				<h3> Events & News</h3>
-				<div class="news">
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="news">
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="col-md-4 new-more">
-						<div class="event">
-							<h4>26/06/2015</h4>
-							<h6><a href="blog_single.html">Sed ut perspiciatis unde omnis </a></h6>
-						</div>
-						<p>Kasertas lertyasea deeraeser miasera lertasa ritise doloert ferdas caplicabo nerafaes asety u lasec vaserat. nikertyade asetkertyptaiades goertayse.nikertyade asetkertyptaiades goertayse</p>
-						<a class="hvr-sweep-to-right more" href="blog_single.html">Read More</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-		<!---->
 
+
+
+
+
+
+	<div class="container">
+	
+		<div class="buy-single-single">
+
+			<div class="col-md-7 single-box">
+				<h2 id="hhHouseName">	梨园新通国际花园梨园地铁附近精装正规两居出租</h2>
+
+		   		<div class=" buying-top" style="width: 650px;height: 350px;">
+				<div class="flexslider">
+					  <ul class="slides">
+							<li id="ss1" data-thumb="">
+								<img src="images/ss.jpg" />
+							</li>
+							<li id="ss2"  data-thumb="">
+								<img src="images/ss1.jpg" />
+							</li>
+							<li id="ss3" data-thumb="">
+								<img src="images/ss2.jpg" />
+							</li>
+							<li id="ss4" data-thumb="">
+								<img src="images/ss3.jpg" />
+							</li>
+					  </ul>
+				</div>
+<!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+<script>
+	function getRequest() {
+		var url = location.search; //获取url中"?"符后的字串
+		var theRequest = new Object();
+		if (url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			var strs = str.split("&");
+			for (var i = 0; i < strs.length; i++) {
+				theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			}
+		}
+		return theRequest;
+	}
+
+	// Can also be used with $(document).ready()     $(window).load()
+	$(document).ready(function() {
+
+		$('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+		});
+
+		var Request = new Object();
+		Request = getRequest();
+		var hhHouseId= Request["hhHouseId"];
+
+	$.ajax({
+		type:"GET",
+		url:"/houseInfo",
+		async:false,
+		data:{hhHouseId:hhHouseId},
+		dataType:"json",
+		success:function (data) {
+			/*var houseInfo = data.rows;*/
+			var imgUrls = data.hhHouseImg.split(",");
+			/*var temp = "";
+			$('.slides').empty();*/
+			for(var i=1; i<=5; i++){
+				$('#ss'+i).attr("src","/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]);
+				$('#ss'+i).empty();
+				$('#ss'+i).html("<img src='/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]+"' />");
+
+				/*temp+="<li data-thumb='/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]+"'><img src='/personal/order/getImgUrl?imgUrl="+imgUrls[i-1]+"' /></li>";*/
+
+			}
+			/*$('.slides').html(temp);*/
+			$('#hhHouseName').text(data.hhHouseName);
+			$('.price h3').text(data.hhHousePrice+"元/月");
+			$('.typeInfo #type').text(data.hhHouseType);
+			$('.typeInfo #area').text(data.hhHouseArea);
+			$('.floorInfo #floor').text(data.hhHouseFloor);
+			$('.floorInfo #orient').text(data.hhHouseOrient);
+			$('.latlng #longitude').text(data.hhHouseLatlng);
+			$('.villageInfo #village').text(data.hhHouseVillage);
+			$('.addressInfo #address').text(data.hhHouseAddress);
+			$('.publisherInfo #publisher').text(data.hhHousePublisher);
+			if(data.hhHouseTelephone=="admin"){
+				$('.telephoneInfo #telephone').text("管理员");
+			}else {
+				$('.telephoneInfo #telephone').text(data.hhHouseTelephone);
+			}
+			$('.descriptionInfo p').text(data.hhHouseDescription);
+			$('.orderBtn #houseId').val(data.hhHouseId);
+
+		}
+	});
+
+	});
+</script>
 </div>
+
+				<div class="buy-sin-single">
+
+					<div class="descriptionInfo" style="width:650px;">
+						<h3>房源描述</h3>
+						<p>	（一）户型介绍：正规两室一厅一厨一卫，带电梯，采光好，中间楼层，干净整洁。
+
+							（二）小区介绍：邻近梨园地铁附近，环境绿化好，周边配套齐全，交通出行都已成熟，出行方便。
+
+							（三）看房方便，随时拎包入住。</p></div>
+
+				</div>
+
+				<div class="map-buy-single">
+					 	<h4>地图导航</h4>
+						 	<div class="map-buy-single1">
+								<div id="lngLatFind">
+									<div id="allmap"></div>
+									<div id="r-result">
+										<!--经度: <input name="longitude" id="longitude" type="text" value="39.799384,116.591304" style="width:100px; margin-right:10px;" />
+										纬度: <input name="latitude" id="latitude" type="text" value=" 北小营路 " style="width:100px; margin-right:10px;" />
+										<input name="village" id="village" type="text" value="次渠嘉园一区" style="width:100px; margin-right:10px;" />
+										<input type="button" value="查询" onclick="theLocation()" />-->
+
+
+									</div>
+								</div>
+							</div>
+							<input type="button" value="地图详情>" onclick="theMapdetails()" style="width:660px; height:40px;  margin-right:10px;"/>
+					</div>
+		</div>
+
+			<script type="text/javascript">
+				// 百度地图API功能
+				var map = new BMap.Map("allmap");
+				map.centerAndZoom(new BMap.Point(116.561437,39.783354),16);
+				map.enableScrollWheelZoom(true);
+
+				//    window.onload = function() {
+				//        map.clearOverlays();
+				//        var new_point = new BMap.Point(99,33);
+				//        var marker = new BMap.Marker(new_point);  // 创建标注
+				//        map.addOverlay(marker);              // 将标注添加到地图中
+				//        map.panTo(new_point);
+				//
+				//    }
+
+				//要改id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				//经纬度
+				var ll=document.getElementById("longitude").value;
+
+
+
+
+				var arr=ll.split(",");
+
+				address=document.getElementById("address").value.trim();
+				village=document.getElementById("village").value;
+
+				window.onload=function(){
+
+//        var ll="39.872488,116.694164";
+//        var arr=ll.split(",");
+
+					var longitude=arr[1];
+					var latitude=arr[0];
+
+					map.clearOverlays();
+
+					var new_point = new BMap.Point(longitude,latitude);
+
+					var marker = new BMap.Marker(new_point);
+					map.addOverlay(marker);
+					map.panTo(new_point);
+				}
+
+				function theMapdetails(){
+
+					window.location.href="http://map.baidu.com/?latlng="+ll+"&title="+address+"&content="+village+"&autoOpen=true&l";
+
+				}
+
+				function theLocation(){
+					if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+						map.clearOverlays();
+						var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+						var marker = new BMap.Marker(new_point);  // 创建标注
+						map.addOverlay(marker);              // 将标注添加到地图中
+						map.panTo(new_point);
+					}
+				}
+			</script>
+
+
+
+
+
+			<div class="col-md-5">
+				<div class="price" style="margin: 0 0;"><h2 style="color: red;">1900元/月</h2></div>
+				<div class="typeInfo"><span>房屋类型:</span><span  id="type"> 2室1厅1卫 </span><span id="area"> 88平 精装修 </span></div>
+				<div class="floorInfo"><span>楼层朝向:</span><span id="floor"> 中层/共24层 </span><span id="orient"> 南</span></div>
+				<div class="latlng" hidden="hidden"><span>经纬度:</span><span id="longitude">39.888995,116.678608</span></div>
+				<div class="villageInfo"><span>所在小区:</span><span id="village">新通国际花园北区</span></div>
+				<div class="addressInfo"><span>所属区域:</span><span id="address">梨园北街</span></div>
+				<div class="publisherInfo"><span>发布人:</span><span id="publisher"> 管理员  </span></div>
+				<div class="telephoneInfo"><span>联系方式:</span><span id="telephone"> 15876872132  </span></div>
+
+				<form class="orderBtn" action="/personal/order/toCreateOrder" method="GET" style="width: 50px;height: 30px">
+					<input type="hidden" id="houseId" name="hhHouseId" value="0108ec27-50eb-4486-8592-203b8a40ae16" />
+					<input type="hidden" id="userId" name="hhUserId" value="8be3ec9c-3fc6-492e-a395-b6d1ef156177"/>
+					<button type="submit" value="订单提交" style="width: 100px;height: 30px">订单提交</button>
+				</form>
+
+
+	  </div>
+		<div class="clearfix"> </div>
+		</div>
+	</div>
+
+<!---->
+<div class="container">
+	<div class="future">
+		<h3 >好房推荐</h3>
+			<div class="content-bottom-in">
+					<ul id="flexiselDemo1">			
+						<li><div class="project-fur">
+								<a href="single.html" ><img class="img-responsive" src="images/pi.jpg" alt="" />	</a>
+									<div class="fur">
+										<div class="fur1">
+		                                    <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
+		                                    <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
+		                                   	<span>Paris</span>
+                               			</div>
+			                            <div class="fur2">
+			                               	<span>2 BHK</span>
+			                             </div>
+									</div>					
+							</div></li>
+							<li><div class="project-fur">
+									<a href="single.html" ><img class="img-responsive" src="images/pi1.jpg" alt="" />	</a>
+										<div class="fur">
+											<div class="fur1">
+			                                    <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
+			                                   <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
+			                                   	<span>Paris</span>
+	                               			</div>
+				                            <div class="fur2">
+				                               	<span>2 BHK</span>
+				                             </div>
+										</div>					
+								</div></li>
+								<li><div class="project-fur">
+								<a href="single.html" ><img class="img-responsive" src="images/pi2.jpg" alt="" />	</a>
+									<div class="fur">
+										<div class="fur1">
+		                                    <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
+		                                   <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
+		                                   	<span>Paris</span>
+                               			</div>
+			                            <div class="fur2">
+			                               	<span>2 BHK</span>
+			                             </div>
+									</div>					
+							</div></li>
+							<li><div class="project-fur">
+								<a href="single.html" ><img class="img-responsive" src="images/pi3.jpg" alt="" />	</a>
+									<div class="fur">
+										<div class="fur1">
+		                                    <span class="fur-money">$2.44 Lacs - 5.28 Lacs </span>
+		                                    <h6 class="fur-name"><a href="single.html">Contrary to popular</a></h6>
+		                                   	<span>Paris</span>
+                               			</div>
+			                            <div class="fur2">
+			                               	<span>2 BHK</span>
+			                             </div>
+									</div>					
+							</div></li>
+					</ul>
+					<script type="text/javascript">
+						$(window).load(function() {
+							$("#flexiselDemo1").flexisel({
+								visibleItems: 4,
+								animationSpeed: 1000,
+								autoPlay: true,
+								autoPlaySpeed: 3000,    		
+								pauseOnHover: true,
+								enableResponsiveBreakpoints: true,
+						    	responsiveBreakpoints: { 
+						    		portrait: { 
+						    			changePoint:480,
+						    			visibleItems: 1
+						    		}, 
+						    		landscape: { 
+						    			changePoint:640,
+						    			visibleItems: 2
+						    		},
+						    		tablet: { 
+						    			changePoint:768,
+						    			visibleItems: 3
+						    		}
+						    	}
+						    });
+						    
+						});
+			</script>
+			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+		</div>
+	</div>
+	
+</div>
+
+
+
+
 <!--footer-->
 <div class="footer">
 	<div class="container">
 		<div class="footer-top-at">
 			<div class="col-md-3 amet-sed">
-				<h4>Our Company</h4>
+				<h4>公司简介</h4>
 				<ul class="nav-bottom">
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="blog.html">For Sale By Owner Blog</a></li>
-					<li><a href="mobile_app.html">Mobile</a></li>
-					<li><a href="terms.html">Terms & Conditions</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>	
-					<li><a href="blog.html">Blog</a></li>
-					
-				</ul>	
+					<li><a href="about.html">关于我们</a></li>
+					<li><a href="terms.html">团队文化</a></li>
+					<li><a href="privacy.html">隐私政策</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed ">
-				<h4>Work With Us</h4>
-					<ul class="nav-bottom">
-						<li><a href="single.html">Real Estate Brokers</a></li>
-						<li><a href="single.html">Business Development</a></li>
-						<li><a href="single.html">Affiliate Programs</a></li>
-						<li><a href="contact.html">Sitemap</a></li>
-						<li><a href="career.html">Careers</a></li>
-						<li><a href="feedback.html">Feedback</a></li>	
-					</ul>	
+				<h4>招聘合作</h4>
+				<ul class="nav-bottom">
+					<li><a href="housedetail.html">经纪人</a></li>
+					<li><a href="housedetail.html">加盟计划</a></li>
+					<li><a href="career.html">职业发展</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed">
-				<h4>Customer Support</h4>
-				<p>Mon-Fri, 7AM-7PM </p>
-				<p>Sat-Sun, 8AM-5PM </p>
-				<p>177-869-6559</p>
-					<ul class="nav-bottom">
-						<li><a href="#">Live Chat</a></li>
-						<li><a href="faqs.html">Frequently Asked Questions</a></li>
-						<li><a href="suggestion.html">Make a Suggestion</a></li>
-					</ul>	
+				<h4>联系我们</h4>
+				<ul class="nav-bottom">
+					<li><a href="#">在线聊天</a></li>
+					<li><a href="faqs.html">常见问题</a></li>
+					<li><a href="suggestion.html">提出意见</a></li>
+				</ul>
 			</div>
 			<div class="col-md-3 amet-sed ">
-				<h4>Property Services</h4>
-				   <ul class="nav-bottom">
-						<li><a href="single.html">Residential Property</a></li>
-						<li><a href="single.html">Commercial Property</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="register.html">Register</a></li>
-						<li><a href="typo.html">Short Codes</a></li>	
-					</ul>	
-					<ul class="social">
-						<li><a href="#"><i> </i></a></li>
-						<li><a href="#"><i class="gmail"> </i></a></li>
-						<li><a href="#"><i class="twitter"> </i></a></li>
-						<li><a href="#"><i class="camera"> </i></a></li>
-						<li><a href="#"><i class="dribble"> </i></a></li>
-					</ul>
+				<h4>功能服务</h4>
+				<ul class="nav-bottom">
+					<li><a href="faqs.html">常见问题</a></li>
+					<li><a href="typo.html">网站导航</a></li>
+				</ul>
+				<ul class="social">
+					<li><a href="#"><i class="facebook"> </i></a></li>
+					<li><a href="#"><i class="gmail"> </i></a></li>
+					<li><a href="#"><i class="twitter"> </i></a></li>
+					<li><a href="#"><i class="camera"> </i></a></li>
+					<li><a href="#"><i class="dribble"> </i></a></li>
+				</ul>
 			</div>
-		<div class="clearfix"> </div>
+			<div class="clearfix"> </div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="col-md-4 footer-logo">
-				<h2><a href="index.html">REAL HOME</a></h2>
+			<div class="col-md-12 footer-class">
+				<p  style="text-align: center">Copyright © 2012-2017 房中房科技有限公司 版权所有 保留一切权利 京B2-20130048号 | 京ICP备09062682号-9</p>
+				<p  style="text-align: center">Copyright &copy; 2012-2017.HouseInHouse All rights reserved.</p>
 			</div>
-			<div class="col-md-8 footer-class">
-				<p >Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-			</div>
-		<div class="clearfix"> </div>
-	 	</div>
+			<div class="clearfix"> </div>
+		</div>
 	</div>
 </div>
 <!--//footer-->
