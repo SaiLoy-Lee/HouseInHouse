@@ -22,7 +22,7 @@
         ) values (
             #{hhOrdersId},
             #{user.hhUserId},
-            #{houseInfo.id},
+            #{houseInfo.hhHouseId},
             #{hhOrdersStatus},
             #{hhOrdersIntime},
             #{hhOrdersOuttime},

@@ -123,7 +123,7 @@
         td {
         / / border: 1 px solid red;
             font-family: "微软雅黑", Arial, sans-serif;
-            color: #4cae4c;;
+            color: #4cae4c;
             font-size: 14px;
             line-height: 20px;
             width: 250px;
@@ -349,7 +349,7 @@
                                     <ul>
                                         <li id="back"><a href="#" onclick=" window.history.go(-1)">返回</a></li>
                                         <c:if test="${order.hhOrdersStatus==1}">
-                                            <li id="delete"><a href="#"
+                                            <li id="save1"><a href="#"
                                                                onclick="alt('取消订单','cancel','_self');this.blur();">取消订单</a>
                                             </li>
                                         </c:if>
@@ -362,17 +362,17 @@
                                         </shiro:hasPermission>
                                         <shiro:hasPermission name="管理员">
                                             <c:if test="${order.hhOrdersStatus==1}">
-                                                <li id="new"><a href="#"
+                                                <li id="save1"><a href="#"
                                                                 onclick="alt('签约订单','updateStatus/3','_self');this.blur();">签约订单</a>
                                                 </li>
                                             </c:if>
                                             <c:if test="${order.hhOrdersStatus==1}">
-                                                <li id="new"><a href="#"
+                                                <li id="save1"><a href="#"
                                                                 onclick="alt('拒签订单','updateStatus/2','_self');this.blur();">拒签订单</a>
                                                 </li>
                                             </c:if>
                                             <c:if test="${order.hhOrdersStatus==6}">
-                                                <li id="new"><a href="#"
+                                                <li id="save1"><a href="#"
                                                                 onclick="alt('同意退房','updateStatus/4','_self');this.blur();">同意退房</a>
                                                 </li>
                                             </c:if>
